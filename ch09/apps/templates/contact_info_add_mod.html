@@ -1,0 +1,289 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<script language=Javascript>
+function loadSubcat()
+{
+   document.forms[0].submit();
+}
+
+function submitForm()
+{
+   if (document.forms[0].subcat.value == 0)
+   {
+      alert("Please a select a subcategory");
+   }
+   else if(document.forms[0].first.value == "")
+   {
+      alert("Please enter the contact name");
+   }
+   else
+   {
+     document.forms[0].step.value=2;
+     document.forms[0].submit();
+   }
+}
+
+
+</script>
+<title>Category</title>
+</head>
+
+<body>
+<form method=post action={CONTACT_MNGR}>
+<input type=hidden name=cmd value={MODE}>
+<input type=hidden name=step value="">
+<input type=hidden name=ts value="{TS}">
+<input type=hidden name=cid value={CID}>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="579" id="AutoNumber1">
+  <tr>
+    <td width="501" colspan="3" height="29" bgcolor="#669900"><b>
+    <font face="Verdana" color="#FFFFFF" size="2">&nbsp;{MODE} Contact </font></b></td>
+  </tr>
+  <tr>
+    
+    <td width="472" height="29"><table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber3">
+      <tr>
+        <td width="42%"><b><font size="1" face="Verdana">Category</font></b></td>
+        <td width="3%">&nbsp;</td>
+        <td width="55%"><b><font face="Verdana" size="1">Subcategory</font></b></td>
+      </tr>
+      <tr>
+        <td width="42%"><select size="1" name="cat" tabindex="1" onChange=loadSubcat()>
+    <option selected value="0">Select a category</option>
+    <!-- BEGIN catBlock -->
+      <option value="{CAT_ID}" {CAT_CHOSEN}>{CAT_NAME}</option>
+      <!-- END catBlock -->
+    </select></td>
+        <td width="3%">&nbsp;</td>
+        <td width="55%"><font color="#FFFFFF"><select size="1" name="subcat" tabindex="2">
+    <option selected value="0">{PROMPT}</option>
+    <!-- BEGIN subcatBlock -->
+      <option value="{SUBCAT_ID}" {SUBCAT_CHOSEN}>{SUBCAT_NAME}</option>
+      <!-- END subcatBlock -->
+
+    </select></font></td>
+      </tr>
+      <tr>
+        <td width="42%">
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5">
+          <tr>
+            <td width="100%"><font face="Verdana" size="1"><b>First</b></font></td>
+          </tr>
+          <tr>
+            <td width="100%"><font face="Verdana" size="1">
+    <input type="text" name="first" size="29" value={FIRST}></font></td>
+          </tr>
+        </table>
+        </td>
+        <td width="3%">&nbsp;</td>
+        <td width="55%">
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4">
+          <tr>
+            <td width="50%"><font face="Verdana" size="1"><b>Last</b></font></td>
+            <td width="50%"><b><font face="Verdana" size="1">&nbsp;I</font></b><font face="Verdana" size="1"><b>nitial</b></font></td>
+          </tr>
+          <tr>
+            <td width="50%"><font face="Verdana" size="1">
+    <input type="text" name="last" size="17" value="{LAST}"></font></td>
+            <td width="50%"><font face="Verdana" size="1">
+    &nbsp;<input type="text" name="initial" size="14" value="{INITIAL}"></font></td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber6">
+      <tr>
+        <td width="43%" height="3"><b><font face="Verdana" size="1">Company Name</font></b></td>
+        <td width="24%" height="3"></td>
+        <td width="34%" height="3"></td>
+      </tr>
+      <tr>
+        <td width="43%" height="22">
+    <font face="Verdana" size="1" color="#FFFFFF">
+    <input type="text" name="company_name" size="92" value="{COMPANY_NAME}"></font></td>
+        <td width="24%" height="22">&nbsp;</td>
+        <td width="34%" height="22">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="43%" height="22">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber12">
+      <tr>
+        <td width="33%"><b><font face="Verdana" size="1">Email</font></b></td>
+        <td width="15%">&nbsp;</td>
+        <td width="52%"><font face="Verdana" size="1"><b>Alternatives 
+        Emails (Separate by comma)</b></font></td>
+      </tr>
+      <tr>
+        <td width="33%"><font face="Verdana" size="1">
+    <input type="text" name="email" size="45" value="{EMAIL}"></font></td>
+        <td width="15%">&nbsp;</td>
+        <td width="52%"><font face="Verdana" size="1">
+    <input type="text" name="email_ext" size="34" value="{EMAIL_EXT}"></font></td>
+      </tr>
+      <tr>
+        <td width="33%"><b><font face="Verdana" size="1">Phone</font></b></td>
+        <td width="15%">&nbsp;</td>
+        <td width="52%"><b><font face="Verdana" size="1">Ext.</font></b></td>
+      </tr>
+      <tr>
+        <td width="33%"><font color="#FFFFFF" face="Verdana" size="1">
+    <input type="text" name="phone" size="45" value="{PHONE}"></font></td>
+        <td width="15%">&nbsp;</td>
+        <td width="52%">
+            <input name="phone_ext" size="14" value="{PHONE_EXT}" style="float: left"></td>
+      </tr>
+      <tr>
+        <td width="33%"><b><font face="Verdana" size="1">Fax</font></b></td>
+        <td width="15%">&nbsp;</td>
+        <td width="52%"><font face="Verdana" size="1"><b>Alternatives 
+        Fax (comma separated)</b></font></td>
+      </tr>
+      <tr>
+        <td width="33%"><font face="Verdana" size="1">
+    <input type="text" name="fax" size="45" value="{FAX}"></font></td>
+        <td width="15%">&nbsp;</td>
+        <td width="52%"><font face="Verdana" size="1">
+    <input type="text" name="fax_ext" size="35" value="{FAX_EXT}"></font></td>
+      </tr>
+      <tr>
+        <td width="33%">&nbsp;</td>
+        <td width="15%">&nbsp;</td>
+        <td width="52%">&nbsp;</td>
+      </tr>
+    </table>
+        </td>
+        <td width="24%" height="22">&nbsp;</td>
+        <td width="34%" height="22">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="43%" height="103">
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber9">
+          <tr>
+            <td width="33%"><b><font face="Verdana" size="1">Company Address</font></b></td>
+            <td width="24%">&nbsp;</td>
+            <td width="43%"><b><font face="Verdana" size="1">Home Address</font></b></td>
+          </tr>
+          <tr>
+            <td width="33%"><font color="#FFFFFF">
+    <textarea rows="5" name="company_addr" cols="38">{COMPANY_ADDR}</textarea></font></td>
+            <td width="24%">&nbsp;</td>
+            <td width="43%" valign="top">
+    <textarea rows="5" name="home_addr" cols="38">{HOME_ADDR}</textarea></td>
+          </tr>
+        </table>
+        </td>
+        <td width="24%" height="103">&nbsp;</td>
+        <td width="34%" height="103">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="43%" height="22"><b><font size="1" face="Verdana">URL</font></b></td>
+        <td width="34%" height="19">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="43%" height="19"><font face="Verdana" size="1">
+    <input type="text" name="url" size="76" value="{URL}"></font></td>
+        <td width="34%" height="22">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="43%" height="5"><b><font face="Verdana" size="1">Reference</font></b></td>
+        <td width="34%" height="2"></td>
+      </tr>
+      <tr>
+        <td width="43%" height="19">
+    <font face="Verdana" size="1" color="#FFFFFF">
+    <input type="text" name="reference" size="76" value="{REFERENCE}"></font></td>
+        <td width="34%" height="19">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="43%" height="22"><b>
+    <font face="Verdana" size="1">Source</font></b></td>
+        <td width="24%" height="22">&nbsp;</td>
+        <td width="34%" height="22">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="43%" height="19">
+    <font face="Verdana" size="1" color="#FFFFFF">
+    <input type="text" name="source" size="76" value="{SOURCE}"></font></td>
+        <td width="24%" height="19">&nbsp;</td>
+        <td width="34%" height="19">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="43%" height="22"><b><font face="Verdana" size="1">Keywords/Notes
+    (comma separated list)</font></b></td>
+        <td width="24%" height="22">&nbsp;</td>
+        <td width="34%" height="22">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="43%" height="19">
+    <font face="Verdana" size="1" color="#FFFFFF">
+    <input type="text" name="keyword" size="76" value="{KEYWORD}"></font></td>
+        <td width="24%" height="19">&nbsp;</td>
+        <td width="34%" height="19">&nbsp;</td>
+      </tr>
+      
+    </table>
+    </td>
+    <td width="252" height="29">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan=3 align=center height="217" width="501">
+  <div align="left">
+    <table border="0" cellpadding="2" style="border-collapse: collapse" bordercolor="#111111" width="673" id="AutoNumber2" height="131">
+      <tr>
+        <td width="675" height="16" colspan="3">
+        <font face="Verdana" size="2"><b>Reminders</b></font></td>
+      </tr>
+      <tr>
+        <td width="30" align="right"><b><font face="Verdana" size="2">1</font></b></td>
+        <td width="412">
+        <p align="center">
+        <input type="text" name="rem1" size="73" onfocus=document.forms[0].date1.disabled=false; onblur="if(document.forms[0].rem1.value=='') document.forms[0].date1.disabled=true;" value="{REM_ABOUT1}"></td>
+        <td width="238" align="center">
+        <input type="text" name="date1" size="14" value="{DATE1}" {CHOSEN1}></td>
+      </tr>
+      <tr>
+        <td width="30" align="right"><b><font face="Verdana" size="2">2</font></b></td>
+        <td width="412">
+        <p align="center">
+        <input type="text" name="rem2" size="73" onfocus=document.forms[0].date2.disabled=false; onblur="if(document.forms[0].rem2.value=='') document.forms[0].date2.disabled=true;" value="{REM_ABOUT2}"></td>
+        <td width="238" align="center">
+        <input type="text" name="date2" size="14" value="{DATE2}" {CHOSEN2}></td>
+      </tr>
+      <tr>
+        <td width="30" align="right"><b><font face="Verdana" size="2">3</font></b></td>
+        <td width="412">
+        <p align="center">
+        <input type="text" name="rem3" size="73"  onfocus=document.forms[0].date3.disabled=false; onblur="if(document.forms[0].rem3.value=='') document.forms[0].date3.disabled=true;" value="{REM_ABOUT3}"></td>
+        <td width="238" align="center">
+        <input type="text" name="date3" size="14" value="{DATE3}" {CHOSEN3}></td>
+      </tr>
+      <tr>
+        <td width="30" align="right"><b><font face="Verdana" size="2">4</font></b></td>
+        <td width="412">
+        <p align="center">
+        <input type="text" name="rem4" size="73"  onfocus=document.forms[0].date4.disabled=false; onblur="if(document.forms[0].rem4.value=='') document.forms[0].date4.disabled=true;" value="{REM_ABOUT4}"></td>
+        <td width="238" align="center">
+        <input type="text" name="date4" size="14" value="{DATE4}" {CHOSEN4}></td>
+      </tr>
+      <tr>
+        <td align="right" width="30">
+        <p align="right"><b><font face="Verdana" size="2">5</font></b></td>
+        <td width="412" align="center">
+        <p align="center">
+        <input type="text" name="rem5" size="73"  onfocus=document.forms[0].date5.disabled=false; onblur="if(document.forms[0].rem5.value=='') document.forms[0].date5.disabled=true;" value="{REM_ABOUT5}"></td>
+        <td width="238" align="center">
+        <input type="text" name="date5" size="14" value="{DATE5}" {CHOSEN5}></td>
+      </tr>
+    </table>
+  </div>
+  <input type=reset value="Reset All"> &nbsp; &nbsp; <input type=button value={MODE} onclick=submitForm();>
+  </td>
+  </tr>
+</table>
+</form>
+</body>
+<!-- END mainBlock -->
+
+</html>

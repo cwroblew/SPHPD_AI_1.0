@@ -1,0 +1,113 @@
+<html>
+
+<head>
+
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+<title>Unsubscribe</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+<center>
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+           style="border-collapse: collapse"
+           bordercolor="#111111"
+           width="433"
+           height="79">
+
+      <tr>
+        <td width="24" height="24"><img border="0" src="images/topleft.gif"></td>
+        <td width="437" background="images/up.gif" height="24"> &nbsp;</td>
+        <td width="23" height="24"> <img border="0" src="images/topright.gif"></td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td width="437" height="10"> &nbsp;
+        <div align="center">
+          <center>
+
+          <table border="0"
+                 cellpadding="10"
+                 cellspacing="0"
+                 style="border-collapse: collapse"
+                 bordercolor="#cccccc"
+                 bgcolor="#ffffff"
+                 width="100%"
+                 id="AutoNumber3">
+
+		    <tr>
+                    <td>
+
+                    <center>
+                    <form name="unsubform" method=GET action="{APP_PATH}/{UNSUB}">
+                    <input type=hidden name=step value=2>
+                    
+                    <table border=0 cellpadding=5 cellspacing=0 widht=100%>
+
+		    <tr>
+                    <td> <font face="MS Sans Serif" size="2">Your asked to Unsubscribe.</font></td>
+		    </tr>
+
+		    <tr>
+                    <td> <font face="MS Sans Serif" size="2">Your email address is "{EMAIL}".</font></td>
+		    </tr>
+
+                    <tr>
+                    <td> <font face="MS Sans Serif" size="2">Do you really want?</font></td>
+		    </tr>
+
+
+		    <tr>
+                    <td colspan=2 align=center>
+                    <input type=submit name=submit value="Yes"><font face="MS Sans Serif" size="2">
+		    <br><br>
+                    <a href="javascript:window.close();">No</a> </font>
+
+                    <input type=hidden name=uid value="{USER_ID}">
+                    <input type=hidden name=c value="{C_ID}">
+		            <input type=hidden name=l value="{L_ID}">
+		            <input type=hidden name=chk value="{CHK}">
+
+
+                    </td>
+                    </tr>
+
+                    </table>
+                    </form>
+                    
+
+                    </center>
+
+
+              </td>
+            </tr>
+
+
+          </table>
+          </center>
+        </div>
+        </td>
+        <td width="23" background="images/right.gif" height="29"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" height="26">
+        <img border="0" src="images/downleft.gif"></td>
+        <td width="437" background="images/down.gif" height="26"> &nbsp;</td>
+        <td width="23" height="26"><img border="0" src="images/downright.gif"></td>
+      </tr>
+      </table>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

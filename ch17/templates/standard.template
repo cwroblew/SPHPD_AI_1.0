@@ -1,0 +1,41 @@
+<?php
+
+
+function getZoneConfiguration()
+{
+
+     $output = <<<DNS
+;
+; This zone file is generated automatically by makezone script
+; If you edit this file manually, the changes will be lost
+; if you regenerate the zone again using makezone
+;
+\$TTL    86400
+\$ORIGIN $GLOBALS[ZONE].
+@                       1D IN SOA       @ root (
+                                        01              ; serial
+                                        3H              ; refresh
+                                        15M             ; retry
+                                        1W              ; expiry
+                                        1D )            ; minimum
+
+                        1D IN NS        $GLOBALS[PRIMARY_NAME_SERVER]
+                        1D IN NS        $GLOBALS[SECONDARY_NAME_SERVER]
+                        1D IN MX 5      $GLOBALS[PRI05_MAIL_SERVER]
+                        1D IN MX 10     $GLOBALS[PRI10_MAIL_SERVER]
+
+ns                      1D IN A         $GLOBALS[PRIMARY_NAME_SERVER]
+
+www                     1D IN A         $GLOBALS[WWW_SERVER_IP_ADDR]
+www                     IN CNAME        $GLOBALS[WWW_SERVER_ALIAS].
+
+ftp                     1D IN A         $GLOBALS[FTP_SERVER_IP_ADDR]
+
+DNS;
+
+ 
+    return $output;
+
+}
+
+?>

@@ -1,0 +1,92 @@
+<html> 
+<!-- BEGIN mainBlock -->
+<head>
+<script>
+function relodePageOnCategoryChange()
+{
+    document.resource.step.value = 1;
+    document.resource.submit();
+}
+
+function relodePageOnSubcategoryChange()
+{
+    document.resource.step.value = 1;
+    document.resource.change.value = 2;
+    document.resource.submit();
+}
+
+function changeCmd()
+{
+    document.resource.cmd.value = 'delete';
+    document.resource.submit();
+}
+
+</script>
+
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="50%">
+    <font size=+1 align=left>Intranet Resource Manager</font> </td>
+    
+  </tr>
+</table>
+<hr>
+
+<form name=resource action={APP_PATH}/{IRM_RESOURCE_MNGR} method=post>
+<table border="0" cellpadding="0" cellspacing="0" width=600>
+   
+   <tr>
+      <td width="64%" height="17" bgcolor="#e8e8e8" align="left" valign="top">
+         <br>&nbsp;
+         <select name=category onchange="relodePageOnCategoryChange(); return false;">
+            <option value=0>select a category</option>
+            <!-- BEGIN categoryBlock -->
+            <option value={CAT_ID} {SELE}>{CAT_NAME}</option>
+            <!-- END categoryBlock -->
+         </select><br><br>&nbsp;
+         <select name=subcategory onchange="relodePageOnSubcategoryChange(); return false;">
+            <!-- BEGIN subCatBlock -->
+            <option value={SUB_ID} {SELEC}>{SUB_NAME}</option>
+            <!-- END subCatBlock -->
+         </select>
+      </td>
+      
+      <td width="36%" height="17" bgcolor="#e8e8e8" align="left">
+         <input type=image alt="delete" width="105" height="33" src="images/delete.gif" onclick="changeCmd()"><br><br>
+      </td>
+   </tr>
+   
+   <tr>
+      <td width="64%" height="17" bgcolor="#e8e8e8" align="left" valign="top">
+         <br>&nbsp;
+         <select name=resource>
+            <!-- BEGIN resourceBlock -->
+            <option value={RERSOURCE_ID}>{RERSOURCE_NAME}</option>
+            <!-- END resourceBlock -->
+            
+         </select>
+      </td>
+      
+      <td width="36%" height="17" bgcolor="#e8e8e8" align="left">
+         <input type=image alt="modify" width="105" height="33" src="images/modify.gif"><br><br>
+      </td>
+   </tr>
+      
+</table>
+<input type=hidden name=change value=1>
+<input type=hidden name=step value=2>
+<input type=hidden name=cmd value='modify'>
+</form>
+
+<p>&nbsp;</p>
+<p><br>
+
+</p>
+
+<!-- END mainBlock -->
+</body>
+</html>

@@ -1,0 +1,87 @@
+BODY {
+	COLOR: #3f3f3f; CURSOR: auto; FONT-FAMILY: Arial, Verdana, Helveltica; FONT-SIZE: 10pt
+}
+TD {
+	FONT-FAMILY: Arial, Verdana, Helveltica; FONT-SIZE: 10pt
+}
+TH {
+	FONT-FAMILY: Arial, Verdana, Helveltica; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+CAPTION {
+	FONT-FAMILY: Arial, Verdana, Helveltica; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+FORM {
+	FONT-FAMILY: Arial, Verdana, Helveltica; FONT-SIZE: 10pt
+}
+UL {
+	LIST-STYLE: url(localdata/WEB/DATA/WEBTEMPLATES]MBODYBULLET/CN/bullet.gif)
+}
+HR {
+	COLOR: #0139b8
+}
+.dim {
+	COLOR: gray
+}
+.color1 {
+	COLOR: black
+}
+.color2 {
+	COLOR: blue
+}
+.color3 {
+	COLOR: red
+}
+.color4 {
+	COLOR: green
+}
+.color5 {
+	COLOR: purple
+}
+.color6 {
+	COLOR: brown
+}
+.bold {
+	COLOR: #0139b8; FONT-WEIGHT: bold
+}
+.hide {
+	DISPLAY: none
+}
+.show {
+	
+}
+B {
+	COLOR: #0139b8
+}
+STRONG {
+	COLOR: #0139b8
+}
+.highlight {
+	COLOR: #0139b8
+}
+.BodyFontColor {
+	COLOR: #3f3f3f
+}
+.tableHeading {
+	BACKGROUND: #0139b8; COLOR: #ffffff
+}
+.tableRow {
+	BACKGROUND: #cccccc; COLOR: #3f3f3f
+}
+.tableRowAlt {
+	BACKGROUND: #dfdfdf; COLOR: #3f3f3f
+}
+.tableBody {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.PrimaryRowColor {
+	COLOR: #cccccc
+}
+.AlternativeRowColor {
+	COLOR: #dfdfdf
+}
+.PrimaryRowBGColor {
+	BACKGROUND: #cccccc
+}
+.AlternativeRowBGColor {
+	BACKGROUND: #dfdfdf
+}

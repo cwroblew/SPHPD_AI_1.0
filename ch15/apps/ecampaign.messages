@@ -1,0 +1,39 @@
+<?php
+
+   $MESSAGES['US']['LIST_DELETE_SUCCESSFUL']        = "List deleted.";
+   $MESSAGES['US']['LIST_DELETE_FAILED']            = "List not deleted.";
+   $MESSAGES['US']['LIST_UPLOAD_SUCCESSFUL']        = "List upload successful.";
+   $MESSAGES['US']['LIST_UPLOAD_FAILED']            = "List upload failed.";
+   $MESSAGES['US']['LIST_MODIFIED_SUCCESSFUL']      = "List modified successful.";
+   $MESSAGES['US']['LIST_MODIFIED_FAILED']          = "List modified failed.";
+   $MESSAGES['US']['TABLE_DOES_NOT_EXIST']          = "Table does not exist.";
+                                                    
+   $MESSAGES['US']['URL_UPLOAD_SUCCESSFUL']         = "URL upload successful.";
+   $MESSAGES['US']['URL_UPLOAD_FAILED']             = "URL upload failed.";
+   $MESSAGES['US']['URL_MODIFIED_SUCCESSFUL']       = "URL modified successful.";
+   $MESSAGES['US']['URL_MODIFIED_FAILED']           = "URL modified failed.";
+   $MESSAGES['US']['URL_NOT_FOUND']                 = "URL is not found.";
+                                                    
+   $MESSAGES['US']['URL_DELETE_SUCCESSFUL']         = "URL deleted successfully.";
+   $MESSAGES['US']['URL_DELETE_FAILED']             = "URL deletion failed.";
+   $MESSAGES['US']['CONNECT_DATABASE_FALIED']       = "Could not connect to database server";
+   $MESSAGES['US']['CLIENT_TABLE_NOT_FOUND']        = "Specified Table Not Found";
+   $MESSAGES['US']['MSG_DELETE_SUCCESSFUL']         = "Message has been deleted";
+   $MESSAGES['US']['MSG_DELETE_FAILED']             = "Message could not be deleted";
+   $MESSAGES['US']['MESSAGE_UPLOAD_SUCCESSFUL']     = "Message has been added";
+   $MESSAGES['US']['MESSAGE_MODIFIED_SUCCESSFUL']   = "Message has been modified";
+   
+   $MESSAGES['US']['MESSAGE_UPLOAD_FAILED']         = "Message could not be added";
+   $MESSAGES['US']['MESSAGE_MODIFIED_FAILED']       = "Message could not be modified";
+   
+   $MESSAGES['US']['CAMPAIGN_UPLOAD_FAILED']        = "Campaign could not be added";
+   $MESSAGES['US']['CAMPAIGN_UPLOAD_SUCCESSFUL']    = "Campaign has been added";
+   $MESSAGES['US']['CAMPAIGN_DELETE_SUCCESSFUL']    = "Campaign has been deleted successfully";
+   $MESSAGES['US']['CAMPAIGN_DELETE_FAILED']        = "Campaign delete failed";
+   $MESSAGES['US']['CAMPAIGN_MODIFIED_SUCCESSFUL']  = "Campaign has been modified successfully";
+   $MESSAGES['US']['CAMPAIGN_MODIFIED_FAILED']      = "Campaign modify failed";
+   $MESSAGES['US']['PAGE_NOT_SENT']                 = "Page is not sent";
+   $MESSAGES['US']['CAMPAIGN_CREATE_BTN']           = "Create";
+   $MESSAGES['US']['CAMPAIGN_MODIFY_BTN']           = "Modify";
+   $MESSAGES['US']['CAMPAIGN_SENT']                 = "Campaign Sucessfully Sent";
+?>

@@ -1,0 +1,90 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<title>Press Release Add/Modify Category</title>
+
+</head>
+
+<body>
+<form method=post action={LD_ADMIN_MNGR}>
+<table width="603" >
+<tr>
+<td width="82">
+<font face="Verdana" size="2"><b>Category Name</b> </font>
+</td>
+<td width="524">
+<font face="Verdana">
+<input type=text name=cat_name value="{CAT_NAME}" size="64"><font size="2">
+</font></font>
+</td>
+</tr>
+<tr>
+<td width="82" valign=top>
+<font face="Verdana" size="2"><b>Category</b> <b>Description</b> </font>
+</td>
+<td width="524">
+<font face="Verdana">
+<textarea name=cat_desc rows=5 cols=55>{CAT_DESC}</textarea><font size="2">
+</font></font>
+</td>
+</tr>
+
+<tr>
+<td width="82"> <b> <font face="Verdana" size="2">Category Order </font> </b> </td>
+<td width="524"> <font face="Verdana"> <input type=text name=cat_order VALUE="{CAT_ORDER}" size="5"></font> </td>
+</tr>
+
+<tr>
+<td width="82">
+&nbsp;</td>
+<td width="524">
+<table border="0" cellspacing="0" width="100%" id="AutoNumber1" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0">
+  <tr>
+    <td width="50%" bgcolor="#FFFFA6"><b><font face="Verdana" size="2">User(s) with Publish Rights </font></b></td>
+    <td width="50%" bgcolor="#FFFFA6"><b> <font face="Verdana" size="2">User(s) with View Rights </font> </b></td>
+  </tr>
+  <tr>
+    <td valign="top">
+<font face="Verdana">
+<select name=publishers[] multiple=true size="6">
+<option value="">---SELECT ONE OR MORE USERS -----</option>
+<option value=0 {PUB_EVERY_CHOSEN}>Everyone</option>
+<!-- BEGIN pubBlock -->
+<option value={PUB_UID} {PUB_CHOSEN}>{PUB_NAME}</option>
+<!-- END pubBlock -->
+
+</select></font></td>
+<td >
+<font face="Verdana">
+<select name=viewers[] multiple=true size="6">
+<option value="">---SELECT ONE OR MORE USERS -----</option>
+<option value=0 {VIEW_EVERY_CHOSEN}>Everyone</option>
+<!-- BEGIN viewBlock -->
+<option value={VIEW_UID} {VIEW_CHOSEN}>{VIEW_NAME}</option>
+<!-- END viewBlock -->
+</select></font></td>
+  </tr>
+</table>
+</td>
+</tr>
+
+
+<tr>
+<td colspan=2 align=center width="610" >
+<font face="Verdana">
+<input type=reset value="Reset All">
+&nbsp; &nbsp; &nbsp;
+<input type=submit name=cmd value="{CMD} Category"><font size="2"> </font>
+</font>
+</td>
+</tr>
+
+</table>
+<input type=hidden name=step value=2>
+<input type=hidden name=obj value="category">
+<input type=hidden name=cid value={CID}>
+</form>
+</body>
+
+<!-- END mainBlock -->
+</html>

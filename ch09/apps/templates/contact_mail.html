@@ -1,0 +1,72 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Name</title>
+</head>
+
+<body>
+<form method=post action={CONTACT_MNGR}>
+<input type=hidden name=cmd value="mail">
+<input type=hidden name=step value="2">
+<input type=hidden name=cid value="{CONTACT_ID}">
+<input type=hidden name=ts value="{TS}">
+
+<div align="center">
+  <center>
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="64%" id="AutoNumber1" height="246">
+    <tr>
+      <td width="100%" bgcolor="#333399" height="18"><b>
+      <font face="Verdana" color="#FFFFFF" size="1">&nbsp;Mail to Contact </font></b></td>
+    </tr>
+    <tr>
+      <td width="100%" height="27">
+      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="104%" id="AutoNumber2">
+        <tr>
+          <td width="16%">
+      <b><font size="2" face="Verdana">&nbsp;To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </font></b>
+          </td>
+          <td width="88%">
+      <input type="text" name="to" size="65" disabled value="{MAIL_TO} &lt;{MAIL_ADDR}&gt;"></td>
+        </tr>
+        <tr>
+          <td width="16%">
+      <b><font size="2" face="Verdana">&nbsp;Cc&nbsp;&nbsp;
+      </font></b>
+          </td>
+          <td width="88%">
+      <input type="text" name="cc" size="65" value="{EMAIL_EXT}"></td>
+        </tr>
+        <tr>
+          <td width="16%"><b><font face="Verdana" size="2">&nbsp;Subject</font></b>&nbsp;&nbsp;</td>
+          <td width="88%">
+      <input type="text" name="sub" size="65"></td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" height="27">
+      <p align="left"><b><font face="Verdana" size="2">&nbsp;Body</font></b></td>
+    </tr>
+    <tr>
+      <td width="100%" height="113">
+      <p align="left"><textarea rows="14" name="body" cols="67"></textarea></td>
+    </tr>
+    <tr>
+      <td width="100%" height="29">
+      <p align="center"><input type=reset value="Reset All">
+      &nbsp;&nbsp;&nbsp;<input type="submit" value="Send Mail" name="B1"></td>
+    </tr>
+    </table>
+  </center>
+</div>
+</form>
+</body>
+<!-- END mainBlock -->
+
+</html>

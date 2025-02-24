@@ -1,0 +1,17 @@
+<?php
+
+   $MESSAGES['US']['LIST_DELETE_SUCCESSFUL']    = "List deleted.";
+   $MESSAGES['US']['LIST_DELETE_FAILED']        = "List not deleted.";
+   $MESSAGES['US']['LIST_UPLOAD_SUCCESSFUL']    = "List upload successful.";
+   $MESSAGES['US']['LIST_UPLOAD_FAILED']        = "List upload failed.";
+   $MESSAGES['US']['FORM_UPLOAD_SUCCESSFUL']    = "Form upload successful.";
+   $MESSAGES['US']['FORM_UPLOAD_FAILED']        = "Form upload failed.";
+   $MESSAGES['US']['FORM_DELETED']              = "Form deleted.";
+   $MESSAGES['US']['FORM_NOT_DELETED']          = "Form not deleted.";
+   $MESSAGES['US']['SURVEY_ADD_FAILED']         = "Survey not added.";
+   $MESSAGES['US']['SURVEY_ADD_SUCCESSFUL']     = "Survey added.";
+   $MESSAGES['US']['SURVEY_DELETE_SUCCESSFUL']  = "Survey deleted.";
+   $MESSAGES['US']['SURVEY_DELETE_FAILED']      = "Survey not deleted.";
+   $MESSAGES['US']['SURVEY_SENT']               = "Survey sent.";
+
+?>

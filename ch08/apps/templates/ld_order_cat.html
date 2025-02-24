@@ -1,0 +1,36 @@
+<html>
+<!-- BEGIN mainBlock -->
+<body>
+<form name=reorderForm methos=post action={REL_APP_PATH}/{LD_ADMIN_MNGR}>
+<table cellspacing="0" cellpadding="3" border="0" width=50%>
+<tr>
+<td colspan=2 align=center>
+<h4>Reorder Category</h4>
+</td>
+</tr>
+<!-- BEGIN catBlock -->
+<tr>
+<td>
+{CAT_NAME}
+</td>
+<td>
+<select name=order[{CAT_ID}]>
+<!-- BEGIN ordernumBlock -->
+<option value={ORDER_NUM} {CHOSEN}>{ORDER_NUM}</option>
+<!-- END ordernumBlock -->
+</select>
+</td>
+</tr>
+<!-- END catBlock  -->
+<tr>
+<td colspan=2 align=center>
+<input type=hidden name=step value=2>
+<input type=submit name=cmd value="Reorder Categories">
+</td>
+</tr>
+
+</table>
+</form>
+</body>
+<!-- END mainBlock -->
+</html>

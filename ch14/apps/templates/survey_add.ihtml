@@ -1,0 +1,146 @@
+<html>
+
+<head>
+<base href="{BASE_URL}">
+
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+<title>Survey Manager</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+<center>
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+           bordercolor="#111111"
+           width="433"
+           height="79">
+
+      <tr>
+        <td width="24" height="24"><img border="0" src="images/upleft.gif" width="41" height="39"></td>
+        <td width="437" background="images/upmid.gif" height="24"> &nbsp;</td>
+        <td width="23" height="24"> <img border="0" src="images/upright.gif" width="43" height="39"></td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td width="437" height="10"> &nbsp;
+        <img border="0" src="images/esurveyor.gif" width="148" height="71"><div align="center">
+          <center>
+
+          <table border="0"
+                 cellpadding="10"
+                 cellspacing="0"
+                 style="border-collapse: collapse"
+                 bordercolor="#cccccc"
+                 bgcolor="#ffffff"
+                 width="100%"
+                 id="AutoNumber3">
+
+            <tr>
+              <td>
+
+
+                    <!-- BEGIN mainBlock -->
+                    <center>
+
+                    <form name="surveyform" 
+                          method=post 
+                          action="{APP_PATH}/{SURVEY_MNGR}" 
+                          enctype="multipart/form-data">
+
+                    <input type=hidden name=today value={TODAY}>
+                    <table border=0 cellpadding=5 cellspacing=0>
+                    <tr>
+                    <td>Name</td>
+                    <td><input type=text name="name" size="20"></td>
+                    </tr>
+
+                    <tr>
+                    <td>Survey List </td>
+                    <td>
+                    <select name="lid">
+                    <option value="">Select a Survey List</option>
+                    <!-- BEGIN listBlock -->
+                    <option value="{LIST_ID}">{LIST_NAME}</option>
+                    <!-- END listBlock -->
+                    </select>
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td>Survey Form </td>
+                    <td>
+                    <select name="fid">
+                    <option value="">Select a Survey Form</option>
+                    <!-- BEGIN formBlock -->
+                    <option value="{FORM_ID}">{FORM_NAME}</option>
+                    <!-- END formBlock -->
+                    </select>
+                    </td>
+                    </tr>
+
+
+                    <tr>
+                    <td colspan=2 align=center>
+                    <a href="javascript:document.surveyform.reset();"><img alt="Reset"
+                       border=0
+                       src="images/reset.gif"
+                       width="105" height="33" ></a>
+
+                    <input type=hidden name=step value="2">
+                    <input type=hidden name=cmd value="2">
+                    <input type=image 
+                           onClick="javascript:document.surveyform.cmd.value='create';" 
+                           src="images/create_survey.gif" 
+                           alt="Create a new survey"
+                           width="105" height="33">
+                    </td>
+                    </tr>
+
+                    </table>
+                    </form>
+                    <p>
+                    <a href="{APP_PATH}/{SURVEY_MNGR}"><img alt="Return to Menu" border=0 src="images/main_menu.gif" width="105" height="33" ></a>
+                    </center>
+
+                    <!-- BEGIN surveyBlock -->
+
+                    <!-- DO NOT REMOVE -->
+
+                    <!-- END surveyBlock -->
+
+                    <!-- END mainBlock -->
+
+
+
+              </td>
+            </tr>
+
+
+          </table>
+          </center>
+        </div>
+        </td>
+        <td width="23" background="images/right.gif" height="29"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" height="26">
+        <img border="0" src="images/dwnleft.gif" width="41" height="45"></td>
+        <td width="437" background="images/dwnmid.gif" height="26"> &nbsp;</td>
+        <td width="23" height="26"><img border="0" src="images/dwnrht.gif" width="43" height="45"></td>
+      </tr>
+      </table>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

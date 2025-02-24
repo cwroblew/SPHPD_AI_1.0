@@ -1,0 +1,190 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Tell A Friend</title>
+<SCRIPT LANGUAGE="Javascript">
+function decision(message, i)
+{
+   if (i == 1 && document.forms[1].msgID.value == "0")
+   {
+      alert('Please select a message');
+   }
+   else if (i == 0 && document.forms[0].frmID.value == "0")
+   {
+      alert('Please select a message');
+   }
+   else
+   {
+      if(confirm(message)) 
+      {
+         document.forms[i].cmd.value="delete";
+         document.forms[i].submit();
+      }
+   }   
+}
+
+function submitMsg4Mod()
+{
+   if (document.forms[1].msgID.value == "0")
+   {
+     alert('Please select a message'); 
+   }
+   else
+   {
+     document.forms[1].cmd.value='modify';
+     document.forms[1].submit();
+   }  
+}
+
+function submitFrm4Mod()
+{
+   if (document.forms[0].frmID.value == "0")
+   {
+     alert('Please select a form'); 
+   }
+   else
+   {
+     document.forms[0].cmd.value='modify';
+     document.forms[0].submit();
+   }  
+}
+
+function submitFrm4Rpt()
+{
+   if (document.forms[0].frmID.value == "0")
+   {
+     alert('Please select a form'); 
+   }
+   else
+   {
+     document.forms[0].action="{TAF_REPORTER}"
+     document.forms[0].cmd.value='frmCreator';
+     document.forms[0].submit();
+   }
+}
+   
+</SCRIPT>
+</head>
+
+<body>
+<CENTER>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="600" id="AutoNumber1">
+  <tr>
+    <td width="100%">
+    <table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="112%" id="AutoNumber2" height="360" bgcolor="#FFFFFF">
+      <tr>
+        <td width="100%" colspan="2" height="19" bgcolor="#FFFF7F"><b>
+        <font face="Verdana" size="2">Tell-a-Friend Main Menu</font></b></td>
+      </tr>
+      <tr>
+        <td width="9%" height="22" valign="top">&nbsp;</td>
+        <td width="103%" height="22" valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="9%" height="16" valign="top"></td>
+        <td width="103%" height="16" valign="top">
+        
+        <table border="0" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber3" width="495">
+          <form action="{TAF_FRM_MNGR}" method="POST">
+          <input type=hidden name=cmd>
+          <tr>
+            <td width="194"><a href="{TAF_FRM_MNGR}?cmd=add"><font color="#008080">Setup a Tell-a-Friend Form</font></a></td>
+            <td width="129">&nbsp;</td>
+            <td width="168">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="491" align="center" colspan="3">
+            <table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4" height="80">
+              <tr>
+                <td width="31%" height="58" rowspan="3" bgcolor="#C0C0C0">
+                <p align="center"><font color="#FFFF00">
+                <select name="frmID">
+                   <option value="0" selected>Select a form</option>
+                   <!-- BEGIN frmBlock -->
+                   <option value="{FRM_ID}">{FRM_NAME}</option>
+                   <!-- END frmBlock -->
+                </select></font></td>
+                <td width="169%" height="19" bgcolor="#C0C0C0">
+                <font face="Verdana" size="2">
+                <a href="javascript:submitFrm4Rpt()">
+                <font color="#000099">View Form Activity Report</font></a></font></td>
+              </tr>
+              <tr>
+                <td width="169%" height="19" bgcolor="#C0C0C0">
+                <font face="Verdana" size="2">
+                <a href="javascript:submitFrm4Mod()">
+                <font color="#000099">Modify Form Configuration</font></a></font></td>
+              </tr>
+              <tr>
+                <td width="169%" height="20" bgcolor="#C0C0C0">
+                <font face="Verdana" size="2"><a href="javascript:decision('{DELETE_FRM_CONFIRMATION}', 0)">
+                <font color="#000099">Delete Form</font></a></font></td>
+              </tr>
+            
+            </table>
+            </td>
+          </tr>
+        </table>
+        </form>
+        </td>
+      </tr>
+      <tr>
+        <td width="9%" height="16" valign="top"></td>
+        <td width="103%" height="16" valign="top">
+
+        <form method=post action={TAF_MSG_MNGR}>
+        <input type=hidden name=cmd>
+        <table border="0" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber3" width="495">
+          <tr>
+            <td width="194"><a href="{TAF_MSG_MNGR}?cmd=add"><font color="#008080">Add a New Message</font></a></td>
+            <td width="129">&nbsp;</td>
+            <td width="168">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="491" align="center" colspan="3">
+            <table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4" height="72">
+              <tr>
+                <td width="31%" height="50" rowspan="2" bgcolor="#C0C0C0">
+                <p align="center"><font color="#FFFF00">
+                <select name="msgID">
+                   <option value="0" selected>Select a message</option>
+                   <!-- BEGIN msgBlock -->
+                   <option value="{MSG_ID}">{MSG_NAME}</option>
+                   <!-- END msgBlock -->
+                </select></font></td>
+                <td width="169%" height="30" bgcolor="#C0C0C0">
+                <font face="Verdana" size="2">
+                <a href="javascript:submitMsg4Mod();">
+                <font color="#000099">Modify a Message</font></a></font></td>
+              </tr>
+              <tr>
+                <td width="169%" height="20" bgcolor="#C0C0C0">
+                <font face="Verdana" size="2">
+
+                <a href="javascript:decision('{DELETE_MSG_CONFIRMATION}', 1)">
+                <font color="#000099">Delete a Message</font></a></font></td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+      <tr>
+        <td width="9%" height="19" valign="top">&nbsp;</td>
+        <td width="103%" height="19" valign="top">
+        <img border="0" src="setup.bmp" width="0" height="122"></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</form>
+</CENTER>
+</body>
+<!-- END mainBlock -->
+</html>

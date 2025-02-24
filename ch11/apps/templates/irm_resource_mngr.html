@@ -1,0 +1,199 @@
+<html> 
+<!-- BEGIN mainBlock -->
+<head>
+
+<script>
+
+   var Subcategory = new Array();
+   var Category    = new Array();
+   var SubcategoryIDList= new Array();
+
+   <!-- BEGIN jsCategoryBlock -->
+
+      Category[{CATEGORY_INDEX}] = {CATEGORY_ID};
+
+      Subcategory[{CATEGORY_INDEX}] = new Array();
+      SubcategoryIDList[{CATEGORY_INDEX}] = new Array();
+
+      <!-- BEGIN jsSubCategoryBlock -->
+
+         Subcategory[{CATEGORY_INDEX}][{SUBCATEGORY_ID}] = "{SUBCATEGORY_NAME}";
+         SubcategoryIDList[{CATEGORY_INDEX}][{SUBCATEGORY_INDEX}] = {SUBCATEGORY_ID};
+
+      <!-- END jsSubCategoryBlock  -->
+
+   <!-- END jsCategoryBlock  -->
+
+
+   function populateSubCategory(cid)
+   {
+      var notFound = true;
+      var categoryIndex;
+      var i = 0;
+
+      if (cid == 0)
+      {
+          document.addResource.subcategory.options.length = 0;
+          
+          var oOption = document.createElement("OPTION");
+          oOption.text="Select a category first";
+          oOption.value=0;
+          document.addResource.subcategory.options.add(oOption); 
+          
+          return false;
+      }
+
+      while(notFound && i <= Category.length)
+      {
+         if (cid == Category[i])
+         {
+            notFound = false;
+            categoryIndex = i;
+         }
+         i++;
+      }
+
+      document.addResource.subcategory.options.length = 0;
+
+      var oOption = document.createElement("OPTION");
+      oOption.text='Select a Subcategory';
+      oOption.value=0;
+      document.addResource.subcategory.options.add(oOption);
+
+      for(i=0; i< SubcategoryIDList[categoryIndex].length; i++)
+      {
+         var subcategoryID = SubcategoryIDList[categoryIndex][i];
+
+         var oOption = document.createElement("OPTION");
+         oOption.text=Subcategory[categoryIndex][subcategoryID];
+         oOption.value=subcategoryID;
+         document.addResource.subcategory.options.add(oOption);
+      }
+
+      return categoryIndex;
+   }
+
+</script>
+
+</head>
+
+<body>
+<form name=addResource method=post action=>
+
+<table border="0" cellpadding="5" cellspacing="0" width=600>
+  <tr>
+    <td width="452" height="16" valign="top" bgcolor="#e8e8e8" colspan="2"><b>
+    <font color="#000000" face="Verdana" size="2">{PAGE_NAME} Internet Resource </font></b></td>
+    </tr>
+  <tr bgcolor="#e8e8e8">
+    <td width="130" height="71" valign="top" ><b>
+    <font face="Verdana" size="2">Category</font></b><p>
+    <font color="#000080" face="Verdana" size="1">Select a category name or add 
+    a new category </font></td>
+    <td width="477" height="71" valign="top" >
+    <font face="Verdana">
+    
+    <select name="category" onChange="populateSubCategory(category.value)">
+          <option value={CAT_SELECT_VALUE}>{CAT_SELECT_NAME}</option>
+          <!-- BEGIN categoryBlock -->
+          <option value="{CATEGORY_ID}">{CATEGO_NAME}</option>
+          <!-- END categoryBlock -->
+    </select>
+    
+    <font size="2"> Sub category </font>
+    <select name="subcategory">
+          
+          <option value="{SUBCATEGORY_ID}">{SUBCATEGORY_NAME}</option>
+          <!-- BEGIN subcategoryBlock -->
+          <option value="{SUBID}">{SUB_NAME}</option>
+          <!-- END subcategoryBlock -->
+        
+    </select>
+    </font><p>
+    <font face="Verdana"><font size="2"> Or add in new category </font>
+    <input type=text name="newcat" size=28 maxsize=255></font></p>
+    <p><font face="Verdana" size="1">If you select a category and also enter a 
+    new category name, the new category is considered a sub category of the 
+    existing category. Only 1 level sub-category supported. </font></td>
+  </tr>
+  <tr bgcolor="#e8e8e8">
+    <td width="130" height="21" valign="top" ><b>
+    <font face="Verdana" size="2">Title</font></b></td>
+    <td width="477" height="21" valign="top" >
+    <font face="Verdana">
+    <input type=text name="title" size=67 maxsize=255 value="{TITLE_VALUE}"></font></td>
+  </tr>
+  <tr bgcolor="#e8e8e8">
+    <td width="130" height="22" valign="top" ><b>
+    <font face="Verdana" size="2">URL</font></b></td>
+    <td width="477" height="22" valign="top" >
+    <font face="Verdana">
+    <input type=text name="url" size=67 maxsize=255 maxlength="255" value={URL_VALUE}></font></td>
+  </tr>
+  <tr bgcolor="#e8e8e8">
+    <td width="130" height="22" valign="top" ><b>
+    <font face="Verdana" size="2">Rating</font></b></td>
+    <td width="477" height="22" valign="top" >
+    <font face="Verdana"><select name="rating">
+    <option value="{RANK}" selected>{RANK_VALUE}</option>
+    <option value="5">5 Stars</option>
+    <option value="4">4 Stars</option>
+    <option value="3">3 Stars</option>
+    <option value="2">2 Stars</option>
+    <option value="1">1 Star</option>
+    <option value="0">Unspecified</option>
+        </select><font size="2"> </font></font>
+    </td>
+  </tr>
+  <tr bgcolor="#e8e8e8">
+    <td width="130" height="22" valign="top" ><b>
+    <font face="Verdana" size="2">Auto Announce?</font></b><br>
+    <font face="Verdana" size="1">(via MOTD)</font></td>
+    <td width="477" height="22" valign="top" >
+    <font face="Verdana">&nbsp;</font><table border="0" cellspacing="0" width="76%" id="AutoNumber2" cellpadding="0">
+      <tr>
+        <td width="21%" valign="top">
+    <font face="Verdana"><select name="auto_motd">
+    <option selected value=1>Yes</option>
+    <option value=0>No</option>
+        </select></font></td>
+        <td width="9%" valign="top">
+    <font face="Verdana"><font size="2">&nbsp;to</font>&nbsp; </font></td>
+        <td width="70%" valign="top">
+    <font face="Verdana">
+    
+    <select name="auto_motd_target[]" multiple>
+       <option selected value=0>Everyone</option>
+       <!-- BEGIN employeeBlock -->
+       <option value={EMP_ID}>{EMP_NAME}</option>
+       <!-- END employeeBlock --> 
+    </select>
+    </font></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr bgcolor="#e8e8e8">
+    <td width="130" height="42" valign="top" ><b><font face="Verdana" size="2">Keywords</font></b></td>
+    <td width="477" height="42" valign="top" >
+    <input type=text name="keywords" size=67 maxsize=255 maxlength="255" value="{KEYWORD}"><br>
+    <font color="#000080" face="Verdana" size="1">Enter one or more keywords separated by space.</font>
+    </td>
+  </tr>
+  <tr bgcolor="#e8e8e8">
+    <td valign="top" ><b><font face="Verdana" size="2">Description</font></b></td>
+    <td valign="top" >
+    <font face="Verdana"><textarea name=description row=10 cols=56 rows="5">{DESC}</textarea></font></td>
+  </tr>
+  <tr >
+    <td  valign="top" colspan="2" align=center> <input type=reset> <input type=submit value="{CMD} Resource"> </td>
+  </tr>
+</table>
+<input type=hidden name=resource_id value={RESOURCE}>
+<input type=hidden name=cmd value={CMD}>
+<input type=hidden name=step value={STEP}>
+<input type=hidden name=ctime value={C_TIME}>
+</form>
+<!-- END mainBlock -->
+</body>
+</html>

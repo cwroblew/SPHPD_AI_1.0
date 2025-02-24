@@ -1,0 +1,93 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<script language=Javascript>
+function goBack()
+{
+    document.forms[0].step.value="";
+    document.forms[0].submit();
+}
+</script>
+
+<title>Intranet User Home
+
+
+</title>
+
+
+
+</head>
+
+<body>
+
+
+
+
+<font size=+1 align=left>Intranet Message Manager: Message Preview</font>
+<hr>
+<table border=0 cellpadding=5 cellspacing=0 width=100%>
+<font size=2>&nbsp;&nbsp;Preview of the message to be added, Click confirm to add the message</font>
+
+</table>
+<table cellpadding=3 cellspacing=10 width=100%>
+
+
+
+<form method=POST action="{MSG_MNGR}">
+<input type=hidden name=cmd value={MODE}>
+<input type=hidden name=mid value={MSG_ID}>
+<input type=hidden name=step value=3>
+<input type=hidden name=title value="{MSG_TITLE_HIDDEN}">
+<input type=hidden name=msg value="{MSG_CONTENTS_HIDDEN}">
+<input type=hidden name=msgDate value={MSG_DATE_TS}>
+<input type=hidden name=currentTS value={CUR_TS}>
+<tr>
+<td>
+<table border=0 align=left width=100% bgcolor="#bbcccb" cellpadding=2 cellspacing=3>
+<tr>
+<td>
+<font size=2>{MSG_DATE}</font>
+</td>
+</tr>
+
+<tr>
+<td>
+<STRONG><font size=2>{MSG_TITLE}</font></STRONG>
+</td>
+</tr>
+<tr>
+<td>
+<font size=2>{MSG_CONTENTS}</font>
+</td>
+</tr>
+<tr>
+<td align=left>
+
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<!-- BEGIN viewBlock -->
+<input type=hidden name=viewers[] value={VIEWERS}>
+<!-- END viewBlock -->
+
+<input type=button value="cancel" onclick=goBack()>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value="confirm">
+
+</td>
+</tr>
+</form>
+
+
+</table>
+
+<p>
+<!-- END mainBlock -->
+</body>
+</html>

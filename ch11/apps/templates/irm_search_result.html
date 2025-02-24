@@ -1,0 +1,115 @@
+<html> 
+<!-- BEGIN mainBlock -->
+<head>
+<script>
+function changeCmd( val)
+{ 
+   document.resource.cmd.value = val;
+   document.resource.submit();
+}
+
+</script>
+</head>
+
+<body>
+
+<form name=resource action={APP_PATH}/{IRM_RESOURCE_SEARCH_MNGR} method=get>
+
+
+<table border="0" cellpadding="4" cellspacing="0" width="600" id="AutoNumber1">
+
+  <tr>
+    <td >
+     <a href={APP_PATH}/{IRM_RESOURCE_SEARCH_MNGR}>Search Again</a>
+    </td>
+  </tr>
+
+<tr>
+<td>
+
+<div align="left">
+<table width=100% border="0" cellpadding="0" cellspacing="0">
+   <tr>
+      <td width="40%" bgcolor="#FFFFFF" align="left" valign="top">
+         <font face="Verdana" size="2"><b>
+         <a href={APP_PATH}/{IRM_RESOURCE_SEARCH_MNGR}?cmd=title&sorttype={SORTEDTYPE}>
+         <font color="#111111">Resource Title</font></a><font color="#111111">
+         </font></b></font>
+      </td>
+      <td width="15%" height="13" bgcolor="#FFFFFF" align="center" valign="top">
+         <font face="Verdana" size="2"><b>
+         <font color="#111111">Description</font>
+      </td>
+      <td width="25%" height="13" bgcolor="#FFFFFF" align="center" valign="top">
+         <font face="Verdana" size="2"><b>
+         <a href={APP_PATH}/{IRM_RESOURCE_SEARCH_MNGR}?cmd=rating&sorttype={SORTEDTYPE}>
+         <font color="#111111">Resource Rating</font></a><font color="#111111">
+         </font></b></font>
+      </td>
+      <td width="20%" height="13" bgcolor="#FFFFFF" align="center" valign="top">
+         <font face="Verdana" size="2"><b>
+         <a href={APP_PATH}/{IRM_RESOURCE_SEARCH_MNGR}?cmd=addedby&sorttype={SORTEDTYPE}>
+         <font color="#111111">{TOPTITLE}</font></a><font color="#111111">
+         </font></b></font>
+      </td>
+      
+   </tr>
+   <!-- BEGIN resourceBlock --> 
+   
+   <tr onMouseOver="this.bgColor = '#D2FFEE'" onMouseOut ="this.bgColor = '#{TRBGCOLOR}'" bgcolor={TRBGCOLOR}> 
+
+      <td width="471" height="17" align="left" valign="top" >
+         <font face="Verdana" size="2">
+         <a href="{APP_PATH}/{IRM_RESOURCE_TRACK_MNGR}?rid={R_ID}" target="_blank">{RTITLE}</a>
+         </font>
+      </td>
+      
+      <td width="471" height="17" align="center" valign="top" >
+        <a href="{APP_PATH}/{IRM_RESOURCE_MNGR}?cmd=disdes&rid={R_ID}" target="_blank">Desc</a>
+      </td>
+      
+      
+      <td width="237" height="17" align="center" valign="top" >
+         
+         <font face="Verdana" size="2">
+         
+         <IMG src="images/stars{RATING}.gif"> </font>
+         
+      </td>
+      <td width="193" height="17" align="center" valign="top" >
+         <font face="Verdana" size="2">{ADDBY} </font>
+      </td>
+   </tr>
+   <!-- END resourceBlock -->   
+</table>
+
+</div>
+
+<p align=center>
+
+     <font face="Verdana" size="2">
+     <!-- BEGIN previousBlock --> 
+         <input type=image alt="Previous" width="105" height="33" src="images/previous.gif" onclick="changeCmd('previous')">  
+     <!-- END previousBlock -->   
+
+     <!-- BEGIN nextBlock -->   
+         <input type=image alt="Next" width="105" height="33" src="images/next.gif" onclick="changeCmd('next')">
+     <!-- END nextBlock -->   
+
+<input type=hidden name=current value={CURRENT}>
+<input type=hidden name=cmd value=''>
+<input type=hidden name=sorted value={SORTED}>
+<input type=hidden name=sorttype value={SORTEDTYPE}>
+
+
+</font>
+
+</p>
+
+<!-- END mainBlock -->
+</td>
+</tr>
+</table>
+</form>
+</body>
+</html>

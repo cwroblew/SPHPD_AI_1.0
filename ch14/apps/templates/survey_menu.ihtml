@@ -1,0 +1,363 @@
+<html>
+
+<head>
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+<title>Survey Manager</title>
+
+<script>
+
+    function doExecute()
+    {
+       var surveyID = document.survey.survey_id.options[document.survey.survey_id.selectedIndex].value;
+
+       document.location.href = "{APP_PATH}/{SURVEY_EXEC_MNGR}?survey_id=" + surveyID;
+
+       return false;
+    }
+
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+<center>
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+                      bordercolor="#111111"
+           width="50%"
+           height="50%" style="border-collapse: collapse">
+
+      <tr>
+        <td width="24" height="24" background="images/upmid.gif"><img border="0" src="images/upleft.gif" width="41" height="39"></td>
+        <td width="437" background="images/upmid.gif" height="24"> &nbsp;</td>
+        <td width="23" height="24"> <img border="0" src="images/upright.gif" width="43" height="39"></td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td> 
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0"
+ WIDTH=400 HEIGHT=90>
+ <PARAM NAME=movie VALUE="esurveyor.swf"> 
+ <PARAM NAME=menu VALUE=false>
+<PARAM NAME=quality VALUE=best> <PARAM NAME=wmode VALUE=transparent> <PARAM NAME=bgcolor VALUE=#FFFFFF> <EMBED src="esurveyor.swf" quality=best wmode=transparent bgcolor=#FFFFFF  WIDTH=400 HEIGHT=90 TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></EMBED>
+</OBJECT>
+ <div align="center">
+          <center>
+
+          <table border="0"
+                 cellpadding="10"
+                 cellspacing="0"
+                 style="border-collapse: collapse"
+                 bordercolor="#cccccc"
+                 bgcolor="#ffffff"
+                 width="100%"
+                 id="AutoNumber3">
+
+            <tr>
+              <td valign=bottom>
+
+                    <table cellpadding=0 cellspacing=0
+                           width=100% border=0
+                           style="border-collapse: collapse"
+                           bordercolor="#111111">
+                    <tr>
+                    <td width=40%>
+                      <div align="center">
+                        <center>
+                      <table  border=0 cellpadding=0 cellspacing=- width=100% style="border-collapse: collapse" bordercolor="#111111">
+                       <tr>
+                       <td width="80%">
+                       </td>
+                       <td>
+                       <p align="center">
+                       <a href="{APP_PATH}/{SURVEY_LIST_MNGR}"><img alt="Add a List"
+                       border=0 src="images/addlist.gif" width="105" height="33" ></a>
+                       </p></td>
+                       </tr>
+                       </table>
+                        </center>
+                      </div>
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td>
+                    <form action="{APP_PATH}/{SURVEY_LIST_MNGR}" method="GET">
+                    <table border=0 width=100% cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#111111">
+                    <tr>
+                    <td width="80%" background="images/menuback.gif">
+                    &nbsp;&nbsp;
+                    <select name="list_id">
+                    <option value="">---Select a Survey List---</option>
+                    <!-- BEGIN listBlock -->
+                    <option value="{LIST_ID}">{LIST_NAME}</option>
+                    <!-- END listBlock -->
+                    </select>
+                    </td>
+                    <td >
+                    <input type=hidden name=cmd value="Delete">
+                    <input type=image alt="Delete a List" width="105" height="33" src="images/delete.gif">
+                    </td>
+                    </table>
+                    </form>
+                    </td>
+                    </tr>
+                    </table>
+
+                    <table cellpadding=0 cellspacing=0 width=100% border=0>
+                    <tr>
+                    <td>
+
+                      <table  border=0 cellpadding=0 cellspacing=- width=100%>
+                       <tr>
+                       <td width="80%">
+                       </td>
+                       <td>
+                       
+                       </td>
+                       </tr>
+                       <tr>
+                       <td width="80%" colspan="2">
+                       <div align="right">
+                         <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4">
+                           <tr>
+                             <td align="left">
+                             <img border="0" src="images/balla.gif" width="17" height="16"></td>
+                             <td width="354">
+                             <p align="center">---------------------------------------------------------</td>
+                             <td align="right">
+                             <img border="0" src="images/ballb.GIF" width="17" height="16"></td>
+                           </tr>
+                         </table>
+                       </div>
+                       </td>
+                       </tr>
+                       <tr>
+                       <td width="40%">
+                       &nbsp;</td>
+                       <td width="40%">
+<a href="{APP_PATH}/{SURVEY_FORM_MNGR}"><img alt="Add a Survey Form"
+                       border=0 src="images/addform.gif" width="105" height="33" ></a>
+</td>
+                       </tr>
+                       </table>
+
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td valign=top>
+                    <form name="frmForm" action="{APP_PATH}/{SURVEY_FORM_MNGR}" method="GET">
+                    <table border=0 width=100% cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#111111">
+                    <tr>
+                    <td width="80%" background="images/menuback.gif">
+                    &nbsp;&nbsp;
+                    <select name="form_id">
+                    <option value="">--Select a Survey Form--</option>
+                    <!-- BEGIN formBlock -->
+                    <option value="{FORM_ID}">{FORM_NAME}</option>
+                    <!-- END formBlock -->
+                    </select>
+                    </td>
+	            <td>
+                    <input type=image alt="Delete a Survey Form" width="105"
+                           height="33" src="images/delete.gif">
+                    <input type=hidden name=cmd value="Delete">
+	            </td>
+                    </tr>
+
+                    <tr>
+                    <td width="80%">
+                    </td>
+	            <td>
+                    <a href="{REL_FORMS_DIR}/sample_form.html"><img border=0 width="105"
+                       height="33" src="images/sampleform.gif"
+                       alt="Download Sample Form"></a>
+	            </td>
+                    </tr>
+
+                    <tr>
+                    <td width="80%"></td>
+	            <td>
+                    </td>
+                    </tr>
+                    </table>
+                    </form>
+                    </td>
+                    </tr>
+                    </table>
+                    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+                    <tr>
+                    <td>
+
+                       <form name="form2" action="{APP_PATH}/{SURVEY_RPT_MNGR}" method="GET">
+                       <input type=hidden name=cmd value="">
+                       <table  border=0  cellpadding=0 cellspacing=0 width=100% style="border-collapse: collapse" bordercolor="#111111">
+                       <tr>
+                       <td width="390">
+                       </td>
+                       <td width="105">
+                       
+                       </td>
+                       </tr>
+
+                       <tr>
+                       <td width="390" colspan="2">
+                       <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5">
+                         <tr>
+                           <td>
+                             <img border="0" src="images/balla.gif" width="17" height="16"></td>
+                           <td width="386">
+                           <p align="center">---------------------------------------------------------</td>
+                           <td>
+                             <img border="0" src="images/ballb.GIF" width="17" height="16"></td>
+                         </tr>
+                         <tr>
+                           <td>
+                             &nbsp;</td>
+                           <td width="386">
+                           &nbsp;</td>
+                           <td>
+                             &nbsp;</td>
+                         </tr>
+                       </table>
+                       </td>
+                       </tr>
+
+                      <tr>
+                       <td width="390" background="images/menuback.gif">
+
+
+                           &nbsp;&nbsp;
+
+
+                           <select name="exec_id">
+                           <option value="">-----Select a Survey Report-----</option>
+                           <!-- BEGIN execBlock -->
+                           <option value="{EXEC_ID}">{SURVEY_REPORT}</option>
+                           <!-- END execBlock -->
+
+                           </select></td>
+                       <td width="105">
+
+                        <input type=image width="105" alt="View a Survey Report"  height="33" src="images/viewreport.gif">
+                       </td>
+                       </tr>
+
+                       </table>
+
+                       </form>
+
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td>
+
+                    <table border=0 cellpadding=0 width=100% cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+                    <tr>
+                     <td width="495" colspan="2">
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber7">
+                      <tr>
+                        <td width="17">
+                             <img border="0" src="images/balla.gif" width="17" height="16"></td>
+                        <td width="390">---------------------------------------------------------</td>
+                        <td width="17">
+                             <img border="0" src="images/ballb.GIF" width="17" height="16"></td>
+                      </tr>
+                    </table>
+                     </td>
+                    </tr>
+                    <tr>
+                     <td width="390">
+                    &nbsp;</td>
+                    <td width="105" align="right">
+<a href="{APP_PATH}/{SURVEY_MNGR}?cmd=create"><img alt="Create a New Survey" border=0 src="images/create_survey.gif" width="105" height="33" ></a>
+</td>
+                    </tr>
+                    <tr>
+                     <td width="390" background="images/menuback.gif">
+                    <form name="survey" action="{APP_PATH}/{SURVEY_MNGR}" method="GET">
+                    <p>&nbsp;&nbsp;
+                    <select name="survey_id">
+                    <option value="">-----Select a Survey------</option>
+                    <!-- BEGIN surveyBlock -->
+                    <option value="{SURVEY_ID}">{SURVEY_NAME}</option>
+                    <!-- END surveyBlock -->
+                    </select></p>
+                    <p>&nbsp;</p>
+                    </td>
+                    <td width="105">
+                    <input type=hidden name=cmd value="">
+
+                    <input type=image
+                           onClick="javascript:document.survey.cmd.value='delete';"
+                           width="105"
+                           alt="Delete a Survey"
+                           height="33"
+                           src="images/delete.gif">
+
+                    <a href="" onClick="return doExecute();"><img width="105"
+                           alt="Execute a Survey"
+                           height="33"
+                           border="0"
+                           src="images/execute_red.gif"></a>
+
+                    </td>
+                    </tr>
+                    <tr>
+                     <td width="390" colspan="2">
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber6">
+                      <tr>
+                        <td width="18">
+                             <img border="0" src="images/balla.gif" width="17" height="16"></td>
+                        <td width="385">
+                        <p align="center">---------------------------------------------------------</td>
+                        <td width="17">
+                             <img border="0" src="images/ballb.GIF" width="17" height="16"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+                    </table>
+                    </form>
+                    </td>
+
+
+                    </td>
+                    </tr>
+                    </table>
+
+              </td>
+            </tr>
+
+
+          </table>
+          </center>
+        </div>
+        </td>
+        <td width="23" background="images/right.gif" height="29">&nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" height="26" background="images/dwnmid.gif">
+        <img border="0" src="images/dwnleft.gif" width="41" height="45"></td>
+        <td width="437" background="images/dwnmid.gif" height="26"> &nbsp;</td>
+        <td width="23" height="26"><img border="0" src="images/dwnrht.gif" width="43" height="45"></td>
+      </tr>
+      </table>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

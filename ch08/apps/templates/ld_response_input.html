@@ -1,0 +1,72 @@
+<html>
+
+<title>Response Manager</title>
+
+<body>
+<!-- BEGIN mainBlock -->
+<form method=post action={LD_RESPONSE_MNGR}>
+<input type=hidden name=nid value={DOC_ID}>
+<input type=hidden name=ts value={TS}>
+
+<table border=0 width=901 cellpadding=3 cellspacing=0 style="border-collapse: collapse" bordercolor="#111111" height="304">
+
+<tr> <td height="48" width="109">
+  <p align="left"><b><font face="Verdana" size="2">Respond To:</font></b></td>
+  <td width="780" height="48">
+  <font face="Verdana" size="2">{HEADING}</font></td></tr>
+
+
+<tr>
+<td width="109" height="22">
+<font size=2 face="Verdana"><strong>Subject</strong> </font>
+</td>
+<td width="780" height="22">
+<font face="Verdana">
+<input type=text size=64 name="sub"></font><font size="2" face="Verdana"> </font>
+</td>
+</tr>
+<tr>
+<td width="109" height="22">
+<font size=2 face="Verdana"><strong>Rate</strong> </font>
+</td>
+<td width="780" height="22">
+<font face="Verdana">
+<select name="rate">
+<option value="">Select one</option>
+<option value="1">Average</option>
+<option value="2">Good</option>
+<option value="3">Very Good</option>
+<option value="4">Excellent</option>
+<option value="5">Mind Blowing</option>
+</select></font><font size="2" face="Verdana"> </font>
+</td>
+</tr>
+<tr>
+<td width="109" valign="top" height="132">
+<font size=2 face="Verdana"><strong>Comments</strong> </font>
+</td>
+<td width="780" valign="top" height="132">
+<font face="Verdana">
+<textarea COLS=55 ROWS=8 name="comment"></textarea></font><font size="2" face="Verdana"> </font>
+</td>
+</tr>
+<tr>
+<td colspan=2 align=center width="895" height="26">
+<font face="Verdana"><input type=reset value="Reset"></font>
+
+<font face="Verdana"><input type=submit name=cmd value="submit"></font>
+</td>
+</tr>
+<tr>
+<td ALIGN=CENTER colspan=2 width="895" height="18">
+<!-- <a href={LD_MNGR}>
+<font size="2" face="Verdana">Go to Corporate Policy Home</font></a> --></td>
+</tr>
+
+</table>
+
+
+</body>
+
+<!-- END mainBlock -->
+</html>

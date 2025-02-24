@@ -1,0 +1,250 @@
+<html>
+
+<head>
+<base href="{BASE_URL}">
+
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+<title>Add Ecampaign Message</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+<center>
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+           style="border-collapse: collapse"
+           bordercolor="#111111"
+           width="433"
+           height="79">
+
+      <tr>
+        <td width="24" height="24">
+        <img border="0" src="images/topleft.gif"></td>
+        <td width="437" background="images/up.gif" height="24"> &nbsp;</td>
+        <td width="23" height="24"> 
+        <img border="0" src="images/topright.gif"></td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td width="437" height="10"> &nbsp;
+        <div align="center">
+          <center>
+
+          <table border="1"
+                 cellpadding="10"
+                 cellspacing="0"
+                 style="border-collapse: collapse"
+                 bordercolor="#cccccc"
+                 bgcolor="#ffffff"
+                 width="100%"
+                 id="AutoNumber3">
+
+            <tr>
+              <td>
+
+                    <center>
+                    <form name=addMsgFrm method=POST action="{APP_PATH}/{ECAMPAIGN_MESSAGE_MNGR}">
+                    <table border=0 cellpadding=5 cellspacing=0 style="border-collapse: collapse" bordercolor="#111111">
+                    <tr>
+                    <td><b><font face="MS Sans Serif" size="2">Name</font></b></td>
+                    <td><b><font face="MS Sans Serif">:</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4">
+                      <tr>
+                        <td width="64" align="right">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="40%" background="images/combomid.gif">
+                        <input type=text name="MSGNAME" value="{MSGNAME}" size="20"></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+
+
+                    <tr>
+                    <td><b><font face="MS Sans Serif" size="2">From</font></b></td>
+                    <td><b><font face="MS Sans Serif">:</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5">
+                      <tr>
+                        <td align="right">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="40%" background="images/combomid.gif">
+                        <input type=text name="MSGFROM" value="{MSGFROM}" size="20"></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td><b><font face="MS Sans Serif" size="2">Reply To</font></b></td>
+                    <td><b><font face="MS Sans Serif">:</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber6">
+                      <tr>
+                        <td width="66" align="right">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="40%" background="images/combomid.gif">
+                        <input type=text name="MSGREPLY" value="{MSGREPLY}" size="20"></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td><b><font face="MS Sans Serif" size="2">Priority</font></b></td>
+                    <td><b><font face="MS Sans Serif">:</font></b></td>
+                    <td>
+                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber7">
+                        <tr>
+                          <td width="66" align="right">
+                          <img border="0" src="images/comboleft.gif"></td>
+                          <td width="41%" background="images/combomid.gif">
+                      <select name="MSGPRIO">
+                      <option value="{MSGPRIO}" selected>------{MSGPRIO}------</option>
+                      <option value="High" >High</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Low">Low</option>
+                      </select></td>
+                          <td width="34%">
+                          <img border="0" src="images/comboright.gif"></td>
+                        </tr>
+                      </table>
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td><b><font face="MS Sans Serif" size="2">Subject</font></b></td>
+                    <td><b><font face="MS Sans Serif">:</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber8">
+                      <tr>
+                        <td width="63" align="right">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="41%" background="images/combomid.gif">
+                        <input type=text name="MSGSUB" value="{MSGSUB}" size="20"></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+
+                    <tr>
+
+                    <td colspan="2">
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber9">
+                      <tr>
+                        <td width="70" align="right">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="37%" background="images/combomid.gif">
+                    <select name="personalization" onchange="Javascript:document.addMsgFrm.MESSAGE.value+=document.addMsgFrm.personalization.value;">
+                    <option value="">Personalization Fileds</option>
+                    <option value="{FIRST}">First Name</option>
+                    <option value="{LAST}">Last Name</option>
+                    <option value="{INCOME}">Income</option>
+                    <option value="{AGE}">Age</option>
+                    <option value="{SEX}">Sex</option>
+                    <option value="{EMAIL}">Email</option>
+                    <option value="{REC_ID}">User ID</option>
+
+
+                    </select></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber10">
+                      <tr>
+                        <td width="25%">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="25%" background="images/combomid.gif">
+                    <select name="url" onchange=Javascript:document.addMsgFrm.MESSAGE.value=document.addMsgFrm.MESSAGE.value+'{URL'+document.addMsgFrm.url.value+'}';>
+                    <option value="">URL List</option>
+                    <!-- BEGIN urlBlock -->
+                       <option value="{URL_ID}">{URL_NAME}</option>
+                    <!-- END urlBlock -->
+                    </select></td>
+                        <td width="25%" background="images/combomid.gif">
+                    
+                    <select name="misc" onchange=Javascript:document.addMsgFrm.MESSAGE.value=document.addMsgFrm.MESSAGE.value+'{'+document.addMsgFrm.misc.value+'}';>
+                    <option value="">Misc. Tags</option>
+                    <option value="UNSUB">Unsubscription</option>
+                    <option value="MAILOPEN">Mail Open</option>
+                    <option value="MAILID">MAIL ID</option>
+                    </select></td>
+                        <td width="25%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                                        
+                    
+                    </td>
+                    </tr>
+                    <tr>
+                    <td colspan=3>
+                    <textArea name=MESSAGE cols=60 rows=10>{MESSAGE}</textArea>
+                    </td>
+                    </tr>
+
+
+
+                    <tr>
+                    <td colspan=3 align=center>
+                    <input type=hidden name=cmd value="{CMD}">
+                    <input type=hidden name="preview" value="{PREVIEW_VALUE}">
+                    <input type=hidden name=step value=2>
+                    <input type=hidden name="msg_id" value="{MSG_ID}">
+                    
+                    <input type=image src="images/preview.gif" onclick=Javascript:document.addMsgFrm.step.value="3">
+                    <input type=image src="images/{MODE}M.gif" onclick=Javascript:document.addMsgFrm.step.value="2">
+                    </td>
+                    </tr>
+                    </table>
+                    </form>
+                    <a href="{APP_PATH}/{ECAMPAIGN_MNGR}" onMouseover=a.src=('images/main_menu2.gif') 
+                    onMouseout=a.src=('images/main_menu.gif')>
+                    <img alt="Return to Menu" border=0 src="images/main_menu.gif" name="a"></a>
+
+                    </center>
+
+
+              </td>
+            </tr>
+
+
+          </table>
+          </center>
+        </div>
+        </td>
+        <td width="23" background="images/right.gif" height="29"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" height="26">
+        <img border="0" src="images/downleft.gif"></td>
+        <td width="437" background="images/down.gif" height="26"> &nbsp;</td>
+        <td width="23" height="26">
+        <img border="0" src="images/downright.gif"></td>
+      </tr>
+      </table>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

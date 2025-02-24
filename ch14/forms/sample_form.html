@@ -1,0 +1,106 @@
+<html>
+<body>
+
+<!-- DO NOT CHANGE THE COMMENT LINE -->
+<!-- BEGIN mainBlock -->
+
+<blockquote>
+Dear {FIRST} {LAST},<br>
+<p>
+Thank you for participating in this important survey.
+
+</p>
+Kind Regards,<br>
+YOUR NAME<br>
+YOUR COMPANY<br>
+<br>
+
+<!-- DO NOT EDIT THE FOLLOWING LINE BELOW -->
+<form action="{SERVER_URL}{APP_PATH}/{SURVEY_RESPONSE}">
+
+<!--
+
+  CHANGE THE LOOK AND FEEL AND QUESTIONS AS NEEDED
+
+  Make sure each question is named as 1, 2, 3, etc.
+
+  Additional Notes:
+  You can add as many questions as you like.
+  Supported field types are:
+
+
+  checkboxes
+  radioboxes
+  select list (drop down list, mutliple sections not allowed)
+  text fields (maximum size is set in database, default 50)
+
+  DO NOT USE textarea fields
+
+ -->
+
+<table bgcolor="#ffccdd"  border=0 cellpadding=3 cellpadding=0 width=50%>
+
+<tr>
+<td colspan=2 bgcolor="#cccccc">
+<font face="Arial" size=2><strong>Employee Survey</strong></font>
+</td>
+</tr>
+
+
+<tr>
+<td> Are you an employee of our company? </td>
+<td>
+<select name="1">
+<option value="">Select One</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+</td>
+
+<tr>
+
+<td>
+Are you happy at your current job?
+</td>
+
+<td>
+<input type=radio name="2" value="1">Yes
+<input type=radio name="2" value="0">No
+<input type=radio name="2" value="2">No Sure
+</td>
+</tr>
+
+
+<tr>
+<td>Year you were born</td>
+<td><input type=text size=4 maxsize=4 name="3"></td>
+</tr>
+
+</tr>
+
+<tr>
+<td colspan=2 align=center>
+<input type=reset value="Reset">
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<!-- DO NOT CHANGE THE FOLLOWING LINES -->
+<input type=hidden name="SURVEY_ID" value="{SURVEY_ID}">
+<input type=hidden name="SUID" value="{SUID}">
+<input type=hidden name="EXEC_ID" value="{EXEC_ID}">
+<input type=hidden name="EXEC_TS" value="{EXEC_TS}">
+<input type=submit value="Submit Survey">
+<!-- DO NOT CHANGE THE ABOVE LINES -->
+
+</td>
+</tr>
+</table>
+
+</form>
+</blockquote>
+</body>
+
+<!-- DO NOT CHANGE THE COMMENT LINE -->
+{POWERED_BY_LOGO}
+<!-- END mainBlock -->
+
+</html>

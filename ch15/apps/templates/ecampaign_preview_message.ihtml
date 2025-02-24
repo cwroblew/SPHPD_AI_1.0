@@ -1,0 +1,41 @@
+<html>
+
+<head>
+<base href="{BASE_URL}">
+
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+<title>Preview Message</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<center>
+
+<table border=0 cellpadding=3 cellspacing=0>
+<tr> <td bgcolor="#cccccc" width=10%>Name</td><td bgcolor="#cccccc">&nbsp;{MSGNAME}</td> </tr>
+<tr> <td bgcolor="#cccccc">From</td><td bgcolor="#cccccc">&nbsp;{MSGFROM}</td> </tr>
+<tr> <td bgcolor="#cccccc">Reply</td><td bgcolor="#cccccc">&nbsp;{MSGREPLY}</td> </tr>
+<tr> <td bgcolor="#cccccc">Priority</td><td bgcolor="#cccccc">&nbsp;{MSGPRIO}</td> </tr>
+<tr> <td bgcolor="#cccccc">Subject</td><td bgcolor="#cccccc">&nbsp;{MSGSUB}</td> </tr>
+<tr> <td  bgcolor="#ffffff" colspan=2>
+
+<!-- BEGIN msgBlock -->
+        {MESSAGE}
+<!-- END msgBlock -->
+     </td> </tr>
+
+</table>
+
+</center>
+<!-- END mainBlock -->
+
+<p>
+<center>
+<a href="javascript:window.close();">Close</a>
+</center>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<html>
+<!-- BEGIN mainBlock -->
+<title>Press Release Home Page</title>
+<form method=get action={LD_ADMIN_MNGR}>
+<body>
+<!-- form method=post action={LD_ADMIN_MNGR}-->
+<table width="100%" cellpadding=3 cellspacing=0 style="border-collapse: collapse" bordercolor="#111111" border="0" >
+<tr>
+<td width="100%">
+<H4><font face="Verdana" size="4">{HEADING} </font>
+</td>
+</tr>
+<tr>
+<td width="100%">
+<b>
+<FONT SIZE=2 face="Verdana">{PUBLISH_DATE}</font></b></H4>
+<br>
+<! -- javascript:window.open('{LD_VISIT_LIST_MNGR}?nid={DOC_ID}',''); -->
+
+<font face="Verdana" size="1">
+<a href="{LD_VISIT_LIST_MNGR}?nid={DOC_ID}" target=_blank>View Visitors List [{NUM_VISIT}]</a>
+</font>
+</td>
+</tr>
+<tr>
+<td width="100%">
+<FONT SIZE=2 face="Verdana">{BODY} </FONT>
+</td>
+</tr>
+<tr>
+<td width="100%">
+<strong><font face="Verdana" size="2">Feedback</font></strong><font face="Verdana" size="2"><strong>:</strong> </font>
+<table width="100%" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+    <!-- BEGIN responseBlock -->
+    <tr>
+    <td width="731">
+    <font face="Verdana" size="2"><!-- BEGIN chkBlock -->
+    <input type=checkbox name=rid[] value={RESPONSE_ID}>
+    <!-- END chkBlock --><a href={LD_RESPONSE_MNGR}?rid={RESPONSE_ID}&cmd=view>{RESPONSE_HEADING} [{RESPONDER}]</a>
+    </font>
+    </td>
+    </tr>
+    <!-- END responseBlock -->
+</table>
+</td>
+</tr>
+<tr>
+<td width="100%"><font size=2 face="Verdana">Total Feedback: {TOTAL_RESPONSE}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating: {STAR_VAL}</font></td>
+</tr>
+<tr>
+<td width="100%">
+<b>
+<font face="Verdana" size="1">
+<a href="{LD_RESPONSE_MNGR}?nid={DOC_ID}">Post Comments</a>
+<!-- &nbsp;&nbsp;&nbsp;<a href="{LD_MNGR}">Go to Corporate Policy Home</a> --> </font>
+</b>
+</td>
+</tr>
+<!-- BEGIN adminBlock -->
+<tr>
+<td width="100%">
+
+<font face="Verdana">
+<input type=hidden name=obj value="response">
+</font><font face="Verdana">
+<input type=submit name=cmd value="Delete Selected Responses"><font size="2">
+</font></font>
+</td>
+</tr>
+<!-- END adminBlock -->
+</table>
+</form>
+</body>
+
+<!-- END mainBlock -->
+</html>

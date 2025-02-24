@@ -1,0 +1,711 @@
+#!/usr/bin/php -q
+<?php
+
+   require_once('makesite.conf');
+
+   $CMD_SHORT_OPTIONS = 'hu:p:v:t:rtn:g:';
+
+   $CMD_LONG_OPTIONS  = array('help', 
+                              'add', 
+                              'enable', 
+                              'disable', 
+                              'user=', 
+                              'group=', 
+                              'pass=', 
+                              'vhost=',
+                              'type=',
+                              'restart',
+                              'test',
+                              'notify_email='
+                              );
+
+   $cmd = getCommandLineOptions(Console_Getopt::getopt($GLOBALS['argv'],
+                                $CMD_SHORT_OPTIONS,
+                                $CMD_LONG_OPTIONS)
+                               );
+
+
+   $SITE_INFO = null;
+
+   if (empty($cmd) || (getValue($cmd, 'v', 'vhost')) == null ) 
+   {
+       syntax();
+       exit;
+   }
+
+   if (isset($cmd['add']))
+   {
+      $request = makeAddRequest($cmd);
+      if ($request != null)
+      {
+      
+         $type = $request[type];
+         $account = $GLOBALS[ACCOUNT_TYPE][$type];
+
+         // See if user account already exists or not
+         // if new, create
+         if(! userExists($request[user]) && 
+            ! createUser($request[user], $request[passwd], $account[shell]))
+         {
+             echo "User $request[user] does not exist\n";
+             echo "User $request[user] could not be created.\n";
+             return FALSE;
+         }
+
+         // See if group already exists or not
+         // If new, create
+         if(! groupExists($request[group]))
+         {
+             echo "Group $request[group] does not exist\n";
+             return FALSE;
+         }
+
+         $addOK = addSite($request);
+
+         // If site was added successfully see if we need to 
+         // restart or test
+         if ($addOK && (isset($request[restart]) || 
+                          isset($request[test])
+                         )
+            )
+         {
+            if (!restartApache())
+            {
+               echo "Error: Apache could not be restarted!\n";
+               return FALSE;
+            }
+
+            if (isset($request[test]) && !testNewSite($request[vhost]))
+            {
+               echo "Error: site test failed!\n";
+               return FALSE;
+            }
+         }
+
+         //  Now link the user account to the web site document root
+         if ($addOK && 
+             DEFAULT_SYMLINK_USER_TO_WEBSITE  &&
+            ! createSymLink($request[user], $request[vhost]))
+         {
+              echo "Error: could not create symbolic link to site in user account!\n";
+              return FALSE;
+         }
+
+         //  Now process content configration
+         if ($addOK && ! addContents($SITE_INFO, $account[master_contents]))
+         {
+              echo "Error: could not add contents!\n";
+              return FALSE;
+         }
+         //  Now process content configration
+         if ($addOK && isset($request[notify_email]) && 
+             ! sendMail($SITE_INFO, $request, $account[mail_template]))
+         {
+              echo "Error: could not send mail!\n";
+              return FALSE;
+         }
+      }
+   }
+
+   if (isset($cmd['enable']))
+   {
+      echo "Enable named site \n";
+      enableSite($siteName);
+   }
+
+   if (isset($cmd['disable']))
+   {
+      echo "Disable named site \n";
+   }
+
+   //print_r($cmd);
+
+   exit;
+
+   function createUser($user = null, $pass = null, $shell =null)
+   {
+
+      echo "Creating user account: $user  with password $pass shell=$shell\n";
+      if (empty($pass) || strlen($pass) < $GLOBALS[SYSTEM_INFO][min_passwd_length])
+      {
+         echo "Error: Password is missing or too short.\n";
+         return FALSE;
+      }
+
+      if ($shell != null)
+      {
+         $shell = "-s $shell";
+      }
+
+      $cmd = $GLOBALS[SYSTEM_INFO][useradd_bin];
+      exec("$cmd -p $pass $shell $user");
+      return TRUE;
+   }
+
+   function userExists($user = null)
+   {
+      $passwdFile = $GLOBALS[SYSTEM_INFO][passwd_file];
+
+      $lines = file($passwdFile);
+      foreach($lines as $record)
+      {
+        $str = explode(':', $record);
+        if (!strcmp($str[0], $user)) return TRUE;
+      }
+
+      return FALSE;
+   }
+
+   function groupExists($group = null)
+   {
+      $groupFile = $GLOBALS[SYSTEM_INFO][group_file];
+
+      $lines = file($groupFile);
+      foreach($lines as $record)
+      {
+        $str = explode(':', $record);
+        if (!strcmp($str[0], $group)) return TRUE;
+      }
+
+      return FALSE;
+   }
+
+   function addSite($request = null)
+   {
+      $vhost = $request[vhost];
+      $type = $request[type];
+      $user = $request[user];
+      $group = $request[group];
+
+      echo "Creating $vhost configuration\n";
+
+      // config file 
+      $vhostConfigFile = sprintf("%s/%s/%s", $GLOBALS['APACHE_INFO']['path'],
+                                             $GLOBALS['APACHE_INFO']['vhost_conf_dir'],
+                                             $vhost);
+      
+      // See if this virtual host already exists or not
+      if (file_exists($vhostConfigFile))
+      {
+          echo "Error: $vhostConfigFile already exists. Cannot add site!\n";
+          return FALSE;
+      }
+
+      $account = $GLOBALS['ACCOUNT_TYPE'][$type];
+
+      if (!isset($account))
+      {
+          echo "Error: given account type ($type) not defined in makesite.conf\n";
+          return FALSE;
+      }
+
+      // Configure Apache Virtual Host
+      $GLOBALS[SERVER_NAME] = $vhost;
+      $results = loadVhostTemplate($account[vhost_template]);
+ 
+      if ($results == null) return FALSE;
+
+      $success = writeVirtualConfigFile($results[config], $vhostConfigFile);
+      if (! $success) return FALSE;
+
+      // Create directories
+      if (DEBUG) echo "Create directories\n";
+      foreach($results[makedir] as $dirName => $dirPath)
+      {
+         makeDirectory($GLOBALS[SYSTEM_INFO][permission],$dirPath);
+         setOwnerAndGroup($user, $group, $dirPath);
+         setPermissions($GLOBALS[SYSTEM_INFO][permission], $dirPath);
+         $GLOBALS[SITE_INFO][$dirName] = $dirPath;
+      }
+
+      // Perform apache syntax check for vhost configuration
+      $success = checkApacheSyntax($vhostConfigFile);
+      if (! $success) return FALSE;
+
+      $success = appendVhostConfigToApacheConfig($vhostConfigFile);
+      if (! $success) return FALSE;
+
+      return TRUE;
+   }
+
+   function checkApacheSyntax($file = null)
+   {
+        $serverBin = sprintf("%s/%s/%s", $GLOBALS[APACHE_INFO][path],
+                                         $GLOBALS[APACHE_INFO][bin_dir],
+                                         $GLOBALS[APACHE_INFO][server_bin]
+                            );
+
+        if (! file_exists($serverBin))
+        {
+            echo "Error: could not find $serverBin\n";
+            return FALSE;
+        }
+
+        $cmd = "$serverBin " . $GLOBALS[APACHE_INFO][config_chk_opt] .  " " .  $file ;
+
+        echo "Checking syntax: $file\n";
+
+        exec($cmd, $output, $status);
+
+        return ($status) ? FALSE : TRUE;
+
+   }
+
+   function restartApache()
+   {
+
+        $serverBin = sprintf("%s/%s/%s", $GLOBALS[APACHE_INFO][path],
+                                         $GLOBALS[APACHE_INFO][bin_dir],
+                                         $GLOBALS[APACHE_INFO][server_bin]
+                            );
+
+        if (! file_exists($serverBin))
+        {
+            echo "Error: could not find $serverBin\n";
+            return FALSE;
+        }
+
+        $cmd = "$serverBin " . $GLOBALS[APACHE_INFO][restart_opt];
+
+        echo "Restarting Apache: $cmd\n";
+
+        exec($cmd, $output, $status);
+ 
+        return ($status) ? FALSE : TRUE;
+
+   }
+
+   function writeTestPage()
+   {
+      $testFile = sprintf("%s/test.txt", $GLOBALS[SITE_INFO][DOCUMENT_ROOT]);
+
+      echo "Writing test page: $testFile \n";
+
+      $fp = fopen($testFile, 'w');
+      if ($fp)
+      {
+         fputs($fp, "SUCCESS");
+         fclose($fp);
+
+         return TRUE;
+      }
+      return FALSE;
+   }
+
+
+   function createSymLink($user = null, $vhost = null)
+   {
+
+       $link = sprintf("%s/%s/%s", $GLOBALS[SYSTEM_INFO][home_dir],$user, $vhost);
+
+
+       $cmd = sprintf("%s %s %s %s", $GLOBALS[SYSTEM_INFO][symlink_bin],
+                                     $GLOBALS[SYSTEM_INFO][symlink_opt],
+                                     $GLOBALS[SITE_INFO][SERVER_ROOT],
+                                    $link
+                      );
+
+       echo "Creating symbolic link using $cmd\n";
+
+       if (file_exists($link))
+       {
+           echo "Warning! Symlink: $link already exists.\n";
+           return TRUE; 
+       }
+
+       exec($cmd, $output, $status);
+       if ($status)
+       {
+           echo "Error: could not make symbolic link: $cmd\n";
+           return FALSE;
+       }
+       return TRUE;
+   }
+
+   function removeTestPage()
+   {
+      $testFile = sprintf("%s/test.txt", $GLOBALS[SITE_INFO][DOCUMENT_ROOT]);
+
+      if (! file_exists($testFile))
+      {
+         return FALSE;
+      }
+
+      $status = unlink($testFile);
+
+      return $status;
+   }
+
+
+   function testNewSite($host = null)
+   {
+
+       // Write a test page in document root
+       // of the new site
+       if (! writeTestPage())
+       {
+           echo "Could not write test page in $GLOBALS[SITE_INFO][DOCUMENT_ROOT] \n";
+           return FALSE;
+       }
+      
+       $url = sprintf("http://%s/test.txt", $host);
+
+       echo "Testing: requesting $url ...";
+
+       $fp = fopen($url, 'r');
+
+        if ($fp)
+        {
+           while(!feof($fp))
+           {
+              $buffer .= fgets($fp, 1024);
+           }
+           
+           removeTestPage();
+
+           if (preg_match('/SUCCESS/', $buffer))
+           {
+              echo "successful.\n";
+              return TRUE;
+           } else {
+              echo "failed.\n";
+           }
+        }
+
+        return FALSE;
+       
+   }
+
+   function appendVhostConfigToApacheConfig($vhostFile = null)
+   {
+        $httpdConf = sprintf("%s/%s/%s", $GLOBALS[APACHE_INFO][path],
+                                         $GLOBALS[APACHE_INFO][conf_dir],
+                                         $GLOBALS[APACHE_INFO][conf_flie]
+                            );
+
+        if (! file_exists($httpdConf))
+        {
+            echo "Error: could not find $httpdConf\n";
+            return FALSE;
+        }
+
+        $newDirective  = "#\n#\n# Following line loads configuration\n";
+        $newDirective .= "# for the ". basename($vhostFile) . " virtual host\n";
+        $newDirective .= "Include $vhostFile \n\n\n";
+
+        echo "Appending Include $vhostFile in $httpdConf\n";
+
+        if (DEBUG) echo $newDirective;
+
+        $fp = fopen($httpdConf, 'a');
+        if (! $fp)
+        {
+            echo "Error: could not open $httpdConf in append mode.\n";
+            return FALSE;
+        }
+
+        fputs($fp, $newDirective);
+
+        fclose($fp); 
+
+        return TRUE; 
+
+   }
+
+
+   function makeDirectory($mode = '0750', $path = null) 
+   { 
+      $cmd = $GLOBALS[SYSTEM_INFO][mkdir_bin] . " -m $mode -p $path"; 
+      if (DEBUG) echo "$cmd\n";
+      exec($cmd);
+   } 
+
+   function setPermissions($mode = null, $path = null)
+   {
+      $cmd = $GLOBALS[SYSTEM_INFO][chmod_bin] . " -R $mode $path"; 
+      if (DEBUG) echo "$cmd\n";
+      exec($cmd);
+   }
+
+   function setOwnerAndGroup($user = null, $group = null, $path = null)
+   {
+      $cmd = $GLOBALS[SYSTEM_INFO][chown_bin] . " -R $user:$group $path"; 
+      if (DEBUG) echo "$cmd\n";
+      exec($cmd);
+   }
+
+   function writeVirtualConfigFile($contents = null, $file = null)
+   {
+       $fp = fopen($file, 'w');
+       if (! $fp)
+       {
+           echo "Cannot write $file !\n"; 
+           return FALSE;
+       }
+
+       fputs($fp, $contents);
+       fclose($fp);
+
+       return TRUE;
+   }
+
+   function loadVhostTemplate($template = null)
+   {
+      $file = sprintf("%s/%s", $GLOBALS[TEMPLATE_DIR], $template);
+       
+      $contents = null;
+
+      if (!file_exists($file))
+      {
+          echo "Virtual host template $file does not exists!\n";
+          return null;
+      }
+
+      // Load template
+      require_once($file);
+
+      $contents = makeVirtualHost();
+      return $contents;
+   }
+ 
+   function checkVhostName($host = null)
+   {
+      $hostParts = explode('.', $host);
+
+      // host must be at least:  domain.tld
+      return (count($hostParts) <= 1) ? FALSE : TRUE;
+   }
+
+   function makeAddRequest($cmd = null)
+   {
+      $request = array();
+      $request[vhost] = strtolower(getValue($cmd, 'v', 'vhost'));
+      $request[user] = strtolower(getValue($cmd, 'u', 'user'));
+      $request[group] = strtolower(getValue($cmd, 'g', 'group'));
+      $request[restart] = getValue($cmd, 'r', 'restart');
+      $request[test] = $cmd[test];
+      $request[passwd] = getValue($cmd, 'p', 'pass');
+      $request[type] = getValue($cmd, 't', 'type');
+      $request[type] = ($request[type] != null) ? $request[type] : DEFAULT_ACCOUNT_TYPE;
+      $request[notify_email] = (isset($cmd[notify_email])) ? strtolower($cmd[notify_email]) : null;
+
+      if (empty($request[vhost]) ||
+          empty($request[user]) ||
+          empty($request[type])
+         ) 
+      {
+         echo "You must provide --vhost --user --type ".
+              "values to create a new virtual host.\n";
+
+         return null;
+      }
+
+      // Remove leading or trailing dots from hostname
+      $request[vhost] = preg_replace('/\.$/', '', $request[vhost]);
+      $request[vhost] = preg_replace('/^\./', '', $request[vhost]);
+
+      // Copy in to SITE_INFO
+      $GLOBALS[SITE_INFO][user] = $request[user];
+      $GLOBALS[SITE_INFO][group] = $request[group];
+      $GLOBALS[SITE_INFO][vhost] = $request[vhost];
+
+      // Check to see if given vhost is a hostname
+      if (!checkVhostName($request[vhost]))
+      {
+          echo "Error: virtual hostname $request[vhost] is not valid.\n";
+          return null;
+      }
+
+
+      if (empty($request[group]))
+      {
+         $request[group] = $request[user];
+      }
+
+      return $request; 
+   }
+
+
+   function getValue($cmd = null, $short, $long)
+   {
+      return (isset($cmd[$short])) ? $cmd[$short] : $cmd[$long];
+   }
+
+
+
+   function syntax()
+   {
+        $script = basename($GLOBALS['argv'][0]);
+
+        echo<<<HELP
+
+        Syntax $script [options]
+
+         -h
+         --help shows this help
+
+         -u username 
+         --user username the name of the user account
+
+         -p password 
+         --pass password the password for the user account
+
+         -v hostname 
+         --vhost hostname the virtual hostname
+
+         -t account_type  
+         --type account_type sets type of account
+
+         -r
+         --restart  restarts Apache after configuration test OK
+
+         -t 
+         --test  runs test to access http://hostname
+
+HELP;
+
+   }
+
+   function getCommandLineOptions($options)
+   {
+
+      $type = gettype($options);
+
+      if (gettype($options) != "array")
+      {
+          // Error in command line
+          echo "$options->message \n";
+          return null;
+      }
+
+      $cmd = array();
+
+      foreach ($options[0] as $argArray)
+      {
+
+        $argName = preg_replace('/[^\w]/' , '', $argArray[0]);
+
+        $argValue = $argArray[1];
+
+        if ($argValue[0] == '-')
+        {
+            echo "$argName cannot have $argValue\n";
+            return array();
+        }
+
+        $cmd[$argName] = ($argValue != '') ? $argValue : TRUE;
+      }
+
+      return (count($cmd) > 0) ? $cmd : null;
+
+   }
+
+  function addContents($site = null, $template = null)
+  {  
+
+      $file = sprintf("%s/%s", $GLOBALS[TEMPLATE_DIR], $template);
+       
+      if (!file_exists($file))
+      {
+          echo "Virtual host content template $file does not exists!\n";
+          return null;
+      }   
+          
+      // Load template
+      require_once($file);
+         
+      $results = copyContentsToSite($site);
+      return $results;
+   }     
+
+  function sendMail($info = null, $request = null, $template = null)
+  {
+       $mailTemplate = sprintf("%s/%s", $GLOBALS[TEMPLATE_DIR], $template);
+
+       echo "Sending mail to $to using $mailTemplate\n";
+
+       $to = $request[notify_email];
+
+       if (! file_exists($mailTemplate))
+       {
+           echo "Error: mail template $mailTemplate not found! \n";
+           return FALSE;
+       }
+
+       $lines = file($mailTemplate);
+
+       $contentTypeSet = FALSE;
+
+       $message = array();
+
+       $headers = array();
+
+       foreach ($lines as $str)
+       {
+          $index++;
+          if (preg_match('/From:\s*(.+)/i', $str, $match))
+          {
+              array_push($headers, "From: $match[1] \r\n");
+          } 
+          else if (preg_match('/Subject:\s*(.+)/i', $str, $match))
+          {
+              $subject = $match[1];
+          } 
+          else if (preg_match('/^CC:\s*(.+)/i', $str, $match))
+          {
+              array_push($headers, "Cc: $match[1] \r\n");
+          } 
+          else if (preg_match('/Bcc:\s*(.+)/i', $str, $match))
+          {
+              array_push($headers, "Bcc: $match[1] \r\n");
+          } 
+          else if (preg_match('/Content-Type:\s*(.+)/i', $str, $match))
+          {
+              if (preg_match('/html/', $match[1]))
+              {
+                  array_push($headers, "Content-Type: text/html\r\n");
+              } else {
+                  array_push($headers, "Content-Type: text/plain\n");
+              }
+
+              $contentTypeSet = TRUE;
+          } 
+          else if (preg_match('/MIME-Version:\s*(.+)/i', $str, $match))
+          {
+              array_push($headers, "MIME-Version: $match[1] \r\n");
+
+          } else {
+              array_push($message, $str);
+          }
+       }
+
+       if (! $contentTypeSet) array_push($headers, "Content-Type: text/plain\r\n");
+     
+       $body = implode('', $message);
+
+       $search = array(); 
+       $replace = array(); 
+
+       foreach ($info as $key => $value)
+       {
+           array_push($search, '/<%' . strtoupper($key) . '%>/');
+           array_push($replace, $value);
+       }
+
+       foreach ($request as $key => $value)
+       {
+           array_push($search, '/<%' . strtoupper($key) . '%>/');
+           array_push($replace, $value);
+       }
+
+       $body = preg_replace($search, $replace, $body);
+       $subject = preg_replace($search, $replace, $subject);
+
+       $headerStr = implode('', $headers);
+
+       mail($to, $subject, $body, $headerStr);
+
+       return TRUE;
+  }
+
+?>

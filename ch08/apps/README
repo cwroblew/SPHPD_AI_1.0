@@ -1,0 +1,17 @@
+Please make sure the templates/themes is a symbolic link for
+the themes directory in  your Intranet Home application.
+
+
+Forexample, if you have installed the home application in
+%DocumentRoot%/home, the themes directory is:
+
+%DocumentRoot%/home/templates/themes
+
+If you are installing the document publisher in %DocumentRoot%/ld_tool
+you can make a link such as:
+
+
+ln -s %DocumentRoot%/home/templates/themes  %DocumentRoot%/ld_tool/apps/templates/themes
+
+
+Make sure you replace %DocumentRoot% with appropriate path.

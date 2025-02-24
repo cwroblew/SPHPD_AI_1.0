@@ -1,0 +1,112 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<script language=javascript>
+</script>
+
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Name</title>
+</head>
+
+<body>
+
+<div align="center">
+  <center>
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#008080" width="71%" id="AutoNumber1" cellpadding="3" bgcolor="#008080">
+    <tr>
+      <td width="100%" colspan="2" bgcolor="#333399" height="18"><b>
+      <font face="Verdana" color="#FFFFFF" size="1">Contact Details</font></b></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">Name</font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">{CONTACT_NAME}</font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">
+      <a href="{CONTACT_MNGR}?cmd=mail&step=1&cid={CONTACT_ID}">Email</a></font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">{CONTACT_EMAIL}</font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">Company</font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">{COMPANY_NAME}</font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">Company 
+      Address</font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">{COMPANY_ADDR}</font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">Home Address</font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">{HOME_ADDR}</font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">Phone</font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">{PHONE}</font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">Fax</font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">{FAX}</font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">URL</font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">
+      <a href="HTTP://{URL}">{URL}</a></font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">Referred by</font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">{REFERENCE}</font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="19" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">Source</font></b></td>
+      <td width="73%" height="19" bgcolor="#FFFFFF"><font face="Verdana" size="1">
+      <a href="http://{SOURCE}">{SOURCE}</a></font></td>
+    </tr>
+    <tr>
+      <td width="27%" height="1" bgcolor="#FFFFFF"><b><font face="Verdana" size="1">Keywords</font></b></td>
+      <td width="73%" height="1" bgcolor="#FFFFFF"><font face="Verdana" size="1">{KEYWORDS}</font></td>
+    </tr>
+    </table>
+  </center>
+</div>
+<p>&nbsp;</p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#008080" width="71%" id="AutoNumber2">
+    <tr>
+      <td width="100%"><b><font face="Verdana" size="2" color="#333399">
+      Reminders</font></b></td>
+    </tr>
+    <!-- BEGIN remBlock -->
+    <tr>
+      <td width="100%"><font size="1" face="Verdana"><b>{REMIND_ABOUT}</b> {DAY_WEEK}, 
+      {DAY_MON} {MON}, {YEAR}</font> </td>
+    </tr>
+    <!-- END remBlock -->
+    <!-- BEGIN adminBlock -->
+    <tr>
+      <td width="100%"><b><font face="Verdana" size="2" color="#333399">Sent 
+      Mails</font></b></td>
+    </tr>
+    <!-- BEGIN mailBlock -->
+    <tr>
+      <td width="100%"><font size="1" face="Verdana">
+
+
+
+      <a target="_blank" href="{CONTACT_MNGR}?cmd=mail&step=3&mid={MAIL_ID}" {DIS_OPTION}><b>{DATE}</b> {SUB}</a> 
+      {NO_MAIL}</font></td>
+    </tr>
+    <!-- END mailBlock -->
+    <!-- END adminBlock -->
+
+  </table>
+  </center>
+</div>
+
+</body>
+<!-- END mainBlock -->
+
+</html>

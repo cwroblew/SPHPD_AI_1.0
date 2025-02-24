@@ -1,0 +1,109 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Tell</title>
+</head>
+
+<body>
+
+
+<div align="center">
+  <center>
+
+
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1">
+  <tr>
+    <td >
+    <table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber2" bgcolor="#FFFFFF" >
+      <tr>
+        <td height="16" bgcolor="#FFFF7F">
+        <font face="Verdana" size="2"><b>
+        Tell-a-Friend Reports&nbsp; </b>[You are accessing this report from 
+        {REQ_IP}]</font></td>
+      </tr>
+      <tr>
+        <td height="19" valign="top"><b>
+        <font face="Verdana" size="2">Report for {FRM_NAME}</font></b></td>
+      </tr>
+      <tr>
+        <td height="53" valign="top">
+        <table border="0" width=600 cellpadding="3" cellspacing="0" id="AutoNumber3">
+          <tr>
+            <td bgcolor="#008000" align="center"><u><b>
+            <font face="Verdana" size="1" color="#FFFF00">Start</font></b></u></td>
+            <td bgcolor="#008000" align="center"><u><b>
+            <font face="Verdana" size="1" color="#FFFF00">Ended</font></b></u></td>
+            <td bgcolor="#008000" align="center">
+            <p align="center"><u><b>
+            <font face="Verdana" size="1" color="#FFFF00">Friends</font></b></u></td>
+            <td  bgcolor="#008000" align="center"><u><b>
+            <font face="Verdana" size="1" color="#FFFF00">Subscribed</font></b></u></td>
+            <td bgcolor="#008000" align="center"><u><b>
+            <font face="Verdana" size="1" color="#FFFF00">Rejected</font></b></u></td>
+            <td  bgcolor="#008000" align="center"><u><b>
+            <font face="Verdana" size="1" color="#FFFF00">No<br>Response</font></b></u></td>
+            <td bgcolor="#008000" align="center"><u><b>
+            <font face="Verdana" size="1" color="#FFFF00">Average<br>Subscription
+            </font></b></u></td>
+          </tr>
+          <tr>
+            <td  align="center"><font face="Verdana" size="1">{ACTIVATE_DATE}</font></td>
+            <td  align="center"><font face="Verdana" size="1">{TERMINATE_DATE}</font></td>
+            <td  align="center">
+            <p align="center"><font face="Verdana" size="1">{NUM_FRNDS}</font></td>
+            <td  align="center"><font face="Verdana" size="1">{NUM_SUBSCR}</font></td>
+            <td align="center"><font face="Verdana" size="1">{NUM_UNSUB}</font></td>
+            <td  align="center"><font face="Verdana" size="1">{NUM_NORESP}</font></td>
+            <td  align="center"><font face="Verdana" size="1">{AVG_SUBSCR}%</font></td>
+          </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="19" valign="top">
+        <table border="0" cellpadding="2" 
+cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5">
+          <tr>
+            <td width="100%" colspan="4"><font face="Verdana" size="2"><b>Top 
+            Users for {FRM_NAME}</b></font></td>
+          </tr>
+          <tr>
+            <td width="8%" bgcolor="#008000" align="center"><u><b>
+            <font face="Verdana" size="1" color="#FFFFFF">Rank</font></b></u></td>
+            <td width="29%" bgcolor="#008000" align="center"><u><b>
+            <font face="Verdana" size="1" color="#FFFFFF">Email</font></b></u></td>
+            <td width="25%" bgcolor="#008000" align="center">
+            <p><u><b>
+            <font face="Verdana" size="1" color="#FFFFFF">Friends Submission</font></b></u></td>
+            <td width="38%" bgcolor="#008000" align="center">
+            <p><u><b>
+            <font face="Verdana" size="1" color="#FFFFFF">Friends Subscribed</font></b></u></td>
+          </tr>
+          <!-- BEGIN origBlock -->
+          <tr>
+            <td width="8%" align="center"><font face="Verdana" size="1">{RANK}</font></td>
+            <td width="29%" align="center">
+            <font face="Verdana" size="1"><a href="mailto:{ORIGIN}">{ORIGIN}</a></font></td>
+            <td width="25%" align="center"><font face="Verdana" size="1">{SUBMTN}</font></td>
+            <td width="38%" align="center"><font face="Verdana" size="1">{SUBSCR}</font></td>
+          </tr>
+          <!-- END origBlock -->
+          </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+
+  </center>
+</div>
+
+<p align="center"><a href="javascript:history.go(-1);">Return to Menu</a></p>
+
+</body>
+<!-- END mainBlock -->

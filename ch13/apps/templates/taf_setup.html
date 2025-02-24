@@ -1,0 +1,269 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Tell A Friend</title>
+<script language=javascript>
+
+   // Get today info
+   thisDay = new Date();
+
+   // Setup today with HH:MM:SS set to 00:00:00 by not specifying them.
+
+   var thisYear = thisDay.getYear();
+
+   if (thisYear < 1900) 
+   {
+       thisYear += 1900;
+   }
+
+   var today = new Date(thisDay.getYear(), thisDay.getMonth(), thisDay.getDay());
+
+   // Set activation and termination dates to null
+   var activationDate = ''
+   var terminationDate = ''
+
+
+function checkNSubmit()
+{
+
+    // Set activation date
+    activationDate = new Date( document.forms[0].start_year.value,
+                               document.forms[0].start_month.value - 1,
+                               document.forms[0].start_day.value
+                             );
+
+    // Set termination date
+    terminationDate = new Date(document.forms[0].end_year.value, 
+                               document.forms[0].end_month.value - 1, 
+                               document.forms[0].end_day.value);
+
+    if (document.forms[0].frmName.value=="")
+    {
+       alert('Please insert a form name');
+       document.forms[0].frmName.focus();
+    }
+
+    else if (today > activationDate)
+    {
+       alert('Please select a valid date as activation date');
+       document.forms[0].start_day.focus();
+    }
+    else if (activationDate >= terminationDate)
+    {
+       alert('Please select a valid date as termination date');
+       document.forms[0].end_day.focus();
+    }
+    else if (document.forms[0].friends_msg.value == "")
+    {
+       alert('Please select a message to send to friend');
+       document.forms[0].friends_msg.focus();
+    }
+    else if (document.forms[0].originator_msg.value == "")
+    {
+       alert('Please select a message to send to the user (originator)');
+       document.forms[0].originator_msg.focus();
+    }
+    else if (document.forms[0].subscription_msg.value == "")
+    {
+       alert('Please select a message to send to the subscriber');
+       document.forms[0].subscription_msg.focus();
+    }
+    else if (document.forms[0].maxsubmissions.value == "")
+    {
+       alert('Please enter a limit for maximum submission per user');
+       document.forms[0].maxsubmissions.focus();
+    }
+    else if (document.forms[0].score_submission.value == "")
+    {
+       alert('Please enter score per submission');
+       document.forms[0].score_sumbission.focus();
+    }
+    else if (document.forms[0].score_subscription.value == "")
+    {
+       alert('Please enter score per subscription');
+       document.forms[0].score_subscription.focus();
+    }
+    //else if (document.forms[0].access_ips.value == "")
+    //{
+    //   alert('Please enter the IP address(es) that is allowed to configure this form');
+    //   document.forms[0].access_ips.focus();
+    //}
+    else
+    {
+       document.forms[0].cmd.value="{MODE}";
+       document.forms[0].submit();
+    }
+    
+       
+}
+
+
+</script>
+
+</head>
+
+<body>
+
+<form action="{TAF_FRM_MNGR}" method="POST">
+<input type=hidden name=frmID value={FRM_ID}>
+<input type=hidden name=cmd value={MODE}>
+<input type=hidden name=step value=2>
+<div align="center">
+  <center>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="600" id="AutoNumber1">
+  <tr>
+    <td width="100%">
+    <table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="102%" id="AutoNumber2" height="529">
+      <tr>
+        <td width="100%" colspan="2" height="16" bgcolor="#000080">
+        <font face="Verdana" size="2" color="#FFFFFF"><b>
+        Tell-a-Friend Setup: {MODE} a  Tell-a-Friend Form&nbsp; </b>[Your IP is 
+        {REQ_IP}]</font></td>
+      </tr>
+      <tr>
+        <td width="38%" height="22" valign="top"><font face="Verdana" size="2">Form Name</font></td>
+        <td width="76%" height="22" valign="top"><font face="Verdana">
+        <input type=text name="frmName" size="52" value="{FRM_NAME}"></font></td>
+      </tr>
+      <tr>
+        <td width="38%" height="23" valign="top"><font face="Verdana" size="2">
+        Activation Date</font></td>
+        <td width="76%" height="23" valign="top">
+        
+        <select name="start_month">
+        <!-- BEGIN startMonthBlock -->
+         <option value="{MON}" {SM_CHOSEN}>{MON_STR}</option>
+        <!-- END startMonthBlock -->          
+        </select>
+        
+        <select name="start_day">
+        <!-- BEGIN startDayBlock -->
+         <option value="{DAY}" {SD_CHOSEN}>{DAY}</option>         
+        <!-- END startDayBlock --> 
+        </select><select name="start_year">
+        <!-- BEGIN startYearBlock -->
+         <option value="{YEAR}" {SY_CHOSEN}>{YEAR}</option>         
+        <!-- END startYearBlock -->
+        </select></td>
+      </tr>
+      <tr>
+        <td width="38%" height="23" valign="top"><font face="Verdana" size="2">
+        Termination Date</font></td>
+        <td width="76%" height="23" valign="top">
+        
+        <select name="end_month">
+        <!-- BEGIN endMonthBlock -->
+         <option value="{MON}" {EM_CHOSEN}>{MON_STR}</option>
+        <!-- END endMonthBlock -->          
+         
+        </select>
+        
+        <select name="end_day">
+        <!-- BEGIN endDayBlock -->
+         <option value="{DAY}" {ED_CHOSEN}>{DAY}</option>         
+        <!-- END endDayBlock -->
+        </select><select name="end_year">
+        <!-- BEGIN endYearBlock -->
+         <option value="{YEAR}" {EY_CHOSEN}>{YEAR}</option>         
+        <!-- END endYearBlock -->
+        </select></td>
+      </tr>
+      <tr>
+        <td width="38%" height="22" valign="top"><font face="Verdana" size="2">
+        Message to send to Friend </font>
+        </td>
+        <td width="76%" height="22" valign="top">
+        
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="130%" id="AutoNumber3">
+          <tr>
+            <td width="100%" valign="top">
+        
+        <select name="friends_msg">
+         <option value="0">Select a message</option>
+         <!-- BEGIN friendMsgBlock -->
+         <option value="{MSG_ID}" {FRIEND_MSG_CHOSEN}>{MSG_NAME}</option>
+         <!-- END friendMsgBlock -->
+         
+        </select></td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+      <tr>
+        <td width="38%" height="32" valign="top"><font face="Verdana" size="2">
+        Message to send to (Originator) User</font></td>
+        <td width="76%" height="32" valign="top">
+        
+        <select name="originator_msg">
+         <option value="0">Select a message</option>
+         <!-- BEGIN origMsgBlock -->
+         <option value="{MSG_ID}" {ORIG_MSG_CHOSEN}>{MSG_NAME}</option>
+         <!-- END origMsgBlock -->
+        </select></td>
+      </tr>
+      <tr>
+        <td width="38%" height="32" valign="top"><font face="Verdana" size="2">
+        Message to send to New (Friend of Originator) Subscriber</font></td>
+        <td width="76%" height="32" valign="top">
+        
+        <select name="subscription_msg">
+          <option value="0">Select a message</option>
+          <!-- BEGIN subscrMsgBlock -->
+          <option value="{MSG_ID}" {SUBSCR_MSG_CHOSEN}>{MSG_NAME}</option>
+          <!-- END subscrMsgBlock -->
+
+        </select></td>
+      </tr>
+      <tr>
+        <td width="38%" height="22" valign="top"><font face="Verdana" size="2">
+        Maximum Submission Per Originator Email</font></td>
+        <td width="76%" height="22" valign="top"><font face="Verdana">
+        <input type=text name="maxsubmissions" size="7" value="{MAX_SUBMTN}"></font></td>
+      </tr>
+      <tr>
+        <td width="38%" height="22" valign="top"><font face="Verdana" size="2">
+        Score Per Submission </font>
+        </td>
+        <td width="76%" height="22" valign="top"><font face="Verdana">
+        <input type=text name="score_submission" size="7" value="{SCORE_SUBMTN}"></font></td>
+      </tr>
+      <tr>
+        <td width="38%" height="22" valign="top"><font face="Verdana" size="2">
+        Score Per Subscription</font></td>
+        <td width="76%" height="22" valign="top"><font face="Verdana">
+        <input type=text name="score_subscription" size="7" value="{SCORE_SUBSCR}"></font></td>
+      </tr>
+      <tr>
+        <td width="38%" height="68" valign="top"><font face="Verdana" size="2">
+        Disallow Submissions from IP </font><font face="Verdana" size="1"> 
+        (one IP/net address per line)</font></td>
+        <td width="76%" height="68" valign="top"><font face="Verdana">
+        <textarea name="banned_ips" rows="4" cols="37">{DENIED_IPS}</textarea></td>
+      </tr>
+      <tr>
+        <td width="38%" height="68" valign="top"><font face="Verdana" size="2">
+        Restrict Form Setup/Report To IP </font>
+        <font face="Verdana" size="1">(one IP/net address per line)</font></td>
+        <td width="76%" height="68" valign="top"><font face="Verdana">
+        <textarea name="access_ips" rows="4" cols="37">{ALLOWED_IPS}</textarea></td>
+      </tr>
+      <tr>
+        <td width="38%" height="27" valign="top">&nbsp;</td>
+        <td width="76%" height="27" valign="top">
+        <p align="left"><input type=reset>&nbsp;&nbsp;&nbsp;
+        <input type=button value="{MODE} Form" onclick=checkNSubmit()></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+  </center>
+</div>
+</form>
+</body>
+<!-- END mainBlock -->
+</html>

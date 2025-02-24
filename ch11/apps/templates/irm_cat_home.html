@@ -1,0 +1,161 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+
+<script>
+
+   var Subcategory = new Array();
+   var Category    = new Array();
+   var SubcategoryIDList= new Array();
+
+   <!-- BEGIN jsCategoryBlock -->
+
+      Category[{CATEGORY_INDEX}] = {CATEGORY_ID};
+
+      Subcategory[{CATEGORY_INDEX}] = new Array();
+      SubcategoryIDList[{CATEGORY_INDEX}] = new Array();
+
+      <!-- BEGIN jsSubCategoryBlock -->
+
+         Subcategory[{CATEGORY_INDEX}][{SUBCATEGORY_ID}] = "{SUBCATEGORY_NAME}";
+         SubcategoryIDList[{CATEGORY_INDEX}][{SUBCATEGORY_INDEX}] = {SUBCATEGORY_ID};
+
+      <!-- END jsSubCategoryBlock  -->
+
+   <!-- END jsCategoryBlock  -->
+
+
+   function populateSubCategory(cid)
+   {
+      var notFound = true;
+      var categoryIndex;
+      var i = 0;
+
+      if (cid == 0)
+      {
+          document.addResource.subcategory.options.length = 0;
+          
+          var oOption = document.createElement("OPTION");
+          oOption.text="Select a category first";
+          oOption.value=0;
+          document.addResource.subcategory.options.add(oOption); 
+          
+          return false;
+      }
+
+      while(notFound && i <= Category.length)
+      {
+         if (cid == Category[i])
+         {
+            notFound = false;
+            categoryIndex = i;
+         }
+         i++;
+      }
+
+      document.addResource.subcategory.options.length = 0;
+
+      var oOption = document.createElement("OPTION");
+      oOption.text='Select a Subcategory';
+      oOption.value=0;
+      document.addResource.subcategory.options.add(oOption);
+
+      for(i=0; i< SubcategoryIDList[categoryIndex].length; i++)
+      {
+         var subcategoryID = SubcategoryIDList[categoryIndex][i];
+
+         var oOption = document.createElement("OPTION");
+         oOption.text=Subcategory[categoryIndex][subcategoryID];
+         oOption.value=subcategoryID;
+         document.addResource.subcategory.options.add(oOption);
+      }
+
+      return categoryIndex;
+   }
+   
+   function changeCmdToAdd()
+   {
+      document.addResource.cmd.value = 'add';
+      document.addResource.submit();   
+   }
+   
+   function changeCmdToDelete()
+   {
+      document.addResource.cmd.value = 'delete';
+      document.addResource.submit();   
+   }
+
+</script>
+
+
+<title>irmManager</title>
+
+
+
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="50%">
+    <font size=+1 align=left>Internet Resource Manager</font> </td>
+    
+  </tr>
+</table>
+<hr>
+<form name=addResource method=post action={APP_PATH}/{IRM_CAT_MNGR}>
+<input type=hidden name=step value=1>
+<input type=hidden name=cmd value='modify'>
+
+<div align="center">
+  <center>
+  <table border="0" cellspacing="5" cellpadding="5">
+    <tr>
+      <td width="388" bgcolor="#333399" height="1" colspan="2"><b>
+      <font face="Verdana" color="#FFFFFF">Category Manager</font></b></td>
+    </tr>
+    <tr>
+       
+      <td width="237" height="1" nowrap align="right">
+      <p align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+      <td width="191" height="1" nowrap align="right">
+      <b><input type=image alt=Add Category"  src="images/addCategory.gif" onclick="changeCmdToAdd()"></b></td>
+    </tr>
+    <tr>
+      <td width="237" height="1" nowrap align="right">
+      <select name="category" onChange="populateSubCategory(category.value)">
+          <option value={CAT_SELECT_VALUE}>{CAT_SELECT_NAME}</option>
+          <!-- BEGIN categoryBlock -->
+          <option value="{CATEGORY_ID}">{CATEGO_NAME}</option>
+          <!-- END categoryBlock -->
+     </select>
+     </td>
+       <br><br>
+      <td width="191" height="1" align="right">
+      <b><font face="Verdana" size="2"><input type=image alt=Modify Category"  src="images/modifyCategory.gif"></font></b></td>
+    </tr>
+    <tr>
+      <td width="237" height="12" align="right">
+      <p>
+      <select name="subcategory">
+          
+          <option value="{SUBCATEGORY_ID}">{SUBCATEGORY_NAME}</option>
+          <!-- BEGIN subcategoryBlock -->
+          <option value="{SUBID}">{SUB_NAME}</option>
+          <!-- END subcategoryBlock -->
+        
+     </select>
+      
+      </td>
+      <td width="191" height="12" align="right">
+      <b><font face="Verdana" size="2"><input type=image alt=Delete Category" src="images/deleteCategory.gif" onclick="changeCmdToDelete()"></font></b></td>
+    </tr>
+    </table>
+  </center>
+</div>
+</form>
+</body>
+<!-- END mainBlock -->
+
+</html>

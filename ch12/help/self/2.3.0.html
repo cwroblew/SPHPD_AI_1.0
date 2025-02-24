@@ -1,0 +1,100 @@
+<heae>
+<title>Help on Help: Section 2.3.0</title>
+</head>
+
+<p>&nbsp;</p>
+<div class="preamble">
+<p>
+<h1>Section 2.3.0: Creating Help Contents</h1>
+Once you have configured help.conf and created a map file in the maps directory you are ready to create contents.
+You need to create a section file for each section you mentioned in the map file. For example, 
+say, your map file has the following $SECTIONS list:
+
+<div class="example">
+<code>
+<pre>
+
+ $SECTIONS = array(
+                  '1.0.0' => 'Introduction',
+                  '2.0.0' => 'Creating Mail Message',
+                  '3.0.0' => 'Sending Mail'
+                  );
+
+
+</pre>
+
+</code>
+</div>
+You will have to create 1.0.0.html, 2.0.0.html, and 3.0.0.html files in the help directory specified by the $HELP_DIR variable in your map file.
+
+<br>
+<br>
+For example, if your map file has $HELP_DIR set to help/myapp and ROOT_PATH in help.conf set to %DocumentRoot% then you need to create the help contents in %DocumentRoot%/help/myapp directory. 
+
+</p>
+</div>
+
+<br>
+<div class="section">
+<h2> Embedding Image Links </h2>
+The section contents file you create can have embedded images. However, you must follow the rules below 
+when creating image links inside your section contents files:
+<br>
+<br>
+
+Image Links - you should use relative image links when embedding images in section contents. <br>
+    The supported image link are:<br>
+
+	
+	<div class="example">
+	<code>
+	<br>
+	 &lt; ... src=&quot;images/yourimage.ext" ... &gt; <br><br>
+	</div>
+	 <br>
+	 Or,<br><br>
+	<div class="example">
+	 &lt;... background=&quot;images/yourimage.ext" ... &gt; <br><br>
+	</code>
+	</div>
+
+<br>
+The actual tags can be img, td, body, etc. For example: <br><br>
+
+	<div class="example">
+	<code>
+	<br>
+	 &lt;img  src=&quot;images/yourimage.ext" alt="my image" &gt; <br><br>
+	</div>
+	<br>
+	 Or,<br><br>
+	<div class="example">
+	 &lt;td background=&quot;images/yourimage.ext" &gt; <br><br>
+	</code>
+	</div>
+
+</div>
+<br>
+<br>
+<div class="section">
+<h2> Embedding Links to Other Sections </h2>
+The section contents file you create can have embedded links to other sections. However, you must follow the rules below 
+when creating links inside your section contents files:
+<br><br>
+	<div class="example">
+	<code>
+	<br>
+	 &lt;a  href=&quot;section_number.html&quot;&gt; Jump to Section 2.3.0 &lt;/a&gt; <br><br>
+	</code>
+	</div>
+	<br>
+	
+	Such link will be automatically turned into help links that works.
+
+</div>
+</pre>
+</div>
+
+
+</div>
+

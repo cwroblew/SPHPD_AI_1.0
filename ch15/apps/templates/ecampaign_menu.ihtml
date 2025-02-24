@@ -1,0 +1,458 @@
+<html>
+
+<head>
+<!-- BEGIN mainBlock -->
+
+<script>
+
+    function doExecute()
+    {
+       var ecampaignID = document.cmpgForm.camp_id.options[document.cmpgForm.camp_id.selectedIndex].value;
+       
+       document.location.href = "{APP_PATH}/{ECAMPAIGN_EXEC_MNGR}?ecampaign_id=" + ecampaignID;
+
+       return false;
+    }
+    function doReport()
+    {
+       var ecampaignID = document.cmpgForm.camp_id.options[document.cmpgForm.camp_id.selectedIndex].value;
+       
+       document.location.href = "{APP_PATH}/{ECAMPAIGN_REPORT_MNGR}?ecampaign_id=" + ecampaignID;
+
+       return false;
+    }
+
+    function doSubmitList(cmd)
+    {
+      document.listFrm.cmd.value= cmd;
+      document.listFrm.submit();
+    }
+    
+    function doSubmitURL(cmd)
+    {
+      document.frmForm.cmd.value= cmd;
+      document.frmForm.submit();
+    }
+
+    function doSubmitMsg(cmd)
+    {
+      document.msgForm.cmd.value= cmd;
+      document.msgForm.submit();
+    }
+    
+    function doSubmitCmpg(cmd)
+    {
+      document.cmpgForm.cmd.value= cmd;
+      document.cmpgForm.submit();
+    }
+
+
+
+</script>
+
+
+
+<base href="{BASE_URL}">
+<title>Ecampaign Manager</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<center>
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+           style="border-collapse: collapse"
+           bordercolor="#111111"
+           width="464"
+           height="566">
+
+      <tr>
+        <td width="37" height="1" background="images/up.gif">
+        <img border="0" src="images/topleft.gif"></td>
+        <td width="391" background="images/up.gif" height="1"> &nbsp;</td>
+        <td width="36" height="1"> 
+        <img border="0" src="images/topright.gif"></td>
+      </tr>
+
+      <tr>
+        <td width="37" background="images/left.gif" height="541"> &nbsp;</td>
+        <td height="541" align="center" valign="top"> 
+        <div align="center">
+          <center>
+
+          <table border="0"
+                 cellpadding="10"
+                 cellspacing="0"
+                 style="border-collapse: collapse"
+                 bordercolor="#cccccc"
+                 width="100%"
+                 id="AutoNumber3" height="456">
+
+            <tr>
+              <td align="center" valign="top">
+
+                    <table cellpadding=0 cellspacing=0 width=100% border=0 style="border-collapse: collapse" bordercolor="#111111">
+                    <tr>
+                    <td align="center" valign="top">
+                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber11">
+                        <tr>
+                          <td width="51" background="images/flashback.gif">
+                          <img border="0" src="images/flashleft.gif"></td>
+                          <td width="269" background="images/flashback.gif" align="center">
+                          <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0"
+ WIDTH=280 HEIGHT=40>
+ <PARAM NAME=movie VALUE="ecampaign.swf"> 
+<PARAM NAME=menu VALUE=false>
+<PARAM NAME=quality VALUE=best> <PARAM NAME=scale VALUE=exactfit> <PARAM NAME=wmode VALUE=transparent> <PARAM NAME=bgcolor VALUE=#666666> 
+                            <EMBED src="ecampaign.swf" quality=best scale=exactfit wmode=transparent bgcolor=#666666  WIDTH=250 HEIGHT=50 TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></EMBED></OBJECT></td>
+                          <td width="51">
+                          <img border="0" src="images/flashright.gif"></td>
+                        </tr>
+                        <tr>
+                          <td width="51">&nbsp;</td>
+                          <td width="269">&nbsp;</td>
+                          <td width="51">&nbsp;</td>
+                        </tr>
+                      </table>
+                      <table  border=0 cellpadding=0 cellspacing=- width=392 height="33">
+                       <tr>
+                       <td width="262" height="33">
+                       </td>
+                       <td height="33" width="130">
+                       <a href="{APP_PATH}/{ECAMPAIGN_LIST_MNGR}" OnMouseover=a.src=('images/addlist2.gif') OnMouseout=a.src=('images/addlist.gif')>
+                       <img name="a" alt="Add a List" border=0 src="images/addlist.gif" ></a>
+                       </td>
+                       </tr>
+                       </table>
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td>
+                    <form name="listFrm" action="{APP_PATH}/{ECAMPAIGN_LIST_MNGR}" method="GET">
+                    <table border=0 width=100% cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#111111" height="66">
+                    <tr>
+                    <td width="80%" height="33">
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="241" id="AutoNumber4">
+                      <tr>
+                        <td width="30">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="80%" background="images/combomid.gif">
+                    <select name="list_id">
+                    <option value="">Select an Ecampaign List</option>
+                    <!-- BEGIN listBlock -->
+                    <option value="{LIST_ID}">{LIST_NAME}</option>
+                    <!-- END listBlock -->
+                    </select>
+                    </td>
+                        <td width="35">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    <td height="33" >
+                    <input type=hidden name=cmd value="Delete">
+                    <img name="delList" alt="Delete a List" 
+                        src="images/delete.gif" 
+                        OnMouseover="delList.src=('images/delete2.gif')" 
+                        OnMouseout="delList.src=('images/delete.gif')"
+                        onClick="doSubmitList('delete');">
+                    </td>
+                    <tr>
+                    <td height="33">
+                    &nbsp;
+                    </td>
+                    <td height="33">
+                    <img name="modiList" alt="Modify a List" 
+                        src="images/modify.gif" 
+                        OnMouseover="modiList.src=('images/modify2.gif')" 
+                        OnMouseout="modiList.src=('images/modify.gif')"
+                        onClick="doSubmitList('modify');">                   
+               
+                    </td>
+                    
+                    </tr>
+                    </table>
+                    
+                    
+                    
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber12">
+                      <tr>
+                        <td width="23" align="right">
+                        <img border="0" src="images/balla.gif"></td>
+                        <td width="358">
+                        <p align="center">
+                        ----------------------------------------------------------</td>
+                        <td width="17">
+                        <img border="0" src="images/ballb.GIF"></td>
+                      </tr>
+                    </table>
+                    </form>
+                    </td>
+                    </tr>
+                    </table>
+
+                    <table cellpadding=0 cellspacing=0 width=100% border=0 style="border-collapse: collapse" bordercolor="#111111">
+                    
+                    <tr>
+                    <td valign=top>
+                    <form name="frmForm" action="{APP_PATH}/{ECAMPAIGN_URL_MNGR}" method="GET">
+                    <table border=0 width=100% cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#111111" height="103">
+                    <tr>
+                    <td width="80%" height="37">
+                    &nbsp;</td>
+	            <td height="37">
+                       <a href="{APP_PATH}/{ECAMPAIGN_URL_MNGR}" OnMouseover=b.src=('images/addurl2.gif') OnMouseout=b.src=('images/addurl.gif')>
+                       <img alt="Add a Survey Form" border=0 src="images/addurl.gif" name="b"></a></td>
+                    </tr>
+                    <tr>
+                    <td width="80%" height="33">
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="241" id="AutoNumber5">
+                      <tr>
+                        <td width="30">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="80%" background="images/combomid.gif">
+                    <select name="url_select">
+                    <option value="">---------Select a URL---------</option>
+                    <!-- BEGIN urlBlock -->
+                    <option value="{URL_ID}">{URL_NAME}</option>
+                    <!-- END urlBlock -->
+                    </select></td>
+                        <td width="103">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+	            <td height="33">
+                       <img name="delList" alt="Delete a URL" 
+                        src="images/delete.gif" 
+                        OnMouseover="delList.src=('images/delete2.gif')" 
+                        OnMouseout="delList.src=('images/delete.gif')"
+                        onClick="doSubmitURL('delete');">
+
+                    <input type=hidden name=cmd value="Delete">
+	            </td>
+                    </tr>
+                    <tr>
+                    <td height="33">
+                    &nbsp;</td>
+                    <td height="33">
+                    <img name="modiList" alt="Modify a URL" 
+                        src="images/modifyurl.gif" 
+                        OnMouseover="modiList.src=('images/modifyurl2.gif')" 
+                        OnMouseout="modiList.src=('images/modifyurl.gif')"
+                        onClick="doSubmitURL('Modify');">                       
+                    
+                    </td>
+                
+                    </tr>
+
+                    </table>
+                    </form>
+                    <!---------------->
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber13">
+                      <tr>
+                        <td width="20" align="right">
+                        <img border="0" src="images/balla.gif"></td>
+                        <td width="360">
+                        <p align="center">
+                        -----------------------------------------------------------</td>
+                        <td width="17">
+                        <img border="0" src="images/ballb.GIF"></td>
+                      </tr>
+                    </table>
+                    <!---------------->
+                    <table cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#111111" border="0">
+                    <form name="msgForm" action="{APP_PATH}/{ECAMPAIGN_MESSAGE_MNGR}" method="GET">
+                    <tr>
+                    <td width=80%>
+                    </td>
+                    <td>
+                    
+                    <br>
+                    
+                    <a href="{APP_PATH}/{ECAMPAIGN_MESSAGE_MNGR}?preview=no" OnMouseover=c.src=('images/addmessage2.gif') OnMouseout=c.src=('images/addmessage.gif')>
+                    <img alt="Create a message" border=0 src="images/addmessage.gif" name="c"></a>
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                    <td width=80%>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber6" width="262">
+                      <tr>
+                        <td width="30">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="188" background="images/combomid.gif">
+                    <select name="msg_id">
+                    <option value="">------Select a message-----</option>
+                    <!-- BEGIN messageBlock -->
+                    <option value="{MESSAGE_ID}">{MESSAGE_NAME}</option>
+                    <!-- END messageBlock -->
+                    </select></td>
+                        <td width="44">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    <td>
+                    <img name="delList" alt="Delete a message" 
+                        src="images/delete.gif" 
+                        OnMouseover="delList.src=('images/delete2.gif')" 
+                        OnMouseout="delList.src=('images/delete.gif')"
+                        onClick="doSubmitMsg('delete');">
+                    <input type=hidden name=cmd value="Delete">
+                    <input type=hidden name=preview value="no">
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                    <td width=80%>
+                    
+                    </td>
+                    <td>
+                    <img name="modiList" alt="Modify a Message" 
+                        src="images/modify.gif" 
+                        OnMouseover="modiList.src=('images/modify2.gif')" 
+                        OnMouseout="modiList.src=('images/modify.gif')"
+                        onClick="doSubmitMsg('Modify');">                       
+                    
+&nbsp;</td>
+                    </tr>
+                    </form>
+                    </table>
+                    
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber14">
+                      <tr>
+                        <td width="20">
+                        <img border="0" src="images/balla.gif"></td>
+                        <td width="359">
+                        <p align="center">
+                        -----------------------------------------------------------</td>
+                        <td width="17">
+                        <img border="0" src="images/ballb.GIF"></td>
+                      </tr>
+                    </table>
+                    <!---------------->
+                    <table cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#111111" height="126">
+                    <form name="cmpgForm" action="{APP_PATH}/{ECAMPAIGN_CAMPAIGN_MNGR}" method="GET">
+                    <tr>
+                    <td width=80% height="33">
+                    </td>
+                    <td height="33">
+                    <br>
+                    <a href="{APP_PATH}/{ECAMPAIGN_CAMPAIGN_MNGR}" OnMouseover=d.src=('images/addcampaign2.gif') OnMouseout=d.src=('images/addcampaign.gif')>
+                    <img alt="Create a campaign" border=0 src="images/addcampaign.gif" name="d"></a>
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                    <td width=80% height="1">
+                    </td>
+                    <td height="1">
+                    <img name="delList" alt="Delete a Campaign" 
+                        src="images/delete.gif" 
+                        OnMouseover="delList.src=('images/delete2.gif')" 
+                        OnMouseout="delList.src=('images/delete.gif')"
+                        onClick="doSubmitCmpg('delete');">                    
+                    <input type=hidden name=cmd value="Delete">
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                    <td width=80% height="29">
+                    
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="241" id="AutoNumber10">
+                      <tr>
+                        <td width="30">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="80%" background="images/combomid.gif">
+                    <select name="camp_id">
+                    <option value="">-----Select a Campaign-----</option>
+                    <!-- BEGIN campaignBlock -->
+                    <option value="{CAMPAIGN_ID}">{CAMPAIGN_NAME}</option>
+                    <!-- END campaignBlock -->
+                    </select></td>
+                        <td width="27">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    
+                    </td>
+                    <td height="29">
+                    <img name="modiList" alt="Modify a Campaign" 
+                        src="images/modify.gif" 
+                        OnMouseover="modiList.src=('images/modify2.gif')" 
+                        OnMouseout="modiList.src=('images/modify.gif')"
+                        onClick="doSubmitCmpg('Modify');">                       
+                    
+
+                    </td>
+                    </tr>
+                    <tr>
+                    <td width=80% height="38">
+                    
+                    </td>
+                    <td height="38">
+                     <a href="" onClick="return doExecute();" OnMouseover=e.src=('images/execute_red2.gif') OnMouseout=e.src=('images/execute_red.gif')>
+                     <img 
+                           alt="Execute an Ecampaign" 
+                           name="e" 
+                           border="0" 
+                           src="images/execute_red.gif"></a></td>
+                    </tr>
+                    </form>
+                    <tr>
+                    <td height="29">
+                    
+                    </td>
+                    <td height="29">
+                    <a href="" onClick="return doReport();" OnMouseover=f.src=('images/viewreport2.gif') OnMouseout=f.src=('images/viewreport.gif')>
+                    <img 
+                           alt="View report of an ecampaign" 
+                           name="f" 
+                           border="0" 
+                           src="images/viewreport.gif"></a></td>
+                    </tr>
+                    </table>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    </td>
+                    </tr>
+                    
+                    </table>
+                    
+                    
+              </td>
+            </tr>
+
+
+            </table>
+          </center>
+        </div>
+        </td>
+        <td width="36" background="images/right.gif" height="541"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="37" height="30">
+        <img border="0" src="images/downleft.gif"></td>
+        <td width="391" background="images/down.gif" height="30"> &nbsp;</td>
+        <td align="right" valign="bottom" background="images/right.gif" width="36" height="30">
+        <img border="0" src="images/downright.gif" width="36" height="29"></td>
+      </tr>
+      </table>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<?php
+
+    // You can speicify absolute path (FQPN) or %DocumentRoot% relative path
+    // When you use relative path, the %HELP_DIR% is prepended.
+    $HELP_DIR = 'help/self';
+
+    // %DocumentRoo%REL_HELP_DIR points to the help contents dir
+    //$REL_HELP_DIR = 'help/self';
+
+    //Relative template directory.  %REL_HELP_DIR%/REL_TEMPLATE_DIR
+    $REL_TEMPLATE_DIR = 'templates';
+
+    // Default Section template file name
+    $DEFAULT_SECTION_TEMPLATE =  'default_section.html';
+
+    // Table of Contents Template
+    $TOC_TEMPLATE = 'toc.html';
+
+    // Search Result Template
+    $SEARCH_RESULT_TEMPLATE = 'search_result.html';
+ 
+    // Specific section template (if any);
+    $TEMPLATES = array(
+                       '2.1.0' => '210_template.html',
+                       '3.1.0' => '310_template.html'
+                 );
+
+    // When adding sections make sure each section is defined as
+    //  'SECTION NUMBER' => 'SECTION TITLE' 
+    //
+    //  Each section entry should be terminated with a comma except for the
+    //  last one. NOT FOLLOWING THIS RULE WILL CAUSE MOST OF YOUR PROBLEM!
+
+    $SECTIONS = array(    
+                  
+                  '1.0.0' => 'Introduction to Help System',
+                  '2.0.0' => 'Getting Started',
+                  '2.1.0' => 'Configuring help.conf File',
+                  '2.2.0' => 'Creating Help Map for Your Application',
+                  '2.3.0' => 'Creating Help Contents',
+                  '3.0.0' => 'Understanding Keyword Search',
+                  '3.1.0' => 'Creating Keyword Index Cache',
+                  '3.2.0' => 'Excluding Certain Words from Keyword Cache',
+                  '4.0.0' => 'Changing Look and Feel'
+                );
+                
+?>

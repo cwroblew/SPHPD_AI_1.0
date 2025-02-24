@@ -1,0 +1,54 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Name</title>
+</head>
+
+<body>
+<form method=post action={CONTACT_CAT_MNGR}>
+<input type=hidden name=cat_id value={MOD_CAT_ID}>
+<input type=hidden name=step value=2>
+<input type=hidden name=type value="{TYPE}">
+<input type=hidden name=cat_id value="{DEL_CAT_ID}">
+
+
+<div align="center">
+  <center>
+  <table border="1" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="64%" id="AutoNumber1" height="171">
+    <tr>
+      <td width="100%" bgcolor="#333399" height="1"><b>
+      <font face="Verdana" color="#FFFFFF">Delete Category Options</font></b></td>
+    </tr>
+    <tr>
+      <td width="100%" height="36" nowrap>
+      <p><font face="Verdana"><b>
+      <input type="radio" value="1" checked name="del_opt"><font size="2"> Delete 
+      existing subcategories and contacts</font></b></font></td>
+    </tr>
+    <tr>
+      <td width="100%" height="21" valign="top" nowrap>
+      <b><font size="2" face="Verdana"><input type="radio" name="del_opt" value="2"> 
+      Re-assign existing subcategories and contacts to 
+      <select size="1" name="tr_cat">
+      <option NAME=def VALUE=0 selected>Select a category</option>
+      <!-- BEGIN catBlock -->
+      <option value={CAT_ID}>{CAT_NAME}</option>
+      <!-- END catBlock -->
+      </select></font></b></td>
+    </tr>
+    <tr>
+      <td width="100%" height="36">
+      <p align="center"><input type="submit" value="Delete" name="cmd"></td>
+    </tr>
+    </table>
+  </center>
+</div>
+</form>
+</body>
+<!-- END mainBlock -->
+
+</html>

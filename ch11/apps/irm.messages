@@ -1,0 +1,27 @@
+<?php
+
+    $MESSAGES['US']['RESOURCE_ADD_SUCCESSFUL']        = "Resource added successfully";
+    $MESSAGES['US']['RESOURCE_ADD_FAILED']            = "Resource addition failed";
+
+    $MESSAGES['US']['RESOURCE_MOD_SUCCESSFUL']        = "Resource modified successfully";
+    $MESSAGES['US']['RESOURCE_MOD_FAILED']            = "Resource modification failed";    
+    
+    $MESSAGES['US']['RESOURCE_DEL_SUCCESSFUL']        = "Resource deleted successfully";
+    $MESSAGES['US']['RESOURCE_DEL_FAILED']            = "Resource deletion failed";  
+    
+    
+    $MESSAGES['US']['CATEGORY_DELETE_SUCCESSFUL']     = "Category deleted successfully";
+    $MESSAGES['US']['CATEGORY_DELETE_FAILED']         = "Category deletion failed";  
+    
+    $MESSAGES['US']['CATEGORY_ADD_SUCCESSFUL']        = "Category addeded successfully";
+    $MESSAGES['US']['CATEGORY_ADD_FAILED']            = "Category addition failed";  
+    
+    $MESSAGES['US']['CATEGORY_MOD_SUCCESSFUL']        = "Category modified successfully";
+    $MESSAGES['US']['CATEGORY_MOD_FAILED']            = "Category modification failed";  
+    
+    
+    
+    $MESSAGES['US']['CATEGORY_EXISTS']                = "Category exists.";
+    
+      
+?>

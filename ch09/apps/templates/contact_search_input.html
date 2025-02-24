@@ -1,0 +1,130 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<script language=javascript>
+function loadSubcat()
+{
+   document.forms[0].step.value=1;
+   document.forms[0].submit();
+}
+
+function checkInput()
+{
+   if (document.forms[0].cat.value=="0" && document.forms[0].companyName.value=="" && document.forms[0].contactName.value=="" && document.forms[0].keyword.value=="")
+   {
+      alert("Please enter a keyword to search");
+      document.forms[0].keyword.focus();
+   }   
+   else
+   {
+     document.forms[0].submit();
+   }
+}
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+<form method=post action={CONTACT_MNGR}>
+<input type=hidden name=cmd value=search>
+<input type=hidden name=step value=2>
+<div align="center">
+  <center>
+<table border="0" cellpadding=3 cellspacing=0 width=600>
+  <tr>
+    <td width="380" height="14" valign="top" bgcolor="#FF6666" bordercolor="#008080">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="600" id="AutoNumber3">
+      <tr>
+        <td width="33%"><b>
+    <font face="Verdana" size="1">
+    &nbsp; Contact Search</font></b></td>
+        <td width="18%">&nbsp;</td>
+        <td width="49%">
+        <p align="right"><b>
+    <font face="Verdana" size="1" color="#111111">
+    <a href="{CONTACT_MNGR}?cmd=admin"><font color="#000000">Contact Manager Admin</font></a>&nbsp;&nbsp;</font></b></td>
+      </tr>
+    </table>
+    </td>
+    </tr>
+  <tr>
+
+    <td valign="top" bgcolor="#FFFFFF" height="125" width="221">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="180%" id="AutoNumber4" height="183">
+      <tr>
+        <td width="33%" height="12">
+    <font size="1" face="Verdana"><b>Category</b></font></td>
+        <td width="33%" height="12">
+    <font size="1" face="Verdana"><b>Subcategory &nbsp;</b></font></td>
+        <td width="34%" rowspan="10" align="center" valign="top" height="183">
+    <font size="1" face="Verdana">
+    <b>
+    <input type=button value="     Find     " onclick=checkInput();></b></font><p>
+    <font size="1" face="Verdana">
+    <b>
+    <input type=reset value="Reset All"></b></font></td>
+      </tr>
+      <tr>
+        <td width="33%" height="22">
+    <font size="1" face="Verdana"><b><select name="cat" onchange=loadSubcat();>
+    <option selected value="0">Select a category</option>
+    <!-- BEGIN catBlock -->
+    <option value="{CAT_ID}" {CAT_CHOSEN}>{CAT_NAME}</option>
+    <!-- END catBlock -->
+    </select></b></font></td>
+        <td width="33%" height="22">
+    <font size="1" face="Verdana"><b><select name="subcat">
+    <option selected value="0">{PROMPT}</option>
+    <!-- BEGIN subcatBlock -->
+    <option value="{SUBCAT_ID}" {SUBCAT_CHOSEN}>{SUBCAT_NAME}</option>
+    <!-- END subcatBlock -->
+    </select></b></font></td>
+      </tr>
+      <tr>
+        <td width="33%" height="7"></td>
+        <td width="33%" height="7"></td>
+      </tr>
+      <tr>
+        <td width="33%" height="19">
+    <font size="1" face="Verdana"><b>Company Name</b></font></td>
+        <td width="33%" height="19">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="33%" height="22">
+    <font size="1" face="Verdana"><b>
+    <input type="text" name="companyName" size="20"></b></font></td>
+        <td width="33%" height="22">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="33%" height=19>&nbsp;</td>
+        <td width="33%" height=19>&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="33%" height="19">
+    <font size="1" face="Verdana"><b>Contact Name</b></font></td>
+        <td width="33%" height="19">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="33%" height="22">
+        <font size="1" face="Verdana"><b><input type="text" name="contactName" size="20"></b></font></td>
+        <td width="33%" height="22">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="33%" height="19"><b><font size="1" face="Verdana">
+    Keywords </font></b></td>
+        <td width="33%" height="19">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="66%" colspan="2" height="22">
+    <input type=text name="keyword" size=40 maxsize=255></td>
+      </tr>
+    </table>
+    </td>
+    </tr>
+  </table>
+
+  </center>
+</div>
+</form>
+</body>
+<!-- END mainBlock -->
+</html>

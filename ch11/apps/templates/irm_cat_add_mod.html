@@ -1,0 +1,72 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Name</title>
+</head>
+
+<body>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="50%">
+<font size=+1 align=left>Internet Resource Manager</font> </td>
+</tr>
+</table>
+<hr>
+
+<form name=addResource method=post action={APP_PATH}/{IRM_CAT_MNGR}>
+<input type=hidden name=step value=2>
+<input type=hidden name=cmd value={CMD}>
+<input type=hidden name=selectedCat value={SELECAT}>
+
+<div align="center">
+  <center>
+  <table border="0" cellspacing="0" cellpadding="3">
+    <tr>
+      
+      <td width="388" bgcolor="#333399" height="1" align="left" colspan=2><b>
+         <font face="Verdana" color="#FFFFFF">Category Manager</font></b>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Enter the Category Name
+      </td>
+      <td width="237" height="1"  align="left">
+          <input type=text name=newcategory value="{VAL}">
+      </td>
+      
+    </tr>
+    
+    
+    <tr>
+      <td>Subcategory of</td>
+      <td width="237" height="1"  align="left">
+          <select name="p_category" >
+          <option value={CAT_SELECT_VALUE}>{CAT_SELECT_NAME}</option>
+          <!-- BEGIN categoryBlock -->
+          <option value="{CATEGORY_ID}">{CATEGO_NAME}</option>
+          <!-- END categoryBlock -->
+          </select>
+      </td>
+      
+    </tr>
+    
+    <tr>
+      
+      <td  colspan=2 align="center">
+      <br><br>
+      <b><font face="Verdana" size="2"><input type=image alt={CMD} Category" src="images/{CMD}Category.gif" ></font></b></td>
+    </tr>
+    
+    </table>
+  </center>
+</div>
+</form>
+</body>
+<!-- END mainBlock -->
+
+</html>

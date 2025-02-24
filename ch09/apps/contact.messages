@@ -1,0 +1,17 @@
+<?php
+    $MESSAGES['US']['CATEGORY_ADDED']                = "The category has been added";
+    $MESSAGES['US']['CATEGORY_NOT_ADDED']            = "The category could not be added";
+    $MESSAGES['US']['CATEGORY_MODIFIED']             = "The category has been modified";
+    $MESSAGES['US']['CATEGORY_NOT_MODIFIED']         = "The category could not be modified";
+    $MESSAGES['US']['CATEGORY_DELETED']               = "The category has been deleted";
+    $MESSAGES['US']['CATEGORY_NOT_DELETED']           = "The category could not be deleted";    
+    $MESSAGES['US']['CONTACT_ADDED']                 = "The contact has been added";
+    $MESSAGES['US']['CONTACT_NOT_ADDED']             = "The contact could not be added";
+    $MESSAGES['US']['CONTACT_MODIFIED']              = "The contact has been modified";
+    $MESSAGES['US']['CONTACT_NOT_MODIFIED']          = "The contact could not be modified";
+    $MESSAGES['US']['CONTACT_DELETED']               = "The contact has been deleted";
+    $MESSAGES['US']['CONTACT_NOT_DELETED']           = "The contact could not be deleted";
+    $MESSAGES['US']['SEARCH_NOT_FOUND']              = "No contact was found that matches with the given criteria";
+    $MESSAGES['US']['MAIL_SENT']                     = "The mail was sent successfully";
+    
+?>

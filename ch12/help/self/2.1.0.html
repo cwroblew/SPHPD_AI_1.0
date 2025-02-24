@@ -1,0 +1,54 @@
+<heae>
+<title>Help on Help: Section 2.1.0</title>
+</head>
+
+<p>&nbsp;</p>
+<div class="preamble">
+<p>
+<h1>Section 2.1.0: Configuring help.conf file</h1>
+
+The very first step in making online help available for your application is to configure the help.conf file.
+Here we will discuss how.
+</p>
+</div>
+
+<p>&nbsp;</p>
+<div class="section">
+<h2> Editing help.conf </h2>
+Load help.conf in your favorite text editor and locate the following lines: <br>
+<div class="example">
+<pre>
+<code>
+   // This associative array associates an application with a help map file
+   $APP_HELP_MAP = array(
+                    'self' => 'self.map'
+                   );
+</code>
+</pre>
+</div>
+
+Now add your application in the $APP_HELP_MAP. For example, to add an application called IRM you can modify the aboove 
+lines as follows:
+
+<div class="example">
+<pre>
+<code>
+   // This associative array associates an application with a help map file
+   $APP_HELP_MAP = array(
+                    'self' => 'self.map',
+                    'irm' => 'irm.map'
+                   );
+</code>
+</pre>
+</div>
+
+
+<p>
+<strong>Note</strong><br>
+Notice that irm is added after the self (the help application itself) line and a comma is added to the 'self' => 'self.map' line.
+</p>
+
+Once you have added your application in $APP_HELP_MAP, save the changes to the help.conf file.
+
+</div>
+

@@ -1,0 +1,86 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Name</title>
+<script language=javascript>
+function checkInput(mode)
+{
+   if (document.forms[0].cat_name.value=="" || document.forms[0].cat_desc.value=="")
+   {
+      alert("please insert all the required fields");
+      return false;
+   }
+   else
+   {
+     document.forms[0].cmd.value=mode;      
+     document.forms[0].submit();
+   }
+}
+</script>
+</head>
+
+<body>
+<form method=post action={CONTACT_CAT_MNGR}>
+<input type=hidden name=cat_id value={MOD_CAT_ID}>
+<input type=hidden name=step value=2>
+
+<div align="center">
+  <center>
+  <table border="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="600" id="AutoNumber1" height="304" cellpadding="0">
+    <tr>
+      <td width="600" bgcolor="#008000" height="1" colspan="2"><b>
+      <font face="Verdana" color="#FFFFFF" size="2">&nbsp;{MODE} Category</font></b></td>
+    </tr>
+    <tr>
+      <td width="150" height="36" nowrap>
+      <p><b><font face="Verdana" size="2">&nbsp;Name</font></b></td>
+      <td width="450" height="36">
+      <input type="text" name="cat_name" size="62" value="{CAT_NAME}"></td>
+    </tr>
+    <tr>
+      <td width="150" height="154" valign="top" nowrap>
+      <b><font size="2" face="Verdana">&nbsp;Description</font></b></td>
+      <td width="450" height="154" valign="top">
+      <textarea rows="9" name="cat_desc" cols="53">{CAT_DESC}</textarea></td>
+    </tr>
+    <tr>
+      <td width="150" height="33" nowrap>
+      <b><font face="Verdana" size="2">&nbsp;Type</font></b></td>
+      <td width="450" height="33">
+      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
+        <tr>
+          <td width="34%">
+      <input type="radio" value="parent" name="cat_option" {PARENT_CHECKED}  onfocus=document.forms[0].parent_cat.disabled=true; checked><font face="Verdana" size="2">Parent 
+      Category</font></td>
+          <td width="4%">&nbsp;</td>
+          <td width="37%">
+      <input type="radio" name="cat_option" value="child" {CHILD_CHECKED} onfocus=document.forms[0].parent_cat.disabled=false;><font face="Verdana" size="2">Sub 
+      category 
+      of&nbsp;&nbsp; </font></td>
+          <td width="25%"><b><font face="Verdana" size="2"> <select size="1" name="parent_cat">
+      <option NAME=def VALUE=0 selected>Select a parent catgory</option>
+      <!-- BEGIN parentBlock -->
+      <option {CHOSEN} value={PARENT_ID}>{PARENT_NAME}</option>
+      <!-- END parentBlock -->
+      </select></font></b></td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="600" height="36" colspan="2">
+      <p align="center"><input type="reset" value="Reset All"> &nbsp; &nbsp; <input type="button" value="{MODE}" onclick=checkInput('{MODE}')></td>
+      <input type=hidden name=cmd>
+    </tr>
+    </table>
+  </center>
+</div>
+</form>
+</body>
+<!-- END mainBlock -->
+
+</html>

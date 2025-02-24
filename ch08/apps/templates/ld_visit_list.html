@@ -1,0 +1,44 @@
+<html>
+<!-- BEGIN mainBlock -->
+<body>
+<table cellspacing="0" cellpadding="3" border="0" width="633" height="77">
+
+<tr>
+<td colspan=3 >
+<h3><font face="Tahoma" size="3">View List for {DOC_HEADING}</font></h3>
+</td>
+</tr>
+
+
+<tr bgcolor={ROW_COLOR}>
+<td bgcolor="#000000"><b><font color="#FFFFFF" face="Verdana" size="2">Date</font></b></td>
+<td bgcolor="#000000"><b><font color="#FFFFFF" face="Verdana" size="2">Time</font></b></td>
+<td bgcolor="#000000"><b><font color="#FFFFFF" face="Verdana" size="2">User</font></b></td>
+</tr>
+
+<!-- BEGIN visitorBlock -->
+
+
+
+<tr bgcolor={ROW_COLOR}>
+<td width=90 align=center height="12" valign="top">
+<p align="left"><font face="Verdana" size="1">{DATE} </font>
+</td>
+<td width=92 align=center height="12" valign="top">
+<p align="left"><font face="Verdana" size="1">{TIME} </font>
+</td>
+<td width=90 align=center height="12" valign="top">
+<p align="left"><font face="Verdana" size="1">
+<a href="mailto:{UNAME}?subject=Re: {DOC_HEADING}">{UNAME} </a></font>
+</td>
+
+</tr>
+<!-- END visitorBlock -->
+</table>
+
+<p align="left"><font face="Verdana" size="1">
+<a href="javascript:self.close();">Close this Window</a></font></p>
+
+</body>
+<!-- END mainBlock -->
+</html>

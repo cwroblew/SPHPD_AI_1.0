@@ -1,0 +1,104 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Tell A Friend</title>
+<script language=javascript>
+function checkNSubmit()
+{
+    if (document.forms[0].msgName.value=="" || 
+        document.forms[0].msgBody.value=="" || 
+        document.forms[0].msgSub.value==""  || 
+        document.forms[0].msgFrom.value=="" || 
+        document.forms[0].msgReplyTo.value=="" )
+    {
+       alert("Please fill out all the required fields");
+    }
+    else 
+    {
+       document.forms[0].submit();
+    }     
+}
+
+</script>
+</head>
+<body>
+<center>
+<form action="{TAF_MSG_MNGR}" method="POST">
+<input type=hidden name=step value=2>
+<input type=hidden name=msgID value="{MSG_ID}">
+
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="600" id="AutoNumber1">
+  <tr>
+    <td width="100%">
+    <table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse" width="112%" id="AutoNumber2" height="284">
+      <tr>
+        <td width="100%" colspan="2" height="19" bgcolor="#000080">
+        <b>
+        <font face="Verdana" size="2" color="#FFFFFF">Tell-a-Friend Message Setup:  </font>
+        <font face="Verdana" size="1" color="#FFFFFF">{MODE}&nbsp;  Tell-a-Friend 
+        Message</font></b><font face="Verdana" size="2" color="#FFFFFF"> [Your IP is 
+        {REQ_IP}]</font></td>
+      </tr>
+      <tr>
+        <td width="27%" height="22" valign="top"><font face="Verdana" size="2">
+        Name</font></td>
+        <td width="85%" height="22" valign="top"><font face="Verdana">
+        <input type=text name="msgName" size="29" value="{MSG_NAME}" style="font-family: Verdana"></font></td>
+      </tr>
+      <tr>
+        <td width="27%" height="19" valign="top"><font face="Verdana" size="2">
+        From</font></td>
+        <td width="85%" height="19" valign="top">
+        
+        <input type="text" name="msgFrom" size="29" value="{MSG_FROM}" style="font-family: Verdana"></td>
+      </tr>
+      <tr>
+        <td width="27%" height="19" valign="top"><font face="Verdana" size="2">
+        Reply-To</font></td>
+        <td width="85%" height="19" valign="top">
+        
+        <input type="text" name="msgReplyTo" size="29" value="{MSG_REPLY_TO}" style="font-family: Verdana"></td>
+      </tr>
+      <tr>
+        <td width="27%" height="22" valign="top"><font face="Verdana" size="2">
+        Subject</font></td>
+        <td width="85%" height="22" valign="top">
+        <input type="text" name="msgSub" size="56" value="{MSG_SUB}" style="font-family: Verdana"></td>
+      </tr>
+      <tr>
+        <td width="27%" height="19" valign="top"><font face="Verdana" size="2">
+        Message Body </font>
+        <p>
+        <font face="Verdana" size="1" color="#C0C0C0">The body of the message goes here. The user can enter HTML tags if she 
+        wants.</font></td>
+        <td width="85%" height="19" valign="top">
+        
+        <textarea rows="18" name="msgBody" cols="48">{MSG_BODY}</textarea></td>
+      </tr>
+      <tr>
+        <td width="27%" height="74" valign="top"><font face="Verdana" size="2">
+        Restrict Message Setup&nbsp; To IP Networks </font>
+        <font face="Verdana" size="1">&nbsp;(one IP/net address per line)</font></td>
+        <td width="85%" height="74" valign="top"><font face="Verdana">
+        <textarea name="msg_access_ips" rows="3" cols="48">{ACCESS_IP}</textarea></td>
+      </tr>
+      <tr>
+        <td width="27%" height="19" valign="top">&nbsp;</td>
+        <td width="85%" height="19" valign="top">
+        <p align="center"><input type=reset>&nbsp;&nbsp;&nbsp;
+        <input type=button value="{MODE}" onclick=checkNSubmit()></td>
+        <input type=hidden name=cmd value="{MODE}">
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</form>
+</center>
+</body>
+<!-- END mainBlock -->
+</html>

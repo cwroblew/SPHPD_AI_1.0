@@ -1,0 +1,52 @@
+<?php
+     $MESSAGES['US']['DELETE_FRM_CONFIRMATION'] = "Do you really want to delete the selected form";
+     $MESSAGES['US']['DELETE_MSG_CONFIRMATION'] = "Do you really want to delete the selected message";
+     
+     $MESSAGES['US']['MSG_NOT_ADDED'] = "The message could not be added";
+     $MESSAGES['US']['MSG_ADDED']     = "The message was added successfully";
+     
+     $MESSAGES['US']['MSG_NOT_MODIFIED'] = "The message could not be modified";
+     $MESSAGES['US']['MSG_MODIFIED']     = "The message was modified successfully";
+     
+     $MESSAGES['US']['MSG_NOT_DELETED'] = "The message could not be deleted";
+     $MESSAGES['US']['MSG_DELETED']     = "The message was deleted successfully";
+     
+     $MESSAGES['US']['FRM_NOT_ADDED'] = "The form could not be added";
+
+     $MESSAGES['US']['FRM_ADDED']     = "The form was added successfully. Use the followin FORM ACTION and hidden field ".
+                                        "in your Tell-a-Friend form:<br>" .
+                                        '<form><textarea rows=7 cols=70>'.
+                                        "<!-- replace your current form action with the following line -->NL".
+                                        "<form action=\"FORM_ACTION\" method=POST>NLNL".
+                                        "<!-- add the following hidden field inside  your form -->NL".
+                                        "<!-- make sure the hidden line is before closing form tag -->NL".
+                                        "<input type=hidden name=formid value=FORM_ID>NL".
+                                        '</textarea></form><br>'.
+                                        'Copy the above lines and use in your form.';
+     
+     $MESSAGES['US']['FRM_NOT_MODIFIED'] = "The form could not be modified";
+
+     $MESSAGES['US']['FRM_MODIFIED']    = "The form was successfully modified. Make sure you have the followin FORM ACTION ".
+                                        " and hidden field in your Tell-a-Friend form:<br>" .
+                                        '<form><textarea rows=7 cols=70>'.
+                                        "<!-- replace your current form action with the following line -->NL".
+                                        "<form action=\"FORM_ACTION\" method=POST>NLNL".
+                                        "<!-- add the following hidden field inside  your form -->NL".
+                                        "<!-- make sure the hidden line is before closing form tag -->NL".
+                                        "<input type=hidden name=formid value=FORM_ID>NL".
+                                        '</textarea></form><br>'.
+                                        'If you already have these lines in your form, no need to add/modify them.';
+     
+     $MESSAGES['US']['FRM_NOT_DELETED']  = "The form could not be deleted";
+     $MESSAGES['US']['FRM_DELETED']      = "The form was deleted successfully";
+     
+     $MESSAGES['US']['FRNDS_SUBMITTED']  = "<table border=0 cellpadding=0><tr><td>" .
+                                           "<font face=verdana size=2>Thank you for telling your friends about us.<br>" .
+                                           "We have sent you an email detailing how you can track your submissions.".
+                                           "Remember, you can tell more friends by filling out the same form again.".
+                                           "</font></td></tr></table>";
+
+     $MESSAGES['US']['REQ_SUBMITTED']    = "Your request has been submitted";
+     $MESSAGES['US']['REQ_NOT_SUBMITTED']= "Your request could not be submitted";
+     $MESSAGES['US']['JAVASCRIPT_CLOSE_WINDOW']= "window.close();";
+?>

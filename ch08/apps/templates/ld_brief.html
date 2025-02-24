@@ -1,0 +1,114 @@
+<html>
+<!-- BEGIN mainBlock -->
+<title>Press Release Home Page</title>
+
+<body>
+<form method=post action={LD_ADMIN_MNGR}>
+<div align="center">
+  <center>
+<table border=1 bordercolor="#cccccc" width=100% style="border-collapse: collapse" cellpadding="5" cellspacing="0">
+<tr>
+<td>
+<table cellpadding=5 cellspacing=3 width="100%" style="border-collapse: collapse" bordercolor="#111111" >
+<tr>
+<td>
+<h1>Intranet Document Index</h1>
+</td>
+</tr>
+<!-- BEGIN catBlock -->
+<tr>
+<td>
+    <!-- BEGIN catchkBlock -->
+    <font face="Verdana">
+    <input type=checkbox name=cid[] value={CAT_ID}><font size="2">
+
+    <!-- END catchkBlock -->
+    </font></font>
+    <strong><font face="Verdana" size="2">{CAT_NAME}</font></strong><font face="Verdana" size="2">
+    <br>
+    &nbsp;<font color=114466>{CAT_DESC}</font>
+    </font>
+    </font>
+    </td>
+<tr>
+<td>
+    <table>
+    <!-- BEGIN headingBlock -->
+    <tr>
+    <td>
+    <!-- BEGIN chkBlock -->
+
+    <font face="Verdana">
+
+    <input type=checkbox name=nid[] value={DOC_ID}><font size="2">
+    <!-- END chkBlock -->
+    </font></font>
+    <font face="Verdana" size="2">
+    <a href="{LD_DETAILS_MNGR}?nid={DOC_ID}">{PUB_DATE} - {HEADING} {NUM_RESP}</a>
+    </font>
+
+    </td>
+    </tr>
+    <!-- END headingBlock -->
+    </table>
+</td>
+</tr>
+<!-- END catBlock -->
+<!-- BEGIN adminBlock -->
+<tr>
+<td>
+
+<table  border=0 style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+<tr>
+<td><font face="Verdana"><input type=hidden name=obj value="doc"></font></td>
+<font face="Verdana">
+<input type=hidden name=cat value="{CATNAME}">
+</font>
+<td><font face="Verdana"><input type=submit name=cmd value="Delete Doc"></font></td>
+<td><font face="Verdana"><input type=submit name=cmd value="Modify Doc"></font></td>
+<!-- BEGIN delModCatBlock -->
+<td><font face="Verdana"><input type=submit name=cmd value="Delete Category" onclick=javascript:document.forms[0].obj.value="category"></font></td>
+<td bgcolor="#C0C0C0"><font face="Verdana"><input type=submit name=cmd value="Modify Category" onclick=javascript:document.forms[0].obj.value="category"></font></td>
+<!-- END delModCatBlock -->
+</tr>
+<tr>
+<td colspan=5>
+<font face="Verdana" size="2">&nbsp; </font>
+</td>
+</tr>
+
+<tr>
+<td colspan=5 align=center>
+
+<font face="Verdana" size="2">
+<a href="{LD_ADMIN_MNGR}?cmd=add&obj=doc&cat={CATNAME}">Add New Document </a>
+<!-- BEGIN addCatBlock -->
+&nbsp;|
+<a href = "{LD_ADMIN_MNGR}?cmd=add&obj=category">Add New Category</a>
+|
+<a href = "{LD_ADMIN_MNGR}?cmd=reo&step=1">Reorder Categories</a>
+<!-- END addCatBlock -->
+
+</font>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+
+
+<!-- END adminBlock -->
+</table>
+</tr>
+</td>
+</table>
+  </center>
+</div>
+</form>
+</body>
+
+<!-- END mainBlock -->
+</html>

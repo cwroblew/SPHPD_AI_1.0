@@ -1,0 +1,301 @@
+<html>
+
+<head>
+<script language=javascript>
+function checkValidity()
+{
+   if (document.forms[0].custid.value=="")
+   {
+      alert('Please Select REC_ID');
+      
+   }
+   else if (document.forms[0].custeaddr.value=="") 
+   { 
+      alert('Please Select EMAIL');
+      
+   }
+   else document.forms[0].submit();
+   
+}
+</script>
+<base href="{BASE_URL}">
+
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+<title>Add Ecampaign List</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+<center>
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+           style="border-collapse: collapse"
+           bordercolor="#111111"
+           width="433"
+           height="79">
+
+      <tr>
+        <td width="24" height="24">
+        <img border="0" src="images/topleft.gif"></td>
+        <td width="437" background="images/up.gif" height="24"> &nbsp;</td>
+        <td width="23" height="24"> 
+        <img border="0" src="images/topright.gif"></td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td width="437" height="10"> 
+        <div align="center">
+          <center>
+
+          <table border="0"
+                 cellpadding="10"
+                 cellspacing="0"
+                 style="border-collapse: collapse"
+                 bordercolor="#cccccc"
+                 bgcolor="#ffffff"
+                 width="100%"
+                 id="AutoNumber3">
+
+            <tr>
+              <td>
+
+                    <center>
+                    <form method=GET action="{APP_PATH}/{ECAMPAIGN_LIST_MNGR}">
+                    <input type=hidden name=step value=3>
+                    <input type=hidden name=list_id value={LIST_ID}>
+                    
+                    <table border=0 cellpadding=5 cellspacing=0>
+                    <tr>
+                    <td>
+                    <b><font face="MS Sans Serif" size="1">REC_ID </font></b>
+                    </td>
+                    <td align=center>
+                    <b><font face="MS Sans Serif" size="1">is : </font></b>
+                    </td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4">
+                      <tr>
+                        <td width="33%">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="33%" background="images/combomid.gif">
+                    <select name=custid>
+                    <option value=""> Select a field name</option>
+                    <!-- BEGIN rec_idBlock -->
+                    <option value="{FIELD_NAME}" {CHOSEN1}>{FIELD_NAME}</option>
+                    <!-- END rec_idBlock -->
+                    </select></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+
+                    
+                    <tr>
+                    <td>
+                    <b><font face="MS Sans Serif" size="1">LAST </font></b>	
+                    </td>
+                    <td align=center>
+                    <b><font face="MS Sans Serif" size="1">is :</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5">
+                      <tr>
+                        <td width="33%">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="33%" background="images/combomid.gif">
+                    <select name=custlname>
+                    <option  value=""> Select a field name</option>
+                    <!-- BEGIN lastBlock -->
+                    <option value="{FIELD_NAME}" {CHOSEN2}>{FIELD_NAME}</option>
+                    <!-- END lastBlock -->
+                    </select></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+
+                    
+                    <tr>
+                    <td>
+                    <b><font face="MS Sans Serif" size="1">FIRST </font></b>	
+                    </td>
+                    <td align=center>
+                    <b><font face="MS Sans Serif" size="1">is :</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber6">
+                      <tr>
+                        <td width="33%">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="33%" background="images/combomid.gif">
+                    <select name=custfname>
+                    <option value=""> Select a field name</option>
+                    <!-- BEGIN firstBlock -->
+                    <option value="{FIELD_NAME}" {CHOSEN3}>{FIELD_NAME}</option>
+                    <!-- END firstBlock -->
+                    </select></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+                    
+                    
+                    <tr>
+                    <td>
+                    <b><font face="MS Sans Serif" size="1">EMAIL </font></b>
+                    </td>
+                    <td align=center>
+                    <b><font face="MS Sans Serif" size="1">is :</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber7">
+                      <tr>
+                        <td width="33%">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="33%" background="images/combomid.gif">
+                    <select name=custeaddr>
+                    <option value=""> Select a field name</option>
+                    <!-- BEGIN emailBlock -->
+                    <option value="{FIELD_NAME}" {CHOSEN4}>{FIELD_NAME}</option>
+                    <!-- END emailBlock -->
+                    </select></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                    <td>
+                    <b><font face="MS Sans Serif" size="1">AGE </font></b>
+                    </td>
+                    <td align=center>
+                    <b><font face="MS Sans Serif" size="1">is :</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber8">
+                      <tr>
+                        <td width="33%">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="33%" background="images/combomid.gif">
+                    <select name=custage>
+                    <option value=""> Select a field name</option>
+                    <!-- BEGIN ageBlock -->
+                    <option value="{FIELD_NAME}" {CHOSEN5}>{FIELD_NAME}</option>
+                    <!-- END ageBlock -->
+                    </select></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+                    
+                    
+                    <tr>
+                    <td>
+                    <b><font face="MS Sans Serif" size="1">INCOME </font></b>
+                    </td>
+                    <td align=center>
+                    <b><font face="MS Sans Serif" size="1">is :</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber9">
+                      <tr>
+                        <td width="33%">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="33%" background="images/combomid.gif">
+                    <select name=custincome>
+                    <option value=""> Select a field name</option>
+                    <!-- BEGIN incomeBlock -->
+                    <option value="{FIELD_NAME}" {CHOSEN6}>{FIELD_NAME}</option>
+                    <!-- END incomeBlock -->
+                    </select></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+                    
+                    
+                    <tr>
+                    <td>
+                    <b><font face="MS Sans Serif" size="1">SEX </font></b>
+                    </td>
+                    <td align=center>
+                    <b><font face="MS Sans Serif" size="1">is :</font></b></td>
+                    <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber10">
+                      <tr>
+                        <td width="33%">
+                        <img border="0" src="images/comboleft.gif"></td>
+                        <td width="33%" background="images/combomid.gif">
+                    <select name=custsex>
+                    <option value=""> Select a field name</option>
+                    <!-- BEGIN sexBlock -->
+                    <option value="{FIELD_NAME}" {CHOSEN7}>{FIELD_NAME}</option>
+                    <!-- END sexBlock -->
+                    </select></td>
+                        <td width="34%">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                    <td colspan=3 align=center>
+                    
+                    <input type=hidden name=cmd value={MAP_CMD}>
+                    <a href="Javascript:checkValidity()"><img border=0 src="images/{MAP_CMD}M.gif"></a>
+                    
+                    </td>
+                    </tr>
+                    </table>
+                    </form>
+                    <a href="{APP_PATH}/{ECAMPAIGN_MNGR}"
+                    onMouseover=a.src=('images/main_menu2.gif')
+                    onMouseout=a.src=('images/main_menu.gif')
+                    >
+                    <img alt="Return to Menu" border=0 src="images/main_menu.gif" name="a"></a>
+
+                    </center>
+
+
+              </td>
+            </tr>
+
+
+          </table>
+          </center>
+        </div>
+        </td>
+        <td width="23" background="images/right.gif" height="29"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" height="26">
+        <img border="0" src="images/downleft.gif"></td>
+        <td width="437" background="images/down.gif" height="26"> &nbsp;</td>
+        <td width="23" height="26">
+        <img border="0" src="images/downright.gif"></td>
+      </tr>
+      </table>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

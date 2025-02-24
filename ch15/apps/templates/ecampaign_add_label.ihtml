@@ -1,0 +1,124 @@
+<html>
+
+<head>
+<base href="{BASE_URL}">
+
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+<title>Survey Manager</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+<center>
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+           style="border-collapse: collapse"
+           bordercolor="#111111"
+           width="433"
+           height="78">
+
+      <tr>
+        <td width="24" height="23"><img border="0" src="images/topleft.gif"></td>
+        <td width="437" background="images/up.gif" height="23"> &nbsp;</td>
+        <td width="23" height="23"> <img border="0" src="images/topright.gif"></td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td width="437" height="10"> 
+        <div align="center">
+          <center>
+
+          <table border="0"
+                 cellpadding="10"
+                 cellspacing="0"
+                 style="border-collapse: collapse"
+                 bordercolor="#cccccc"
+                 bgcolor="#ffffff"
+                 width="100%"
+                 id="AutoNumber3">
+
+            <tr>
+              <td align="center">
+
+                    <!-- BEGIN mainBlock -->
+                    <center>
+                    <form method=GET action="{SURVEY_FORM_MNGR}">
+                    <input type=hidden name=step value=3>
+                    <input type=hidden name=formid value={FORM_ID}>
+
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5">
+                      <tr>
+                        <td align="right"><b>
+                        <img border="0" src="images/comboleft.gif"></b></td>
+                        <td background="images/combomid.gif" align="center"><b>
+                    <font size=1 face="MS Sans Serif">Questions for {FORM_NAME}
+                    <!-- BEGIN labelBlock -->
+                        </font></b></td>
+                        <td width="22">
+                        <img border="0" src="images/comboright.gif"></td>
+                      </tr>
+                    </table>
+
+                    <table border=0 cellpadding=5 cellspacing=0 style="border-collapse: collapse" bordercolor="#111111">
+                    <tr><td width="103"><font face="MS Sans Serif">
+                      <font size="2">Question</font><b><font size="1"><br>
+                      {LABEL_SERIAL}:</font></b></font></td><td width="244">
+                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4">
+                        <tr>
+                          <td width="33%">
+                          <img border="0" src="images/comboleft.gif"></td>
+                          <td width="33%" background="images/combomid.gif"><input type=text size=30 name=labels[]></td>
+                          <td width="34%">
+                          <img border="0" src="images/comboright.gif"></td>
+                        </tr>
+                      </table>
+                      </td></tr>
+                    <!-- END labelBlock -->
+
+
+                    <tr>
+                    <td colspan=2 align=center width="331">
+                    <input type=reset value="Reset">
+                    <input type=submit name=cmd value="Upload Labels">
+                    </td>
+                    </tr>
+
+                    </table>
+                    </form>
+
+                    </center>
+                    <!-- END mainBlock -->
+
+
+
+              </td>
+            </tr>
+
+
+          </table>
+          </center>
+        </div>
+        </td>
+        <td width="23" background="images/right.gif" height="29"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" height="26">
+        <img border="0" src="images/downleft.gif"></td>
+        <td width="437" background="images/down.gif" height="26"> &nbsp;</td>
+        <td width="23" height="26"><img border="0" src="images/downright.gif"></td>
+      </tr>
+      </table>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<?php
+    $MESSAGES['US']['RESPONSE_ADDED']      = "Your comment has been added";
+    $MESSAGES['US']['RESPONSE_NOT_ADDED']  = "Your comment could not be added";
+    
+    $MESSAGES['US']['DOC_ADDED']          = "The document has been added";
+    $MESSAGES['US']['DOC_NOT_ADDED']      = "The document could not be added";
+    
+    $MESSAGES['US']['CAT_ADDED']           = "The category has been added";
+    $MESSAGES['US']['CAT_NOT_ADDED']       = "The category could not be added";
+    
+    $MESSAGES['US']['DOC_MODIFIED']       = "The document has been modified";
+    $MESSAGES['US']['DOC_NOT_MODIFIED']   = "The document could not be modified";
+    
+    $MESSAGES['US']['CAT_MODIFIED']        = "The category has been modified";
+    $MESSAGES['US']['CAT_NOT_MODIFIED']    = "The category could not be modified";
+    
+    $MESSAGES['US']['DOC_DELETED']        = "The document has been deleted";
+    $MESSAGES['US']['DOC_NOT_DELETED']    = "The document could not be deleted";
+    
+    $MESSAGES['US']['CAT_DELETED']         = "The category has been deleted";
+    $MESSAGES['US']['CAT_NOT_DELETED']     = "The category could not be deleted";
+    
+    $MESSAGES['US']['RESP_DELETED']        = "The comment has been deleted";
+    $MESSAGES['US']['RESP_NOT_DELETED']    = "The comment could not be deleted";
+    
+    $MESSAGES['US']['DOC_ADDED']          = "The document has been added";
+    $MESSAGES['US']['DOC_NOT_ADDED']      = "The document could not be added";
+    
+    $MESSAGES['US']['DOC_ADDED']          = "The document has been added";
+    $MESSAGES['US']['DOC_NOT_ADDED']      = "The document could not be added";
+    
+    $MESSAGES['US']['DOC_ADDED']          = "The document has been added";
+    $MESSAGES['US']['DOC_NOT_ADDED']      = "The document could not be added";
+    
+    $MESSAGES['US']['DOC_ADDED']          = "The document has been added";
+    $MESSAGES['US']['DOC_NOT_ADDED']      = "The document could not be added";
+    
+    $MESSAGES['US']['REORDER_DONE']    = "Orders of the categories have been updated";
+    $MESSAGES['US']['REORDER_NOT_DONE']        = "Orders could not be updated";
+    
+?>

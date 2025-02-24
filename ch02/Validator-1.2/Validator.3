@@ -1,0 +1,587 @@
+.rn '' }`
+''' $RCSfile$$Revision$$Date$
+'''
+''' $Log$
+'''
+.de Sh
+.br
+.if t .Sp
+.ne 5
+.PP
+\fB\\$1\fR
+.PP
+..
+.de Sp
+.if t .sp .5v
+.if n .sp
+..
+.de Ip
+.br
+.ie \\n(.$>=3 .ne \\$3
+.el .ne 3
+.IP "\\$1" \\$2
+..
+.de Vb
+.ft CW
+.nf
+.ne \\$1
+..
+.de Ve
+.ft R
+
+.fi
+..
+'''
+'''
+'''     Set up \*(-- to give an unbreakable dash;
+'''     string Tr holds user defined translation string.
+'''     Bell System Logo is used as a dummy character.
+'''
+.tr \(*W-|\(bv\*(Tr
+.ie n \{\
+.ds -- \(*W-
+.ds PI pi
+.if (\n(.H=4u)&(1m=24u) .ds -- \(*W\h'-12u'\(*W\h'-12u'-\" diablo 10 pitch
+.if (\n(.H=4u)&(1m=20u) .ds -- \(*W\h'-12u'\(*W\h'-8u'-\" diablo 12 pitch
+.ds L" ""
+.ds R" ""
+'''   \*(M", \*(S", \*(N" and \*(T" are the equivalent of
+'''   \*(L" and \*(R", except that they are used on ".xx" lines,
+'''   such as .IP and .SH, which do another additional levels of
+'''   double-quote interpretation
+.ds M" """
+.ds S" """
+.ds N" """""
+.ds T" """""
+.ds L' '
+.ds R' '
+.ds M' '
+.ds S' '
+.ds N' '
+.ds T' '
+'br\}
+.el\{\
+.ds -- \(em\|
+.tr \*(Tr
+.ds L" ``
+.ds R" ''
+.ds M" ``
+.ds S" ''
+.ds N" ``
+.ds T" ''
+.ds L' `
+.ds R' '
+.ds M' `
+.ds S' '
+.ds N' `
+.ds T' '
+.ds PI \(*p
+'br\}
+.\"	If the F register is turned on, we'll generate
+.\"	index entries out stderr for the following things:
+.\"		TH	Title 
+.\"		SH	Header
+.\"		Sh	Subsection 
+.\"		Ip	Item
+.\"		X<>	Xref  (embedded
+.\"	Of course, you have to process the output yourself
+.\"	in some meaninful fashion.
+.if \nF \{
+.de IX
+.tm Index:\\$1\t\\n%\t"\\$2"
+..
+.nr % 0
+.rr F
+.\}
+.TH VALIDATOR 1 "PHP 3.0.6" "5/Mar/99" " Contributed PHP Docs "
+.UC
+.if n .hy 0
+.if n .na
+.ds C+ C\v'-.1v'\h'-1p'\s-2+\h'-1p'+\s0\v'.1v'\h'-1p'
+.de CQ          \" put $1 in typewriter font
+.ft CW
+'if n "\c
+'if t \\&\\$1\c
+'if n \\&\\$1\c
+'if n \&"
+\\&\\$2 \\$3 \\$4 \\$5 \\$6 \\$7
+'.ft R
+..
+.\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+.	\" AM - accent mark definitions
+.bd B 3
+.	\" fudge factors for nroff and troff
+.if n \{\
+.	ds #H 0
+.	ds #V .8m
+.	ds #F .3m
+.	ds #[ \f1
+.	ds #] \fP
+.\}
+.if t \{\
+.	ds #H ((1u-(\\\\n(.fu%2u))*.13m)
+.	ds #V .6m
+.	ds #F 0
+.	ds #[ \&
+.	ds #] \&
+.\}
+.	\" simple accents for nroff and troff
+.if n \{\
+.	ds ' \&
+.	ds ` \&
+.	ds ^ \&
+.	ds , \&
+.	ds ~ ~
+.	ds ? ?
+.	ds ! !
+.	ds /
+.	ds q
+.\}
+.if t \{\
+.	ds ' \\k:\h'-(\\n(.wu*8/10-\*(#H)'\'\h"|\\n:u"
+.	ds ` \\k:\h'-(\\n(.wu*8/10-\*(#H)'\`\h'|\\n:u'
+.	ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'^\h'|\\n:u'
+.	ds , \\k:\h'-(\\n(.wu*8/10)',\h'|\\n:u'
+.	ds ~ \\k:\h'-(\\n(.wu-\*(#H-.1m)'~\h'|\\n:u'
+.	ds ? \s-2c\h'-\w'c'u*7/10'\u\h'\*(#H'\zi\d\s+2\h'\w'c'u*8/10'
+.	ds ! \s-2\(or\s+2\h'-\w'\(or'u'\v'-.8m'.\v'.8m'
+.	ds / \\k:\h'-(\\n(.wu*8/10-\*(#H)'\z\(sl\h'|\\n:u'
+.	ds q o\h'-\w'o'u*8/10'\s-4\v'.4m'\z\(*i\v'-.4m'\s+4\h'\w'o'u*8/10'
+.\}
+.	\" troff and (daisy-wheel) nroff accents
+.ds : \\k:\h'-(\\n(.wu*8/10-\*(#H+.1m+\*(#F)'\v'-\*(#V'\z.\h'.2m+\*(#F'.\h'|\\n:u'\v'\*(#V'
+.ds 8 \h'\*(#H'\(*b\h'-\*(#H'
+.ds v \\k:\h'-(\\n(.wu*9/10-\*(#H)'\v'-\*(#V'\*(#[\s-4v\s0\v'\*(#V'\h'|\\n:u'\*(#]
+.ds _ \\k:\h'-(\\n(.wu*9/10-\*(#H+(\*(#F*2/3))'\v'-.4m'\z\(hy\v'.4m'\h'|\\n:u'
+.ds . \\k:\h'-(\\n(.wu*8/10)'\v'\*(#V*4/10'\z.\v'-\*(#V*4/10'\h'|\\n:u'
+.ds 3 \*(#[\v'.2m'\s-2\&3\s0\v'-.2m'\*(#]
+.ds o \\k:\h'-(\\n(.wu+\w'\(de'u-\*(#H)/2u'\v'-.3n'\*(#[\z\(de\v'.3n'\h'|\\n:u'\*(#]
+.ds d- \h'\*(#H'\(pd\h'-\w'~'u'\v'-.25m'\f2\(hy\fP\v'.25m'\h'-\*(#H'
+.ds D- D\\k:\h'-\w'D'u'\v'-.11m'\z\(hy\v'.11m'\h'|\\n:u'
+.ds th \*(#[\v'.3m'\s+1I\s-1\v'-.3m'\h'-(\w'I'u*2/3)'\s-1o\s+1\*(#]
+.ds Th \*(#[\s+2I\s-2\h'-\w'I'u*3/5'\v'-.3m'o\v'.3m'\*(#]
+.ds ae a\h'-(\w'a'u*4/10)'e
+.ds Ae A\h'-(\w'A'u*4/10)'E
+.ds oe o\h'-(\w'o'u*4/10)'e
+.ds Oe O\h'-(\w'O'u*4/10)'E
+.	\" corrections for vroff
+.if v .ds ~ \\k:\h'-(\\n(.wu*9/10-\*(#H)'\s-2\u~\d\s+2\h'|\\n:u'
+.if v .ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'\v'-.4m'^\v'.4m'\h'|\\n:u'
+.	\" for low resolution devices (crt and lpr)
+.if \n(.H>23 .if \n(.V>19 \
+\{\
+.	ds : e
+.	ds 8 ss
+.	ds v \h'-1'\o'\(aa\(ga'
+.	ds _ \h'-1'^
+.	ds . \h'-1'.
+.	ds 3 3
+.	ds o a
+.	ds d- d\h'-1'\(ga
+.	ds D- D\h'-1'\(hy
+.	ds th \o'bp'
+.	ds Th \o'LP'
+.	ds ae ae
+.	ds Ae AE
+.	ds oe oe
+.	ds Oe OE
+.\}
+.rm #[ #] #H #V #F C
+.SH "NAME"
+Validator 1.2 \- PHP common data validation routines.
+.SH "SYNOPSIS"
+.PP
+.Vb 1
+\&  include("class.Validator.php3");
+.Ve
+.Vb 1
+\&  $check = new Validator ();
+.Ve
+.Vb 10
+\&  $email = 'cdi@thewebmasters.net';
+\&  $state = 'WA';
+\&  $cc = 'US';
+\&  $phone = '206-123-4567';
+\&  $zip = '9999-1111';
+\&  $url = 'http://buzz.builder.com/';
+\&  $misc = 'Now$ is the\e.*Time of "our" (discontent)!';
+\&  $ip    = '206.79.157.144';
+\&  $host = 'buzz.builder.com';
+\&  $file = "/home/httpd/html/index.html";
+.Ve
+.Vb 11
+\&  if (!$check->is_email($email))  { echo "Invalid email format\en";}
+\&  if (!$check->is_state($state))  { echo "Invalid state code\en";  }
+\&  if (!$check->is_country($cc))   { echo "Invalid country code\en";}
+\&  if (!$check->is_phone($phone))  { echo "Invalid phone format\en";}
+\&  if (!$check->is_zip($zip))      { echo "Invalid zip code\en";    }
+\&  if (!$check->is_url($url))      { echo "Invalid URL format\en";  }
+\&  if (!$check->url_responds($url)){ echo "Url not responding\en";  }
+\&  if (!$check->is_ipaddress($ip)) { echo "Invalid IP format\en";   }
+\&  if (!$check->ip_resolves($ip))  { echo "No RDNS for IP\en";      }
+\&  if (!$check->is_host($host))    { echo "Invalid host name\en";   }
+\&  if (!$check->is_sane($file))    { echo "Tainted file\en";        }
+.Ve
+.Vb 5
+\&  $clean = $check->strip_metas($misc);
+\&  $myJunk = array('!',''','=');
+\&  $clean = $check->custom_strip($myJunk,$clean);
+\&  $browser = $check->browser_gen();
+\&  echo "You are using a $browser generation browser";
+.Ve
+.Vb 1
+\&  if ($check->ERROR)              { echo "$check->ERROR\en";       }
+.Ve
+.SH "DESCRIPTION"
+Validator is a class containing common data validation routines.  Using this
+class your programs can validate a wide variety of data types common to
+forms and the internet in general.  Included with the various data validation
+routines are several \*(L"common\*(R" string and array manipulation routines.  In
+short, this is a class designed to conduct grunt work on submitted data. 
+This version of Validator contains 19 data tests, 9 data manipulation
+methods, and one array debugging tool.
+.SH "METHODS"
+.Sh "\fIValidator()\fR"
+The new \fIValidator()\fR method simply creates a new object.  No arguments
+needed.
+.Sh "\fIclear_error()\fR"
+When any of the following tests fail,  Validator sets the \s-1ERROR\s0 variable
+with the text description of why the test failed.  Since the \s-1ERROR\s0 is
+static,  the \s-1ERROR\s0 variable always contains the last error encountered.  To
+clear the error, call this method.  If you want to \fBautomatically\fR clear
+errors, set the \s-1CLEAR\s0 variable to true. (False by default)  If the \s-1CLEAR\s0
+variable is true, Validator will automatically clear the \s-1ERROR\s0 variable \fBat
+the beginning of any new test\fR.  Example;
+.PP
+.Vb 3
+\&  $check->CLEAR = true;
+\&  $email = 'cdi @ example.com';
+\&  $host = 'example.com';
+.Ve
+.Vb 1
+\&  if(!$check->is_email($email)) { echo "$check->ERROR\en"; }
+.Ve
+.Vb 1
+\&  // ERROR now contains "is_email: Whitespace in [cdi ]@[ example.com]"
+.Ve
+.Vb 1
+\&  if(!$check->is_hostname($host)) { echo "$check->ERROR\en"; }
+.Ve
+.Vb 1
+\&  // ERROR now contains "", because is_hostname succeeded.
+.Ve
+.Vb 3
+\&  // Since CLEAR is true, and example.com is a valid hostname, ERROR has
+\&  // been cleared.  If CLEAR were false, ERROR would still contain the
+\&  // whitespace error from the is_email check
+.Ve
+.Sh "\fIhas_space\fR\|($text)"
+Test.  Returns true if the submitted text has spaces or tabs in it.  False
+otherwise.
+.Sh "\fIchconvert\fR\|($fragment)"
+Internal Manipulation. Converts an (octal) numeric value into it's visual
+representation of a file permission segment. (eg, 7 == \*(L'rwx')
+.Sh "\fIget_perms\fR\|($fileName)"
+Returns a 4 element array based on the specified file or directories file
+permissions.  The array has the following structure:
+.PP
+.Vb 1
+\&    octal permission value, string user, string group, string other
+.Ve
+The keys for the array are \*(L"octal\*(R", \*(L"user\*(R", \*(L"group\*(R", and \*(L"other\*(R".
+.PP
+The \*(L"user\*(R","group\*(R","other\*(R" keys have values matching that returned from an
+\fBls \-l\fR command, so if the file's octal value were 744, user,group, and
+other would be as follows:
+.PP
+.Vb 3
+\&    "user"  == "rwx"
+\&    "group" == "r--"
+\&    "other" == "r--"
+.Ve
+Example:
+.PP
+.Vb 1
+\&    $perms = $check->get_perms($fileName);
+.Ve
+.Vb 3
+\&        $octal = $perms["octal"];
+\&        $user  = $perms["user"];
+\&        if(ereg("r",$user)) { echo "File is readable by user"; }
+.Ve
+Returns null on failure to \fIstat()\fR the specified file. If any specific
+segment of the file's permission is mis-understood, that segment will be set
+to \*(L"unk\*(R".
+.Sh "\fIis_sane\fR\|($filename)"
+Test.  Returns true if the file is sane.  False otherwise.  The checks are;
+is_readable, is_writeable, is_dir, is_link.  If the first two fail or the
+last two succeed, returns false.
+.Sh "\fIstrip_space\fR\|($text)"
+Manipulation.  Strips all spaces and tabs from the submitted text and
+returns the altered text.
+.Sh "\fIis_allnumbers\fR\|($text)"
+Test.  Returns true if the submitted text contains only numbers, and returns
+true if the \fIgettype()\fR test returns \*(L"integer\*(R".  False otherwise.
+.Sh "\fIstrip_numbers\fR\|($text)"
+Manipulation.  Strips all numbers from the submitted text and returns the
+altered content.
+.Sh "\fIis_allletters\fR\|($text)"
+Test.  Returns true if the text contains only A\-z characters.  False
+otherwise, case insensitive.
+.Sh "\fIstrip_letters\fR\|($text)"
+Manipulation.  Strips A\-z from submitted text and returns the results. Case
+insensitive.
+.Sh "\fIhas_html\fR\|($text)"
+Test.  Returns true if the text submitted contained \s-1HTML\s0 entities. False
+otherwise.  Tests for <, >, \*(L", and & .
+.Sh "\fIstrip_html\fR\|($text)"
+Manipulation. Strips all html entities, tags and attributes from the
+submitted text and returns the results (plain text).  It's not a very
+efficient method but it is accurate.  Don't use this method to remove html
+from a file. Use PHPs much faster and more efficient \fIfgetss()\fR function.
+.Sh "\fIhas_metas\fR\|($text)"
+Test.  Returns true if the submitted text contains shell meta characters.
+The test revolves around the \fIquotemeta()\fR method.  See the \s-1PHP\s0 documentation
+for the \fIquotemeta()\fR method.
+.Sh "\fIstrip_metas\fR\|($text)"
+Manipulation.  All shell meta chars are completely removed from the
+submitted string.  See the \s-1PHP\s0 \fIquotemeta()\fR documentation for the chars it
+removes.
+.Sh "\fIcustom_strip\fR\|($array, \f(CW$text\fR)"
+Manipulation.  Will strip a user defined array of characters from the
+submitted text, and return the modified string.  This method uses the
+\fIstr_replace()\fR function, and is meta-character safe. 
+.Sh "\fIarray_echo\fR\|($MyArray, \f(CW$Name\fR = \*(M"Array"")"
+Debug tool.  \fIArray_echo()\fR walks through an array and echos the key=value
+pairs as an \s-1HTML\s0 table.  Multi-dimensional arrays are handled recursively. 
+The \f(CW$Name\fR is used to identify the name of the parent array.  It can be set
+to whatever you want.  Example;
+.PP
+.Vb 2
+\&  $config = new Config($ConfigFile);
+\&  $check->array_echo($config->param, "Param");
+.Ve
+Array_echo is only useful for debugging.  I can't think of any legitimate
+reason to use this method in a real program.  It definitely comes in handy
+when debugging large multi-dimensional arrays.
+.Sh "\fIis_email\fR\|($Address = """")"
+Test.  Validates an email address.  Looks for standard
+[user]@[hostname].[tld] format.  This is \s-1NOT\s0 an \s-1RFC\s0 822 compliant check. 
+\fIis_email()\fR goes one further than just syntax, and verifies that the hostname
+portion of the email address has a valid \s-1DNS\s0 record.  If the hostname portion
+of the submitted email does \s-1NOT\s0 have an \s-1DNS\s0 record, it's obviously an invalid
+email address regardless of it's format.  So \*(L'cdi@example.com\*(R' would return
+false, because example.com does not have a \s-1DNS\s0 record.  The \s-1DNS\s0 check
+requires internet connectivity to succeed.
+.Sh "\fIis_url\fR\|($Url = """")"
+Test.  Checks for valid http and ftp \s-1URL\s0 format. Looks for a leading
+\&'http://\*(R' or \*(L'ftp://\*(R' followed by a valid hostname, followed by any
+arbitrary text (or nothing following the hostname).  This test does not
+check for connectivity of the submitted \s-1URL\s0 \- it only checks the format. 
+The hostname check is conducted by the \fIis_hostname()\fR method.  New in version
+1.1, now properly uses the \fIparse_url()\fR function to split up the url before
+validating.
+.Sh "\fIurl_responds\fR\|($Url = """")"
+Test.  Does an \fIis_url()\fR, and if that returns true, will then check that the
+\s-1URL\s0 is responding to requests.  Obviously this routine requires a working
+internet connection in order to succeed.  Returns true if the \s-1URL\s0 responded
+to a request, false otherwise.
+.Sh "\fIis_phone\fR\|($Phone = """")"
+Test.  Checks a phone number for format.  Can handle international phone
+numbers.  Checks that the submitted string contains only 0-9, (, ), \-, and + 
+characters.  Checks that the number, after removing any non-numeric
+characters, is no more than 13 numbers long and at least 7 digits long.
+.Sh "\fIis_hostname\fR\|($hostname = """")"
+Test. Checks a hostname format.  Does not check to see if the hostname is
+repsponding.  Looks for [sometext].[tld] at the minimum.  Only A\-Z,0-9,\-,
+and . are valid characters in this hostname check.  Looks for common typos
+like double dots (example..com), leading dots (.example.com), trailing
+dots (example.com.), or no dots (examplecom).  Modifications for version
+1.1, now properly validates the \s-1TLD\s0 and squashes a potential bug.
+.Sh "\fIis_bigfour\fR\|($tld)"
+Test.  Submit a top-level domain for verification. The big four TLDs are
+\s-1COM\s0, \s-1EDU\s0, \s-1NET\s0, and \s-1ORG\s0.  Returns true or false.
+.Sh "\fIis_host\fR\|($hostname = """", \f(CW$type\fR = ""\s-1ANY\s0"")"
+Test.  Does an \fIis_hostname()\fR check and if that returns true, tests that the
+host has a \s-1DNS\s0 record.  By default it checks for \*(L"\s-1ANY\s0\*(R" \s-1DNS\s0 record.  This can
+be overriden by specifying the type of record to look for. (eg \s-1MX\s0, \s-1NS\s0, A
+etc).  If the \fIis_hostname()\fR and \s-1DNS\s0 checks both return true, this check
+returns true.  False otherwise.
+.Sh "\fIis_ipaddress\fR\|($\s-1IP\s0 = """")"
+Test.  Checks for valid dotted quad \s-1IP\s0 address notation.  Does not check the
+connectivity of the \s-1IP\s0, only it's format.  It does check for common typos
+like leading zeros or quad notations greater than 255.
+.Sh "\fIip_resolves\fR\|($\s-1IP\s0 = """")"
+Test.  Does an \fIis_ipaddress()\fR and if that returns true, checks to see if an
+\s-1IP\s0 has a reverse \s-1DNS\s0 entry.  \fBvalid \s-1IP\s0 addresses often do not resolve to a
+hostname\fR.  Do not assume that if the \s-1IP\s0 does not have a reverse \s-1DNS\s0 entry
+that the \s-1IP\s0 is not valid.  This test simply looks for that reverse \s-1DNS\s0 entry
+and returns true or false appropriately.
+.Sh "\fIbrowser_gen()\fR"
+Test.  Grabs the \fB\s-1HTTP_USER_AGENT\s0\fR environment variable and returns the
+associated \s-1GENERATION\s0 of that agent. Generations returned can be any of the
+following; \fB\s-1FIRST\s0\fR, \fB\s-1SECOND\s0\fR, \fB\s-1THIRD\s0\fR, \fB\s-1FOURTH\s0\fR, \fB\s-1FIFTH\s0\fR, \fB\s-1SPIDER\s0\fR,
+\fB\s-1SPAMMER\s0\fR, \fB\s-1ANONYMIZER\s0\fR or \fB\s-1UNKNOWN\s0\fR.  The number of \fB\s-1SPIDER\s0\fR and
+\fB\s-1SPAMMER\s0\fR agents known to the class are limited.  Should accurately peg
+just about any other legitimate user agents though.  If the
+\fB\s-1HTTP_USER_AGENT\s0\fR variable is undefined or unknown, returns \fB\s-1UNKNOWN\s0\fR.
+.Sh "\fIis_state\fR\|($State = """")"
+Test.  Checks to see if the value submitted is a valid \s-1US\s0 postal State code. 
+Checks all 50 states, Washington \s-1DC\s0, Puerto Rico and the \s-1US\s0 Virgin Islands. 
+Case insensitive check.
+.Sh "\fIis_zip\fR\|($zipcode = """")"
+Test.  Checks to see if the value submitted is a valid \s-1US\s0 postal zip code
+format.  Does not check to see if it's an actual zip code. (ie, 11111 will
+return true).  The zip code check looks for 10 digit zips ( 11111-11111 ) as
+well as 5 digit zips.  The zip code (with non-digit chars removed) may not
+exceed 10 digits or be fewer than 5.  The only valid characters are 0-9 and
+the \- character.
+.Sh "\fIis_country\fR\|($countrycode = """")"
+Test.  And a big test at that.  Checks that the 2 character country code
+submitted is a valid country code.  There are 243 country codes in the \s-1CC\s0
+database. (Up from 232 in 1.1) If it finds a valid country code, it returns
+\fBthe full name of the country\fR.  Returns null otherwise.  eg
+\fIis_country\fR\|("\s-1TT\s0") would return \*(L"Trinidad, Tobago\*(R".  If you find a country
+code that I don't have listed here, \fBplease\fR send it to me,
+cdi@thewebmasters.net.
+.SH "VARIABLES"
+.Sh "\s-1ERROR\s0 (string)"
+This variable contains the text of the last test \s-1ERROR\s0 encountered.  If a
+test fails, the text description of why the test failed can be retrieved by
+grabbing this variable.
+.Sh "\s-1CLEAR\s0 (boolean, default == false)"
+\s-1CLEAR\s0, if set to true, automatically clears the \s-1ERROR\s0 variable at the
+beginning of each new test.
+.SH "EXAMPLES"
+see SYNOPSIS
+.SH "DOCUMENTATION"
+This is it.
+.SH "INSTALLATION"
+Copy the class file to the location specified in your PHP3.INI file. 
+Failing that, use the full path to the class file's location in your
+\fIinclude()\fR directive.
+.SH "BUGS"
+Fixed several bugs in 1.1: see CHANGELOG for details
+.PP
+.Vb 4
+\&    Fixed: is_email() DNS bug: Valid hosts were returning false.
+\&    Fixed: is_hostname() Improperly written regex. (Not POSIX)
+\&    Fixed: is_country() added 14 missing countries
+\&    Fixed: browser_gen() added 24 more spiders, fixed on bad entry
+.Ve
+.SH "VERSION"
+Version 1.2    1999/03/05  CDI, cdi@thewebmasters.net
+.SH "AUTHOR"
+Copyright (c) 1999, CDI \- cdi@thewebmasters.net.  All Rights Reserved.
+.SH "LICENSE"
+This program is free software; you can redistribute it and/or modify it
+under the GNU General Artistic License, with the following stipulations;
+.PP
+Changes or modifications must retain these Copyright statements. Changes or
+modifications \fBmust\fR be submitted to the AUTHOR, cdi@thewebmasters.net.
+.PP
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the Artistic License for more
+details. This software is distributed \fBAS\-IS\fR.
+.SH "AVAILABILITY"
+http://www.thewebmasters.net/php/
+.SH "HISTORY"
+see CHANGELOG
+
+.rn }` ''
+.IX Title "VALIDATOR 1"
+.IX Name "Validator 1.2 - PHP common data validation routines."
+
+.IX Header "NAME"
+
+.IX Header "SYNOPSIS"
+
+.IX Header "DESCRIPTION"
+
+.IX Header "METHODS"
+
+.IX Subsection "\fIValidator()\fR"
+
+.IX Subsection "\fIclear_error()\fR"
+
+.IX Subsection "\fIhas_space\fR\|($text)"
+
+.IX Subsection "\fIchconvert\fR\|($fragment)"
+
+.IX Subsection "\fIget_perms\fR\|($fileName)"
+
+.IX Subsection "\fIis_sane\fR\|($filename)"
+
+.IX Subsection "\fIstrip_space\fR\|($text)"
+
+.IX Subsection "\fIis_allnumbers\fR\|($text)"
+
+.IX Subsection "\fIstrip_numbers\fR\|($text)"
+
+.IX Subsection "\fIis_allletters\fR\|($text)"
+
+.IX Subsection "\fIstrip_letters\fR\|($text)"
+
+.IX Subsection "\fIhas_html\fR\|($text)"
+
+.IX Subsection "\fIstrip_html\fR\|($text)"
+
+.IX Subsection "\fIhas_metas\fR\|($text)"
+
+.IX Subsection "\fIstrip_metas\fR\|($text)"
+
+.IX Subsection "\fIcustom_strip\fR\|($array, \f(CW$text\fR)"
+
+.IX Subsection "\fIarray_echo\fR\|($MyArray, \f(CW$Name\fR = \*(M"Array"")"
+
+.IX Subsection "\fIis_email\fR\|($Address = """")"
+
+.IX Subsection "\fIis_url\fR\|($Url = """")"
+
+.IX Subsection "\fIurl_responds\fR\|($Url = """")"
+
+.IX Subsection "\fIis_phone\fR\|($Phone = """")"
+
+.IX Subsection "\fIis_hostname\fR\|($hostname = """")"
+
+.IX Subsection "\fIis_bigfour\fR\|($tld)"
+
+.IX Subsection "\fIis_host\fR\|($hostname = """", \f(CW$type\fR = ""\s-1ANY\s0"")"
+
+.IX Subsection "\fIis_ipaddress\fR\|($\s-1IP\s0 = """")"
+
+.IX Subsection "\fIip_resolves\fR\|($\s-1IP\s0 = """")"
+
+.IX Subsection "\fIbrowser_gen()\fR"
+
+.IX Subsection "\fIis_state\fR\|($State = """")"
+
+.IX Subsection "\fIis_zip\fR\|($zipcode = """")"
+
+.IX Subsection "\fIis_country\fR\|($countrycode = """")"
+
+.IX Header "VARIABLES"
+
+.IX Subsection "\s-1ERROR\s0 (string)"
+
+.IX Subsection "\s-1CLEAR\s0 (boolean, default == false)"
+
+.IX Header "EXAMPLES"
+
+.IX Header "DOCUMENTATION"
+
+.IX Header "INSTALLATION"
+
+.IX Header "BUGS"
+
+.IX Header "VERSION"
+
+.IX Header "AUTHOR"
+
+.IX Header "LICENSE"
+
+.IX Header "AVAILABILITY"
+
+.IX Header "HISTORY"
+

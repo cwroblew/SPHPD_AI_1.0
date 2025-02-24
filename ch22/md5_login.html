@@ -1,0 +1,46 @@
+<html>
+<head>
+<script language="JavaScript" src="md5.js"></script>
+
+<script language="JavaScript">
+
+function processForm() { 
+
+   document.loginForm.password.value = 
+
+   MD5(document.loginForm.password.value); 
+   
+   document.loginForm.submit(); 
+} 
+
+</script>
+</head>
+<body>
+
+<center>
+<form name="loginForm" method="post" action="md5_login.php"> 
+
+<table border=0 cellpadding=3 cellspacing=0>
+<tr>
+<td> Name </td> 
+<td> <input type="text" name="username" size="10"> </td>
+</tr>
+
+<tr>
+<td> Password </td> 
+<td> <input type="password" name="password" size="15" ></td>
+</tr>
+
+<tr>
+<td colspan=2>
+<input onclick="processForm(); return true;" 
+       type="button" value="Login"> 
+</td>
+</tr>
+</table>
+
+</form>
+</center>
+
+</body>
+</html>

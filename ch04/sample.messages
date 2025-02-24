@@ -1,0 +1,4 @@
+<?php
+     $MESSAGES['US']['APP_FAILED']            =  "Application Failed.";
+     $MESSAGES['US']['DEFAULT_MSG']           =  "Hello World";
+?>

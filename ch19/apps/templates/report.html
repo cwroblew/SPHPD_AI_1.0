@@ -1,0 +1,97 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Web Forms Reporter</title>
+<script language=javascript>
+function submitForm(sortVal)
+{
+   document.forms[0].sort.value = sortVal;
+   document.forms[0].submit();
+}
+</script>
+</head>
+
+<body>
+  <form method=post action={REPORTER}>
+  <input type=hidden name=sort value="">
+  <input type=hidden name=toggle value="{TOGGLE}">
+<table border="0" style="border-style:solid; border-width:1; border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" height="52" cellpadding="3" cellspacing="3">
+  <tr>
+
+    <td colspan={COLSPAN} width="100%" style="border-style: none; border-width: medium" height="17">
+    <p align="center"><font size="1" face="Verdana">
+    <b>Form Name 
+    <select size="1" name="frmID" style="font-family: Verdana; font-size: 10px">
+    <option value="">Select a form</option>
+    <!-- BEGIN frmBlock -->
+    <option value={FRM_ID} {FRM_SEL}>{FRM_NAME}</option>
+    <!-- END frmBlock -->
+    
+    </select> Date Range </b>
+    <select size="1" name="startMon" style="font-size: 10px; font-family: Verdana">
+    <!-- BEGIN stmonBlock -->
+    <option value={STMON} {STMONSEL}>{STMON_LBL}</option>
+    <!-- END stmonBlock -->
+    </select>
+    
+    <select size="1" name="startDay" style="font-size: 10px; font-family: Verdana">
+    <!-- BEGIN stdayBlock -->
+    <option value={STDAY} {STDAYSEL}>{STDAY}</option>
+    <!-- END stdayBlock -->
+    </select>
+    <select size="1" name="startYr" style="font-size: 10px; font-family: Verdana">
+    <!-- BEGIN styrBlock -->
+    <option value={STYR} {STYRSEL}>{STYR}</option>
+    <!-- END styrBlock -->    
+    </select></font><b><font size="1" face="Verdana"> TO </font></b><font size="1" face="Verdana">
+    <select size="1" name="endMon" style="font-family: Verdana; font-size: 10px">
+    <!-- BEGIN enmonBlock -->
+    <option value={ENMON} {ENMONSEL}>{ENMON_LBL}</option>
+    <!-- END enmonBlock -->
+    </select>
+    
+    <select size="1" name="endDay" style="font-size: 10px; font-family: Verdana">
+    <!-- BEGIN endayBlock -->
+    <option value={ENDAY} {ENDAYSEL}>{ENDAY}</option>
+    <!-- END endayBlock -->
+    </select>
+    <select size="1" name="endYr" style="font-size: 10px; font-family: Verdana">
+    <!-- BEGIN enyrBlock -->
+    <option value={ENYR} {ENYRSEL}>{ENYR}</option>
+    <!-- END enyrBlock -->    
+    </select>&nbsp;<input type="submit" value="Show Report" name="report" style="font-family: Verdana; font-size: 10px; font-weight: bold"><br>
+    <br>
+    <!-- BEGIN expoBlock -->
+    <!-- target="trgt" onclick="window.open('', 'trgt', 'width=200,height=200,status=no,resizable=no,scrollbars=yes')" -->    
+    &nbsp;<a href="{EXPORTER}?fid={FID}">Download all data for this form</a> |    
+    <a href="{EXPORTER}?fid={FID}&mode=1">Download latest data for this form</a>
+    <!-- END expoBlock -->
+    </font><br>
+&nbsp;</td>
+  </tr>
+  <tr bgcolor=darkred>
+    <!-- BEGIN colHdnBlock -->
+    <td width={TDWIDTH}% height="18" bgcolor="#006699">
+    <p align="left"><font size="2" color="#FFFFFF" face="Verdana"><b><a href=JAVASCRIPT:submitForm('{COL_HDN}');>{COL_HDN}</a></b></font></td>
+    <!-- END colHdnBlock -->  
+  </tr>
+
+  <!-- BEGIN rowBlock -->
+  <tr bgcolor={ROWCOLOR} id=x onmouseover="this.style.background='999966';this.style.color='white'" onmouseout="this.style.background='{ROWCOLOR}';this.style.color='black'">
+    <!-- BEGIN colBlock -->
+    <td width={TDWIDTH}% height="18">
+    <p align="left"><font size="1" face="Verdana">{COL_VAL}</font></td>
+    <!-- END colBlock -->  
+  </tr>
+  <!-- END rowBlock -->
+
+</table>
+  </form>  
+
+</body>
+<!-- END mainBlock -->
+</html>

@@ -1,0 +1,235 @@
+#!/usr/bin/php -q
+<?php
+
+   require_once('makezone.conf');
+
+   $CMD_SHORT_OPTIONS = 'h';
+
+   $CMD_LONG_OPTIONS  = array('help', 
+                              'add=', 
+                              'name=', 
+                              'template=', 
+                              'enable', 
+                              'disable', 
+                              'test'
+                              );
+
+   $cmd = getCommandLineOptions(Console_Getopt::getopt($GLOBALS['argv'],
+                                $CMD_SHORT_OPTIONS,
+                                $CMD_LONG_OPTIONS)
+                               );
+
+   if (empty($cmd)) syntax();
+ 
+   if ($cmd[add] == 'zone')
+   {
+       if (addZone($cmd[name], $cmd[template]))
+       {
+          echo "New zone $cmd[name] added.\n";
+       }
+   } 
+
+   exit;
+
+   function addZone($zone =null, $template = null)
+   {
+
+      // First check if zone is already created
+      $zoneFile = getFQPNZoneFile($zone);
+
+      if (zoneExists($zoneFile))
+      {
+          echo "Error: $zoneFile exists.\n";
+          return FALSE;
+      }
+
+      $zoneTemplate = getFQPNZoneTemplate($template);
+      
+      if (empty($zoneTemplate)) return FALSE;
+
+      if (DEBUG) echo "Adding $zone using $zoneTemplate \n";
+
+      require_once($zoneTemplate);
+
+      $GLOBALS[ZONE] = $zone;
+
+      $config = getZoneConfiguration();
+
+      if (DEBUG) echo $config;
+
+      $status = writeZoneFile($zoneFile, $config);
+      
+      $namedMasterZoneTemplate = getFQPNNamedMasterZoneTemplate();
+      if ( ! file_exists($namedMasterZoneTemplate))
+      {
+          echo "Error: $namedMasterZoneTemplate is missing\n";
+          return FALSE;
+      }
+
+      if (DEBUG) echo "Loading $namedMasterZoneTemplate ...";
+
+      require_once($namedMasterZoneTemplate);
+
+      if (DEBUG) echo "OK.\n";
+
+      $GLOBALS[ZONE_FILE] = basename($zoneFile);
+
+      $baseZoneFile = basename($zoneFile);
+
+      if (! zoneInNamedConf($baseZoneFile))
+      {
+         $namedConf = getNamedZoneConfig();
+
+         $status = appendNamedConfFile($namedConf);
+
+         if (DEBUG) echo $namedConf;
+
+      } else {
+
+         echo "Warning: $baseZoneFile already used in " . NAMED_CONF . "\n";
+      }
+
+      return TRUE;
+   }
+
+   function zoneInNamedConf($file = null)
+   {
+      $lines = file(NAMED_CONF);
+
+      if (count($lines) <1) return FALSE;
+
+       $search = '/' . $file . '/';
+
+       foreach ($lines as $named_conf)
+       {
+          if (preg_match($search, $named_conf)) return TRUE;
+       }
+
+       return FALSE;
+   }
+
+   function appendNamedConfFile($config = null)
+   {
+      $fp = fopen(NAMED_CONF, 'a');
+      if (! $fp)
+      {
+         echo "Error: could not open " . NAMED_CONF . " for update.\n";
+         return FALSE; 
+      }
+  
+      fputs($fp, $config);
+      fclose($fp);
+     
+      return TRUE;
+   }
+
+
+   function getFQPNNamedMasterZoneTemplate()
+   {
+       return sprintf("%s/%s", ZONE_TEMPLATE_DIR, ZONE_MASTER_TEMPLATE);
+   }
+
+   function writeZoneFile($file = null, $config = null)
+   {
+      $fp = fopen($file, 'w+');
+      if (! $fp)
+      {
+          echo "Error: $file could not be open for writing!\n";
+          return FALSE;
+      }
+
+      if (DEBUG) echo "Writing zone file ($file)....\n";
+      fputs($fp, $config);
+      fclose($fp);
+      if (DEBUG) echo "OK.\n";
+   }
+
+   function getFQPNZoneFile($zone = null)
+   {
+       return sprintf("%s/%s.zone", ZONE_DIR, $zone);
+   }
+
+   function zoneExists($file = null)
+   {
+       if (DEBUG) echo "Looking for zone file: $file ... ";
+
+       if (!file_exists($file))
+       {
+           if (DEBUG) echo "not found\n";
+           return null;
+       }
+
+       if (DEBUG) echo "OK.\n";
+ 
+       return $file;
+   }
+
+   function getFQPNZoneTemplate($template = null)
+   {
+
+       if (empty($template))
+           $template = DEFAULT_TEMPLATE;
+
+       $file = sprintf("%s/%s.template", ZONE_TEMPLATE_DIR, $template);
+   
+       if (DEBUG) echo "Looking for zone template file: $file ... ";
+
+       if (!file_exists($file))
+       {
+           if (DEBUG) echo "not found\n";
+           return null;
+       }
+
+       if (DEBUG) echo "OK.\n";
+ 
+       return $file;
+   }
+
+   function syntax()
+   {
+        $script = basename($GLOBALS['argv'][0]);
+
+        echo<<<HELP
+
+        Syntax $script [options]
+
+
+HELP;
+    
+   }
+
+   function getCommandLineOptions($options)
+   {
+
+      $type = gettype($options);
+
+      if (gettype($options) != "array")
+      {
+          // Error in command line
+          echo "$options->message \n";
+          return null;
+      }
+
+      $cmd = array();
+
+      foreach ($options[0] as $argArray)
+      {
+
+        $argName = preg_replace('/[^\w]/' , '', $argArray[0]);
+
+        $argValue = $argArray[1];
+
+        if ($argValue[0] == '-')
+        {
+            echo "$argName cannot have $argValue\n";
+            return array();
+        }
+
+        $cmd[$argName] = ($argValue != '') ? $argValue : TRUE;
+      }
+
+      return (count($cmd) > 0) ? $cmd : null;
+
+   }
+
+?>

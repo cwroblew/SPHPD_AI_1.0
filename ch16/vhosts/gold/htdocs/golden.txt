@@ -1,0 +1,5 @@
+<Directory />
+   <Files "*.csv">
+      deny from all
+   </Files>
+</Directory>

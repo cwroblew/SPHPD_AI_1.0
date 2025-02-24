@@ -1,0 +1,29 @@
+From: Your Friendly ISP  <admin@friendly-isp.net>
+Content-Type: text/html
+Subject: Your <%VHOST%> is now ready [Account Type: <%TYPE%>]
+
+Dear Customer,
+
+Your web site <%VHOST%> is now ready.
+
+You can access it via http://<%VHOST%>
+
+Your account information is as follows:
+
+Shell account: <%USER%> [GROUP: <%GROUP%>]
+     Password: <%PASSWD%>
+
+Your Web site information is as follows:
+
+[ ] PHP
+[ ] CGI
+[ ] SSI
+
+Server Root: <%SERVER_ROOT%>
+Document Root: <%DOCUMENT_ROOT%>
+Log dir: <%LOG_DIR%>
+
+Thanks.
+
+Account Team,
+Your ISP

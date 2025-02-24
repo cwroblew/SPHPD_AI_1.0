@@ -1,0 +1,105 @@
+
+    Validator 1.2 Copyright (c) 1999 CDI, cdi@thewebmasters.net
+
+    + Modified since 1.1
+    * New in 1.2
+
+*   get_perms          Returns a four element array showing the permissions
+                       for a file.  This obviously only applies to Unix
+                       hosts. The array has the following structure:
+
+                       octal permission, string user, sting group, string other
+
+                       The keys for the array are "octal", "user", "group",
+                       "other", so to retreive the octal representation of a
+                       file's permissions, use the following:
+
+                       $perms = $check->get_perms($fileName);
+                       echo "Octal: $perms["octal"] \n";
+
+                       The "user","group","other" keys have values matching
+                       that returned from an 'ls -l' command, so if the
+                       file's octal value were 744, user,group, and other
+                       would be as follows:
+
+                       "user"  == "rwx"
+                       "group" == "r--"
+                       "other" == "r--"
+
+                       If the file happens to be a directory, the "user"
+                       value will be "dxxx" (so on the above example, it
+                       would be "drwx").  So all this means that if you want
+                       to know if a file is readable by group, you can do it
+                       in 2 lines of code:
+
+                      $perms = $check->get_perms($fileName);
+                      if(ereg("r",$perms["group"]))
+                      {... file is readable by group...}
+
+                      If for any reason the method can't figure out what the
+                      permissions are the method sets that section to "unk"
+
+
++    CLEAR             Changed the clear var so that it only calls
+                       clear_error() in functions that can generate a new
+                       ERROR string. If the function can't generate a new
+                       ERROR msg, it doesn't bother clearing old ones.
+
+*    strip_html        removes all html elements, tags, attributes, etc
+                       ALL html gets stripped leaving only plain text.
+                       Not very efficient, fairly slow, but accurate.
+
++    is_country        Found 14 country codes I was missing and one duplicated
+                       entry. Now verifies 243 country codes.
+
++    browser_gen       Added 24 spiders to the list of known agents
++    is_host           Modified to accept CNAME only records as valid
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    Validator 1.1 Copyright (c) 1999 CDI, cdi@thewebmasters.net
+
+    6 New methods in release 1.1
+
+    + = Modified since 1.0
+    * = New since 1.0
+
+    METHOD            DESCRIPTION                            CLASS VERSION
+
+    // Tests
+
+*    has_html         string has HTML specials in it              1.1
+
+*    has_metas        strings has META chars in it                1.1
+
+    // Manipulations
+*    strip_metas      strips META chars from string               1.1
+
+*    custom_strip     strips user defined array of chars          1.1
+                      from a string and returns the results
+
+    // Internet host and url tests
++    is_hostname       Fully qualified Hostname)                  1.1
+*    is_bigfour        checks TLD for com,net,edu,org)            1.1
+                       Use this with is_country() to check
+                       validity of a TLD
+
+    // Misc methods
+*    browser_gen        returns the "generation" of the current  1.1
+                        clients browser
+
+            Mozilla/1                            => FIRST
+            Mozilla/2 or Lynx                    => SECOND
+            Mozilla/3,Opera,Konqueror,IBrowse    => THIRD
+            Mozilla/4                            => FOURTH
+            Mozilla/5                            => FIFTH
+                                        (Yes there ARE 5.0 browsers!)
+
+            Specials    SPAMMER       == Known SPAMMER user agent.
+                        SPIDER        == Known search engine spider/robot
+                        ANONYMIZER    == Anonymizer access
+
+        If the user agent is unrecognized or undefined, browser_gen()
+        returns UNKNOWN. It doesn't recognize many spiders yet, feel
+        free to add as many as you want.
+

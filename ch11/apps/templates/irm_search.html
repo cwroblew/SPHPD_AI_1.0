@@ -1,0 +1,293 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+
+
+<script>
+
+   var Subcategory = new Array();
+   var Category    = new Array();
+   var SubcategoryIDList= new Array();
+
+   <!-- BEGIN jsCategoryBlock -->
+
+      Category[{CATEGORY_INDEX}] = {CATEGORY_ID};
+
+      Subcategory[{CATEGORY_INDEX}] = new Array();
+      SubcategoryIDList[{CATEGORY_INDEX}] = new Array();
+
+      <!-- BEGIN jsSubCategoryBlock -->
+
+         Subcategory[{CATEGORY_INDEX}][{SUBCATEGORY_ID}] = "{SUBCATEGORY_NAME}";
+         SubcategoryIDList[{CATEGORY_INDEX}][{SUBCATEGORY_INDEX}] = {SUBCATEGORY_ID};
+
+      <!-- END jsSubCategoryBlock  -->
+
+   <!-- END jsCategoryBlock  -->
+
+
+   function populateSubCategory(cid)
+   {
+      var notFound = true;
+      var categoryIndex;
+      var i = 0;
+
+      if (cid == 0)
+      {
+          document.searchResource.subcategory.options.length = 0;
+          
+          var oOption = document.createElement("OPTION");
+          oOption.text="Select a category first";
+          oOption.value=0;
+          document.searchResource.subcategory.options.add(oOption); 
+          
+          return false;
+      }
+
+      while(notFound && i <= Category.length)
+      {
+         if (cid == Category[i])
+         {
+            notFound = false;
+            categoryIndex = i;
+         }
+         i++;
+      }
+
+      document.searchResource.subcategory.options.length = 0;
+
+      var oOption = document.createElement("OPTION");
+      oOption.text='Select a Subcategory';
+      oOption.value=0;
+      document.searchResource.subcategory.options.add(oOption);
+
+      for(i=0; i< SubcategoryIDList[categoryIndex].length; i++)
+      {
+         var subcategoryID = SubcategoryIDList[categoryIndex][i];
+
+         var oOption = document.createElement("OPTION");
+         oOption.text=Subcategory[categoryIndex][subcategoryID];
+         oOption.value=subcategoryID;
+         document.searchResource.subcategory.options.add(oOption);
+      }
+
+      return categoryIndex;
+   }
+   
+   function changeCmdToMostVisited()
+   {
+      document.searchResource.cmd='mostVisited';
+   }
+
+</script>
+
+
+
+<title>Search Mngr</title>
+</head>
+
+<body>
+
+<table border=0 width=600 style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="50%">
+    <font face="Verdana">
+    <font size=2 align=left>Internet Resource Manager</font><font size="2">
+    </font></font> </td>
+    
+  </tr>
+</table>
+<hr>
+
+<table border="0" cellspacing="0" width="100%" id="AutoNumber6" cellpadding="4" bgcolor="#008000" style="border-collapse: collapse" bordercolor="#111111">
+  <tr>
+    <td width="100%"><font face="Verdana" size="1" color="#FFFFFF">Available Internet Resources </font></td>
+  </tr>
+</table>
+
+
+<br>
+
+<table bgcolor="#e8e8e8" border="0" cellspacing="0" width="100%" id="AutoNumber3" cellpadding="1">
+  
+  <!-- BEGIN rowBlock -->
+
+  <tr valign=top>
+     <!-- BEGIN columnBlock -->
+     <td width=10% ><b>
+
+        <table bgcolor="#e8e8e8" border=0 cellpadding=2 cellspacing=0 width=100%>
+        <tr bgcolor="#cccccc">
+        <td><a href={APP_PATH}/{IRM_SEARCH_MNGR}?category={LINK_MAIN_CAT}&cmd=search><font size=2>{MAIN_CAT}</font></a></td>
+        <td>&nbsp;<font size=1>({NUM_OF_MAINRESOURCE})</font> </td>
+        </tr>
+        
+        <!-- BEGIN subcatBlock -->
+        <tr>
+        <td>&nbsp;&nbsp;&nbsp;
+            <a href={APP_PATH}/{IRM_SEARCH_MNGR}?subcategory={LINK_SUB_CAT}&cmd=search><font size=2>{SUB_CAT}</font></a> </td>
+        <td> <font face="Verdana" size=1>({NUM_OF_RESOURCE}) {NEW}</font></td>
+        </tr>
+        <!-- END subcatBlock -->
+        </table>
+        
+     </td>
+     <!-- END columnBlock -->
+  
+  </tr>
+  <!-- END rowBlock -->
+
+</table>
+
+<p>
+        <font face="Verdana" size="1">Total available resources {TOTAL_RESOURCE}</font>     
+</p>
+
+
+<table border="0" cellspacing="0" width="100%" id="AutoNumber5" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0">
+  <tr>
+    <td width="100%"><u>
+    <font size="2" face="Verdana" color="#008000"><a href={APP_PATH}/{IRM_SEARCH_MNGR}?cmd=mostvisited>Show most visited resources</a></font></u></td>
+  </tr>
+  <tr>
+    <td width="100%"><font color="#008000"><u>
+    <font size="2" face="Verdana"><a href={APP_PATH}/{IRM_SEARCH_MNGR}?cmd=topranking>Show top ranking sites</a></font></u><font size="2" face="Verdana">
+        </font>
+        </font></td>
+  </tr>
+  
+  
+  
+</table>
+<br><br>
+
+<!-- BEGIN adminBlock -->
+<table border="0" cellpadding="0" cellspacing="0" width=100%>
+   <tr>
+    <td valign=top><font face="Verdana" size="2"><a href="{APP_PATH}/{IRM_CATEGORY_MNGR}">Category Manager</a></font></td>
+    <td align=right>&nbsp;<font face="Verdana" size="2"><a href="{APP_PATH}/{IRM_RESOURCE_MNGR}?cmd=modify">Resource Manager</a></font></td>
+
+</tr> 
+
+</table>
+<!-- END adminBlock -->
+
+<font face="Verdana" size="2">
+
+<br>
+</font>
+<table border="1" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#cccccc" width="600" id="AutoNumber1" height="144">
+<form name=searchResource action={APP_PATH}/{IRM_SEARCH_MNGR} method=post>
+  <tr>
+    <td width="603" height="16" valign="top" bgcolor="#000080" colspan="2"><b>
+     <table border=0 cellpadding=0 cellspacing=0 width=100%>
+     <tr><td> <font color="#FFFFFF" face="Verdana" size="2">Search</font><font face="Verdana" size="2"></b></font></td>
+         <td align=right> <a  href={APP_PATH}/{IRM_RESOURCE_MNGR}?cmd=add&step=1>
+         <font face="Verdana" size=2 color="white">Add URL</font></a></td>
+     </tr>
+     </table>
+
+</td>
+    </tr>
+  <tr>
+    <td width="129" height="14" valign="top" bgcolor="#FFFFFF"><b>
+    <font face="Verdana" size="2">Keyword(s)</font></td>
+    <td width="474" height="14" valign="top" bgcolor="#FFFFFF">
+    <input type=text name="keywords" size=56 maxsize=255>
+    <input type=submit value="Find">
+    </td>
+  </tr>
+  <tr>
+    <td rowspan="2"></td>
+    <td>
+    <font size="1" face="Verdana">
+    <select name="category" onChange="populateSubCategory(category.value)">
+          <option value={CAT_SELECT_VALUE}>{CAT_SELECT_NAME}</option>
+          <!-- BEGIN categoryBlock -->
+          <option value="{CATEGORY_ID}">{CATEGO_NAME}</option>
+          <!-- END categoryBlock -->
+    </select>
+    
+    <select name="subcategory">
+          
+          <option value="{SUBCATEGORY_ID}">{SUBCATEGORY_NAME}</option>
+          <!-- BEGIN subcategoryBlock -->
+          <option value="{SUBID}">{SUB_NAME}</option>
+          <!-- END subcategoryBlock -->
+        
+    </select> <br><br>
+    <select name="resourcetype">
+       <option selected value="Web Site">URL</option>
+       <option value="FTP Site">FTP Site</option>
+       <option value="USENET Newsgroup">USENET News Group</option>
+       <option value="Others">Others</option>
+    </select><font size="2" face="Verdana">
+    &nbsp; </font>
+    <select name="rating">
+       <option selected value="0">Rating</option>
+       <option value="5">5 Stars</option>
+       <option value="4">4 Stars</option>
+       <option value="3">3 Stars</option>
+       <option value="2">2 Stars</option>
+       <option value="1">1 Star</option>
+       <option value="0">Unspecified</option>
+    </select></font></td>
+  </tr>
+  <tr>
+    <td>
+    <table border="0" cellspacing="0" >
+      <tr>
+        <td  valign="top">
+
+        <font size="2" face="Verdana">Created by </font>  
+        <select name="create_by" >
+           <option value=0>User</option>
+           <!-- BEGIN employeeBlock -->
+           <option value={EMP_ID}>{EMP_NAME}</option>
+           <!-- END employeeBlock --> 
+        </select>
+        
+        <font size="2" face="Verdana"> Visited by </font> 
+        
+        <select name="visited_by">
+            <option value=0>User</option>
+           <!-- BEGIN visitorBlock -->
+           <option value={EMP_ID}>{EMP_NAME}</option>
+           <!-- END visitorBlock --> 
+        </select>
+        </td>
+
+        <td valign="top"> <font size="2" face="Verdana">Resource Per Page</font>
+           <select name="pagesize">
+           <option value="10">10</option>
+           <option value="20">20</option>
+           <option value="30">30</option>
+           <option value="40">40</option>
+           <option value="50">50</option>
+           <option value="60">60</option>
+           <option value="70">70</option>
+           <option value="80">80</option>
+           <option value="90">90</option>
+           <option value="100">100</option>
+           </select>
+           </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <font face="Verdana">
+  <input type=hidden name=cmd value=search>
+  </font>
+  </form>
+  </table>
+
+</td>
+</tr>
+</table>
+  
+</body>
+<!-- END mainBlock -->
+</html>

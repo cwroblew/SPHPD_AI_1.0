@@ -1,0 +1,86 @@
+<html>
+
+<head>
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+
+<META HTTP-EQUIV="Refresh"
+      CONTENT="{WAIT};URL={APP_PATH}/{ECAMPAIGN_EXEC_MNGR}?lastrow={LAST_SUID}&cmd=execute&ecampaign_id={ECAMPAIGN_ID}&exec_ts={EXEC_TS}&exec_id={EXEC_ID}&loop={LOOP}&total={TOTAL}">
+
+<title>Survey Manager</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+<center>
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+           style="border-collapse: collapse"
+           bordercolor="#111111"
+           width="433"
+           height="79">
+
+      <tr>
+        <td width="24" height="24"><img border="0" src="images/topleft.gif"></td>
+        <td width="437" background="images/up.gif" height="24"> &nbsp;</td>
+        <td width="23" height="24"> <img border="0" src="images/topright.gif"></td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td width="437" height="10"> &nbsp;
+        <div align="center">
+          <center>
+
+          <table border="0"
+                 cellpadding="0"
+                 cellspacing="0"
+                 style="border-collapse: collapse"
+                 bordercolor="#cccccc"
+                 bgcolor="#ffffff"
+                 width="100%"
+                 id="AutoNumber3">
+
+            <tr>
+              <td>
+
+                    <table border=0 cellpadding=3 cellspacing=0 width=100%>
+                    <tr> <td>
+                      <table border=0 bgcolor="red" cellpadding=3 cellspacing=0 width="{PERCENT_COMPLETED}%">
+                        <tr><td><font size=1>{PERCENT_LABEL} %</font></td></tr>
+                      </table>
+                    </td> </tr>
+                    </table>
+
+              </td>
+            </tr>
+
+
+          </table>
+          </center>
+        </div>
+        </td>
+        <td width="23" background="images/right.gif" height="29"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" height="26">
+        <img border="0" src="images/downleft.gif"></td>
+        <td width="437" background="images/down.gif" height="26"> &nbsp;</td>
+        <td width="23" height="26"><img border="0" src="images/downright.gif"></td>
+      </tr>
+      </table>
+
+<p>
+<font color="red" size=2><strong>DO NOT CLOSE THE BROWSER BEFORE ALL THE MAILS ARE SENT</strong></font>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

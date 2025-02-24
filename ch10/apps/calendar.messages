@@ -1,0 +1,13 @@
+<?php
+    $MESSAGES['US']['WEEKEND']                  =          "Weekend";
+    $MESSAGES['US']['EVENT_ADDED']                  =          "The event has been added";
+    $MESSAGES['US']['EVENT_NOT_ADDED']              =          "The event could not be added";
+                                                               
+    $MESSAGES['US']['EVENT_MODIFIED']               =          "The event has been modified";
+    $MESSAGES['US']['EVENT_NOT_MODIFIED']           =          "The event could not be modified";
+                                                               
+    $MESSAGES['US']['EVENT_DELETED']                =          "The event has been deleted";
+    $MESSAGES['US']['EVENT_NOT_DELETED']            =          "The event could not be deleted";
+    $MESSAGES['US']['EVENT_NOT_FOUND']            =            "No existing event found.";
+    
+?>

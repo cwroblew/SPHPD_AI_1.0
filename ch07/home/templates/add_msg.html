@@ -1,0 +1,73 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<script language=javascript>
+function checkInput()
+{
+   if (document.addMsg.title.value=="" || document.addMsg.msgDate.value=="" || document.addMsg.msg.value=="")
+   {
+      alert("Please fill all the required fields");
+   }
+   else
+   {
+      document.addMsg.submit();
+   }
+}
+</script>
+</head>
+
+<body>
+
+<br>
+<table border=0 cellpadding=3 cellspacing=0>
+<tr>
+<td colspan=2 align=left>
+<a href="{MSG_MNGR}"><font size="2">MOTD Admin</font></a>
+</tr>
+</tr>
+
+<form name="addMsg" method=post action={MSG_MNGR}>
+<input type=hidden name=cmd value="add">
+<input type=hidden name=step value=2>
+<input type=hidden name=currentTS value={CURRENT_TIME}>
+
+<tr>
+<td> <font size=2><strong>Title</strong></font> </td>
+<td align=left> <input type=text name="title" value="{MSG_TITLE}" size=50> </td>
+</tr>
+
+<tr>
+<td> <font size=2><strong>Date</strong></font> </td>
+<td align=left> <input type=text name="msgDate" value="{MSG_DATE}" size="20"> </td>
+</tr>
+
+<tr> <td colspan=2> <font size=2><strong>Message Contents<font size=2><strong> </td> </tr>
+<tr> <td colspan=2> <textarea cols=55 rows=5 name="msg">{MSG_CONTENT}</textarea> </td> </tr>
+
+<tr valign=top>
+<td valign="top" colspan=2> 
+<font size=2><strong>Show this message to<font size=2><strong> <br>
+<select name=viewers[] multiple=true >
+<option value="">---SELECT ONE OR MORE USERS -----</option>
+<option value=0 {VIEW_EVERY_CHOSEN}>Everyone</option>
+<!-- BEGIN viewBlock -->
+<option value={VIEW_UID} {VIEW_CHOSEN}>{VIEW_NAME}</option>
+<!-- END viewBlock -->
+</select>
+</td>
+</tr>
+
+<tr>
+<td colspan=2 align=center>
+<p>&nbsp;</p>
+<a href="Javascript:document.addMsg.reset()">Reset</a> &nbsp;&nbsp;&nbsp;
+<a href=Javascript:checkInput();>Save Message</a> </td>
+</tr>
+
+<input type=hidden name=mode value={MODE}>
+<input type=hidden name=mid value={MSG_ID}>
+</form>
+</table>
+<!-- END mainBlock -->
+</body>
+</html>

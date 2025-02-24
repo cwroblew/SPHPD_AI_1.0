@@ -1,0 +1,68 @@
+<html>
+<!-- BEGIN mainBlock -->
+<title>Press Release Add/Modify Doc</title>
+
+<body>
+<form method=POST action={LD_ADMIN_MNGR}>
+<table>
+<tr>
+<td>
+<font face="Verdana" size="2">Select Category </font>
+</td>
+<td>
+<font face="Verdana">
+<select name=cid {DIS_OPTION}>
+<option value="">Select one</option>
+<!-- BEGIN catBlock -->
+<option value="{CAT_ID}" {CHOSEN}>{CAT_NAME}</option>
+<!-- END catBlock -->
+</select><font size="2"> </font></font>
+</td>
+</tr>
+<tr>
+<td>
+<font face="Verdana" size="2">Publish Date</font></td>
+<td>
+<font face="Verdana">
+<input type=text name=pub_date size="20" VALUE={PUB_DATE}><font size="2"> </font>
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+<font face="Verdana" size="2">Doc Heading </font>
+</td>
+<td>
+<font face="Verdana">
+<input type=text name=heading VALUE="{HEADING}" size="75"><font size="2"> </font>
+</font>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<font face="Verdana" size="2">Article</font></td>
+<td>
+<font face="Verdana">
+<textarea name=body cols=65 rows=20>{BODY}</textarea><font size="2"> </font>
+</font>
+</td>
+</tr>
+<tr>
+<td colspan=2 align=center>
+<font face="Verdana">
+<input type=hidden name=step value=2>
+<input type=hidden name=obj value="doc">
+<input type=hidden name=nid value={NID}>
+</font><font face="Verdana">
+<input type=submit name=cmd value="{CMD} Document"><font size="2"> </font></font>
+</td>
+</tr>
+
+</table>
+<INPUT TYPE=HIDDEN NAME=cat value="{CATNAME}">
+</form>
+</body>
+
+<!-- END mainBlock -->
+</html>

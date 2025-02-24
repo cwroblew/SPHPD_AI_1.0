@@ -1,0 +1,41 @@
+<!-- BEGIN mainBlock -->
+<html>
+<head><title>Calculator Results</title></head>
+<body>
+
+<form method="GET">
+<font color=red>
+<ul>
+{ERRORS}
+</ul>
+</font>
+
+<table border=0 cellpadding=3 cellspacing=0>
+
+<tr>
+<td> &nbsp;{NUM1} </td>
+<td> &nbsp;{OPERATOR} </td>
+<td> &nbsp;{NUM2} </td>
+<td> = </td>
+<td> &nbsp;{RESULT} </td>
+</tr>
+<tr>
+
+<td><input type=text name="num1" value="{NUM1}"></td>
+<td> <select name="operator">
+<option value="">Operator</option>
+<option value="+">+</option>
+<option value="-">-</option>
+<option value="*">*</option>
+<option value="/">/</option>
+</select></td>
+
+<td><input type=text name="num2" value="{NUM2}"></td>
+<td> <input type=submit value="Calculate"> </td>
+</tr>
+</table>
+
+</form>
+</body>
+</html>
+<!-- END mainBlock -->

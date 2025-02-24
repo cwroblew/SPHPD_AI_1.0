@@ -1,0 +1,28 @@
+To: kabir@evoknow.com
+From: THE LOAD WATCHER <admin@evoknow.com>
+Subject: [ALERT-<%ALERT%>] load on <%HOST%> need your attention
+Content-Type: text/html
+
+<html>
+<body>
+The <%HOST%> is experiencing <%ALERT%> level load. 
+<br> <br>
+Current load averages are <%LOAD%>
+<br> <br>
+Here is the output of the  top command:
+<br>
+<pre>
+<font color="<%ALERT%>">
+<%PSAUX%>
+</font>
+</pre>
+<br>
+
+Thanks,
+<br>
+
+The Wheel Group
+<br>
+
+</body>
+</html>

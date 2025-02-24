@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<base href="{BASE_URL}">
+
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+<title>Ecampaign Report</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+<center>
+    <table border=0
+           cellpadding="0"
+           cellspacing="0"
+           bordercolor="#111111"
+           height="79">
+
+      <tr>
+        <td width="24" height="24">
+        <img border="0" src="images/topleft.gif"></td>
+        <td  background="images/up.gif" height="24"> &nbsp;</td>
+        <td width="23" height="24"> 
+        <img border="0" src="images/topright.gif"></td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td height="10" ALIGN=CENTER> 
+             
+             <font face="Verdana">
+             <strong>
+             Campaign Name: {CMPG_NAME}
+             </strong>
+             </font>
+             
+        </td>
+        <td width="23" background="images/right.gif" height="29"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td height="10"> <font face="MS Sans Serif" size="2">&nbsp; </font>
+        <div align="center">
+          
+
+             
+             <font face="MS Sans Serif" size="2">Total Bounced: {BOUNCED}<br>
+             Total Unsubscribed: {UNSUB}<br>
+             
+
+             </font>
+             
+
+             <p>
+             <table border=0 cellpadding=5  cellspacing=0 width="100%">
+
+
+             <tr bgcolor="#cccc99">
+
+
+              <td bgcolor="#E4E4E4">
+              <b><font face="MS Sans Serif" size="1">URL ID </font></b>
+              </td>
+
+              <td bgcolor="#E4E4E4">
+              <b><font face="MS Sans Serif" size="1">URL Name </font></b>
+              </td>
+
+              <td bgcolor="#E4E4E4">
+              <b><font face="MS Sans Serif" size="1">
+              <a href="{APP_PATH}/{ECAMPAIGN_RPT_MNGR}?ecampaign_id={CMPG_ID}&tdesc={TDESC}&orderid=CNT">Total Clicks</a>
+              </font></b>
+              </td>
+              <td bgcolor="#E4E4E4">
+              <b><font face="MS Sans Serif" size="1">Unique Clicks </font></b>
+              </td>
+              
+
+             </tr>
+
+             <!-- BEGIN responseBlock -->
+
+             <tr bgcolor="{ROW_COLOR}">
+
+              <td bgcolor="#C0C0C0" >
+              <font face="MS Sans Serif" size="2">{URL_ID} </font>
+              </td>
+
+              <td align=right bgcolor="#C0C0C0">
+              <font face="MS Sans Serif" size="2">
+              <a href={URL_ADDR} target=_blank>{URL_NAME}</a> </font>
+              </td>
+
+              <td align=right bgcolor="#C0C0C0">
+              <font face="MS Sans Serif" size="2">{TOTAL_CLICK} </font>
+              </td>
+             
+              
+              <td align=right bgcolor="#C0C0C0">
+              <font face="MS Sans Serif" size="2">{UNIQUE_CLICK} </font>
+              </td>
+              <!-- END responseBlock -->
+              
+             </tr>
+
+             
+
+            <tr>
+            <td colspan=4 align=center>
+            <font face="MS Sans Serif" size="2">
+            <br>
+            <a href="{APP_PATH}/{ECAMPAIGN_MNGR}"
+            onMouseover=a.src=('images/main_menu2.gif')
+            onMouseout=a.src=('images/main_menu.gif')>
+            <img alt="Return to Menu" border=0 src="images/main_menu.gif" name="a"></a>
+            </font>
+            </td>
+            </tr>
+             </table>
+
+
+          </center>
+        </div>
+        </td>
+        <td width="23" background="images/right.gif" height="29"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" height="26">
+        <img border="0" src="images/downleft.gif"></td>
+        <td background="images/down.gif" height="26"> &nbsp;</td>
+        <td width="23" height="26">
+        <img border="0" src="images/downright.gif"></td>
+      </tr>
+      </table>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

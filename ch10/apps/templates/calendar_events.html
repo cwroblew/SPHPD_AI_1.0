@@ -1,0 +1,115 @@
+<!-- BEGIN mainBlock -->
+<head>
+<title>Calendar Events</title>
+<script language=Javascript>
+function doSubmit(mode)
+{
+   if (document.eventForm.step.value==2)
+   {
+      if (document.eventForm.event_title.value=="" || document.eventForm.event_date.value=="")
+      {
+         alert("Please insert event title and event date");
+         return;
+      }
+   }
+   document.eventForm.event_mode.value=mode;
+   document.eventForm.submit();
+}
+
+
+function submitDelete(eid)
+{
+   document.eventForm.del_eid.value=eid;
+   document.eventForm.event_mode.value="delete";
+   document.eventForm.submit();
+}
+
+</script>
+</head>
+
+<body>
+<form name = eventForm method="POST" action ="{CALENDAR_EVENT_MNGR}">
+<table border="0" style="border-collapse: collapse" bordercolor="#111111"  width="488">
+<!-- BEGIN eventBlock -->
+  <tr>
+    <td> 
+    <input type=radio name=event_id {CHECKED} value={EVENT_ID} onclick="document.eventForm.step.value=1;doSubmit('modify');"></td>
+    <td>
+    <font face="Verdana" size="2">{EVENT_TITLE}</font></td>
+    <td>
+    <font face="Verdana" size="2">&nbsp;&nbsp; <a href=Javascript:submitDelete({EVENT_ID})>Delete</a></font></td>
+  </tr>
+<!-- END eventBlock -->
+</table>
+<p>&nbsp;</p>
+
+<table border=0 cellspacing="0" cellpadding="3" >
+
+<tr><td colspan=2 align=right height="19"><b><font face="Verdana" size="2"><a href="{CALENDAR_MNGR}">Go to Calendar Home</a></font></b></td></tr> 
+<tr><td height="22" colspan="2" bgcolor="#000080"><b><font face="Verdana" size="2" color="#FFFFFF">{MODE} Event</font></b></td></tr>
+
+<tr> <td height="22"><b><font face="Verdana" size="2">Title </font> </b></td>
+<td height="22"><input type=text name=event_title size="46" style="font-family: Verdana" value="{EVENT_TITLE}" ><font size="2"></td>
+</tr>
+
+<tr>
+<td height="22"><font face="Verdana" size="2"><b>Date </b> </font><br>
+<font face="Verdana" size="1">(mm-dd-yyyy)</font><font face="Verdana" size="2"> </font></td>
+<td height="22">
+<input type=text name=event_date size="46" style="font-family: Verdana" value={EVENT_DATE} ></td>
+</tr>
+
+<tr>
+<td height="84" valign="top"><font face="Verdana" size="2"><b>Description</b> </font></td>
+<td height="84">
+<textarea rows="6" cols="45" name="event_desc" style="font-family: Verdana">{EVENT_DESC}</textarea></td>
+</tr>
+
+<tr>
+<td valign="top"><b><font face="Verdana" size="2">Repeat</font></b></td>
+<td valign="top">
+<font face="Verdana">
+<input type="radio" name="rep_mode" value="3" {WEEK_CHECKED}><font face="Verdana" size="2">Weekly&nbsp;
+</font></font>
+<font face="Verdana" size="2">
+<input type="radio" name="rep_mode" value="1" {MONTH_CHECKED}>Monthly&nbsp;
+<input type="radio" name="rep_mode" value="2" {YEAR_CHECKED}>Yearly
+</font> </td>
+</tr>
+
+<tr>
+<td align=left height="36" valign="top">
+<b><font face="Verdana" size="2">
+<input type="checkbox" name="show_others" value="ON" {OTHER_CHK_OPT}> Event 
+viewers</font></b></td>
+	<td align=left height="36">
+	<select name=viewers[] true size="6" style="font-family: Verdana" multiple>
+	<option value="-1">SELECT ONE OR MORE USERS</option>
+	<option value=0 {VIEW_EVERY_CHOSEN}>Everyone</option>
+	<!-- BEGIN viewBlock -->
+	<option value={VIEW_UID} {VIEW_CHOSEN}>{VIEW_NAME}</option>
+	<!-- END viewBlock -->
+	</select>
+	</td>
+</tr>
+
+<tr><td colspan="2" height="20">
+  <p align="left"><font face="Verdana"><input type="checkbox" name="rem" value="ON" {REM_CHECKED}></font><font size="2" face="Verdana">
+  <b>Show reminders</b></font></td></tr>
+
+<tr>
+<td colspan=2 height="36">
+<input type=reset value="Reset All"> &nbsp;&nbsp;&nbsp;
+<input type=button name=mode value="{MODE}" onclick=document.eventForm.step.value=2;doSubmit('{MODE}');></td>
+</tr>
+
+</table>
+<input type=hidden name=flag value={FLAG}>
+<input type=hidden name=event_mode>
+<input type=hidden name=step>
+<input type=hidden name=date value={DATE}>
+<input type=hidden name=mod_eid value={MOD_EID}>
+<input type=hidden name=del_eid>
+</form>
+</body>
+<!-- END mainBlock -->

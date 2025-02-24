@@ -1,0 +1,88 @@
+<html>
+<!-- BEGIN mainBlock -->
+<head>
+<script language="JAVASCRIPT">
+function modCat()
+{
+  document.forms[0].cmd.value = "modify";
+  document.forms[0].action = "{CONTACT_CAT_MNGR}";
+  document.forms[0].submit();
+}
+
+function delCat()
+{
+  document.forms[0].cmd.value = "delete";
+  document.forms[0].action = "{CONTACT_CAT_MNGR}";
+  document.forms[0].submit();
+}
+
+function modContact()
+{
+  document.forms[0].cmd.value = "modify";
+  document.forms[0].action = "{CONTACT_MNGR}";
+  document.forms[0].submit();
+}
+
+function delContact()
+{
+  document.forms[0].cmd.value = "delete";
+  document.forms[0].action = "{CONTACT_MNGR}";
+  document.forms[0].submit();
+}
+</script>
+</head>
+
+<body>
+<form method="POST" action="{CONTACT_MNGR}">
+<input type=hidden name=cat_id value={SEL_CAT_ID}>
+<input type=hidden name=cmd value=admin>
+    <div align="center">
+      <center>
+    <table border=0 cellpadding="5" cellspacing="0" width="571">
+    <tr>
+      <td width="85"><b><font size="1" face="Verdana">Category</font></b></td>
+      <td width="177" align="left">
+      <select name="cat" onChange=document.forms[0].subcat.value="0";document.forms[0].submit()>
+      <option selected value="0">Select a category</option>
+      <!-- BEGIN catBlock -->
+      <option value="{CAT_ID}" {CAT_CHOSEN}>{CAT_NAME}</option>
+      <!-- END catBlock -->
+      </select></td>
+      <td width="178"><b><font size="1" face="Verdana">
+      <a href="{CONTACT_CAT_MNGR}?cmd=add">Add Category</a></font></b></td>
+      <td width="175"><b><font size="1" face="Verdana">
+      <a href="{CONTACT_MNGR}?cmd=add">Add Contact</a></font></b></td>
+    </tr>
+    <tr>
+      <td width="85"><b><font size="1" face="Verdana">Subcategory</font></b></td>
+      <td width="177" align="left"><select name="subcat" onChange=document.forms[0].submit()>
+      <option selected value="0">{PROMPT}</option>
+      <!-- BEGIN subcatBlock -->
+      <option value="{SUBCAT_ID}" {SUBCAT_CHOSEN}>{SUBCAT_NAME}</option>
+      <!-- END subcatBlock -->
+      </select></td>
+      <td width="178"><b><font face="Verdana" size="1">
+      <a href="javascript:modCat();">Modify Category</a></font></b></td>
+      <td width="175"><b><font face="Verdana" size="1">
+      <a href="javascript:modContact();">Modify Contact</a></font></b></td>
+    </tr>
+    <tr>
+      <td width="85"><b><font size="1" face="Verdana">Contact</font></b></td>
+      <td width="177" align="left"><select size="1" name="cid">
+      <option selected value="0">{CONT_PROMPT}</option>
+      <!-- BEGIN contactBlock -->
+      <option value={CONTACT_ID}>{CONTACT_NAME}</option>
+      <!-- END contactBlock -->
+      </select></td>
+      <td width="178"><b><font face="Verdana" size="1">
+      <a href="javascript:delCat();">Delete Category</a></font></b></td>
+      <td width="175"><b><font face="Verdana" size="1">
+      <a href="javascript:delContact();">Delete Contact</a></font></b></td>
+    </tr>
+  </table>
+      </center>
+    </div>
+</form>
+</body>
+<!-- END mainBlock -->
+<html>
