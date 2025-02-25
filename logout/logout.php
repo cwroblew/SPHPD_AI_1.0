@@ -1,6 +1,7 @@
 <?php
 
-   require_once "logout.conf";
+global $APPLICATION_NAME, $ON;
+require_once "logout.conf.php";
 
 
    class logoutApp extends PHPApplication {
@@ -72,4 +73,4 @@
    $thisApp->run();
    $thisApp->dump_debuginfo();
 
-?>
+

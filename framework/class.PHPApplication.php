@@ -20,7 +20,7 @@
 
   class PHPApplication {
 
-     function PHPApplication($param = null)
+     function __construct($param = null)
      {
 
         global $ON, $OFF, $TEMPLATE_DIR;
@@ -741,4 +741,3 @@
 
 }
 
-?>

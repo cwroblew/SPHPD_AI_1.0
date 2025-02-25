@@ -16,7 +16,7 @@
 
       var $VERSION = "1.0.0";
 
-      function DBI($DB_URL)
+      function __construct($DB_URL)
       {
 
          
@@ -139,6 +139,7 @@
 
       function apiVersion()
       {
+          global $VERSION;
          return $VERSION;
       }
    }

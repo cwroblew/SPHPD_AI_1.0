@@ -9,7 +9,7 @@
 
       var $myTextColor = 'red';
 
-      function Debugger($params = null)
+      function __construct($params = null)
       {
 
 	 // Debugger constructor method

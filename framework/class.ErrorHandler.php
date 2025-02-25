@@ -16,7 +16,7 @@
    class ErrorHandler
    {
 
-      function ErrorHandler($params = null)
+      function __construct($params = null)
       {
 
          global $DEFAULT_LANGUAGE;

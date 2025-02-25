@@ -1,7 +1,8 @@
 <?php
 
-   require_once "login.conf";
-   require_once "login.errors";
+global $APPLICATION_NAME, $ON;
+require_once "login.conf.php";
+   require_once "login.errors.php";
 
    /*
       Session variables must be defined before session_start()
@@ -173,7 +174,6 @@
                                   'app_auto_authorize'   => FALSE,
                                   'app_auto_chk_session' => FALSE,
                                   'app_auto_connect'     => TRUE,
-                                  'app_type'             => 'WEB',
                                   'app_debugger'         => $ON
                                  )
                           );

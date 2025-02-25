@@ -2,7 +2,7 @@
 
    class User
    {
-      function User($dbi = null, $uid = null)
+      function __construct($dbi = null, $uid = null)
       {
 
          global $AUTH_DB_TBL,

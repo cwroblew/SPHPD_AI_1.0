@@ -13,9 +13,9 @@
    // If you have installed framewirk directory in
    // a different directory than
    // %DocumentRoot%/framework, change the setting below
-   $APP_FRAMEWORK_DIR=$_SERVER['DOCUMENT_ROOT'] . '/charlene/framework';
-   $PEAR             =$_SERVER['DOCUMENT_ROOT'] . '/charlene/pear';
-   $PHPLIB           =$_SERVER['DOCUMENT_ROOT'] . '/charlene/phplib';
+   $APP_FRAMEWORK_DIR=$_SERVER['DOCUMENT_ROOT'] . '/framework';
+   $PEAR             =$_SERVER['DOCUMENT_ROOT'] . '/pear';
+   $PHPLIB           =$_SERVER['DOCUMENT_ROOT'] . '/phplib';
 
    // Insert the path in the PHP include_path so that PHP
    // looks for PEAR, PHPLIB and our application framework
@@ -56,18 +56,18 @@
    $REL_TEMPLATE_DIR  = '/login/templates/';
    $WARNING_URL       = $TEMPLATE_DIR . '/warning.html';
 
-   require_once "login.errors";
-   require_once "login.messages";
+   require_once "login.errors.php";
+   require_once "login.messages.php";
    require_once 'DB.php';
-   require_once $APP_FRAMEWORK_DIR . '/' . 'constants.php';
+   require_once "{$APP_FRAMEWORK_DIR}/constants.php";
 
-   require_once $APP_FRAMEWORK_DIR . '/' . $DEBUGGER_CLASS;
+   require_once "{$APP_FRAMEWORK_DIR}/{$DEBUGGER_CLASS}";
 
 
-   require_once $APP_FRAMEWORK_DIR . '/' . $APPLICATION_CLASS;
-   require_once $APP_FRAMEWORK_DIR . '/' . $ERROR_HANDLER_CLASS;
-   require_once $APP_FRAMEWORK_DIR . '/' . $AUTHENTICATION_CLASS;
-   require_once $APP_FRAMEWORK_DIR . '/' . $DBI_CLASS;
-   require_once $APP_FRAMEWORK_DIR . '/' . $USER_CLASS;
+   require_once "{$APP_FRAMEWORK_DIR}/{$APPLICATION_CLASS}";
+   require_once "{$APP_FRAMEWORK_DIR}/{$ERROR_HANDLER_CLASS}";
+   require_once "{$APP_FRAMEWORK_DIR}/{$AUTHENTICATION_CLASS}";
+   require_once "{$APP_FRAMEWORK_DIR}/{$DBI_CLASS}";
+   require_once "{$APP_FRAMEWORK_DIR}/{$USER_CLASS}";
    require_once $TEMPLATE_CLASS;
 ?>

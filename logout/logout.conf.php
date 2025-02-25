@@ -40,7 +40,7 @@
    $ACTIVITY_LOG_TBL = 'ACTIVITY';   
 
    require_once "logout.errors";
-   require_once "logout.messages";
+   require_once "logout.messages.php";
    require_once 'DB.php';
    require_once $APP_FRAMEWORK_DIR . '/' . 'constants.php';
    require_once $APP_FRAMEWORK_DIR . '/' . $APPLICATION_CLASS;
