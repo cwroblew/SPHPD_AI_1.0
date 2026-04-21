@@ -1,0 +1,121 @@
+<heae>
+<title>Help on Help: Section 2.2.0</title>
+</head>
+
+<p>&nbsp;</p>
+<div class="preamble">
+<p>
+<h1>Section 2.2.0: Configuring Help Map File for Your Application</h1>
+
+Once you have added your application in help.conf you need to create the map file you named in help.conf. For example,
+say that your help.conf file has the following configuration:
+
+<div class="example">
+<pre>
+<code>
+   // This associative array associates an application with a help map file
+   $APP_HELP_MAP = array(
+                    'self' => 'self.map',
+                    'irm' => 'irm.map'
+                   );
+</code>
+</pre>
+</div>
+</p>
+</div>
+
+The two map files are self.map (used by the help system itself) and the irm.map (used by the IRM application). You need to create the map file in the maps directory for your application.
+
+<p>&nbsp;</p>
+<div class="section">
+<h2> Creating the map file </h2>
+
+Using a text editor create your application map file (<i>application_name</i>.map such as irm.map) in maps directory of the help system. Your map file should look like:
+
+<br>
+
+<div class="example">
+<pre>
+<code>
+
+&lt;?php
+
+    // You can speicify absolute path (FQPN) or %DocumentRoot% relative path
+    // When you use relative path, the %HELP_DIR% is prepended.
+    $HELP_DIR = 'help/self';
+
+    // %DocumentRoo%REL_HELP_DIR points to the help contents dir
+    //$REL_HELP_DIR = 'help/self';
+
+    //Relative template directory.  %REL_HELP_DIR%/REL_TEMPLATE_DIR
+    $REL_TEMPLATE_DIR = 'templates';
+
+    // Default Section template file name
+    $DEFAULT_SECTION_TEMPLATE =  'default_section.html';
+
+    // Table of Contents Template
+    $TOC_TEMPLATE = 'toc.html';
+
+    // Search Result Template
+    $SEARCH_RESULT_TEMPLATE = 'search_result.html';
+
+    // Specific section template (if any);
+    $TEMPLATES = array(
+                       '2.1.0' => '210_template.html',
+                       '3.1.0' => '310_template.html'
+                 );
+
+    // When adding sections make sure each section is defined as
+    //  'SECTION NUMBER' => 'SECTION TITLE'
+    //
+    //  Each section entry should be terminated with a comma except for the
+    //  last one. NOT FOLLOWING THIS RULE WILL CAUSE MOST OF YOUR PROBLEM!
+
+
+    $SECTIONS = array(
+
+                  '1.0.0' => 'Introduction to Help System',
+                  '2.0.0' => 'Getting Started',
+                  '2.1.0' => 'Configuring help.conf File',
+                  '2.2.0' => 'Creating Help Map for Your Application',
+                  '2.3.0' => 'Creating Contents',
+                  '2.4.0' => 'Embeddging Images',
+                  '2.5.0' => 'Testing Your Help',
+                  '2.6.0' => 'Linking Help with Your Application',
+                  '3.0.0' => 'Understanding Keyword Search',
+                  '3.1.0' => 'Creating Keyword Index Cache',
+                  '3.2.0' => 'Excluding Certain Words from Keyword Cache',
+                  '3.3.0' => 'Performing Keyword Search',
+                  '4.0.0' => 'Changing Look and Feel',
+                  '4.1.0' => 'Updating Table of Contents Template',
+                  '4.2.0' => 'Updating Sections Template',
+                  '4.3.0' => 'Updating Search Result Template',
+                  '4.4.0' => 'Creating Custom Templates',
+                  '4.5.0' => 'Using Style Sheets'
+                );
+
+?>
+</code>
+</pre>
+</div>
+
+<p>
+<strong>Tip</strong><br>
+This is really a copy of the self.map file. You can simply copy self.map as your application map file and modify it as needed. 
+</p>
+
+Decide how many sections you want to have and create the sections configuration ($SECTIONS) as needed. The above example shows there are eighteen sections (1.0.0 to 4.5.0) in the sample map file.
+
+<br> <br>
+Once you have added the appropriate sections, configure $HELP_DIR to point your application's help directory. For example, the sample $HELP_DIR is set to help/self. Since this is a relative path, the help directory for this application will be ROOT_PATH/$HELP_DIR. If ROOT_PATH is set to %DocumentRoot%, the help path for the sample application will be %DocumentRoot%/help/self.
+
+<br>
+<br>
+<strong>Note</strong><br>
+Make sure you remove comma from the last $SECTIONS array element and also make sure all other elements have a terminating comma. Following this rule will save you configuration hassle when you are ready to test.
+<br>
+<br>
+Initially, you should creates sections and configure $HELP_DIR variable only and not worry about customizing template. This will make sure you get a base help system for your application up and running fast. Once you have the base system up and running, you can customize the look and feel as needed. For now simply create the map file with appropriate number of sections.
+
+</div>
+

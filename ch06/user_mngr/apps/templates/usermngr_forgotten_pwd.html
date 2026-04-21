@@ -1,0 +1,100 @@
+<html>
+
+<!-- BEGIN mainBlock -->
+
+<base href="{BASE_URL}">
+<head>
+
+
+<title>User Manager - Forgotton Password</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+<center>
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+           bordercolor="#111111"
+           width="433"
+           height="79">
+
+      <tr>
+        <td width="24" height="24"><img border="0" src="images/upleft.gif" width="41" height="39"></td>
+        <td width="437" background="images/upmid.gif" height="24"> &nbsp;</td>
+        <td width="23" height="24"> <img border="0" src="images/upright.gif" width="43" height="39"></td>
+      </tr>
+
+      <tr>
+        <td width="24" background="images/left.gif" height="29"> &nbsp;</td>
+        <td width="437" height="10"> &nbsp;
+
+          <center>
+
+          <table border="1"
+                 cellpadding="10"
+                 cellspacing="0"
+                 style="border-collapse: collapse"
+                 bordercolor="#cccccc"
+                 bgcolor="#ffffff"
+                 width="100%"
+                 id="AutoNumber3">
+
+            <tr>
+              <td>
+
+                    <center>
+                    <form name="userform" method=GET
+                          action="{APP_PATH}/{APP_NAME}">
+
+
+                    <input type=hidden name=step value=2>
+
+                    <table border=0 cellpadding=5 cellspacing=0 widht=100%>
+                    <tr>
+                    <td>Your Email</td>
+                    <td><input type=text name="username" size="30" maxsize=127></td>
+                    </tr>
+
+                    <tr>
+                    <td colspan=2 align=center>
+                    <a href="javascript:document.userform.reset();"><img alt="Reset" border=0 src="images/reset.gif" width="105" height="33" ></a>
+                    <input type=hidden name=cmd value="{ACTION}">
+                    <input type=image alt="Send password reset email" border=0 src="images/send_msg.gif" width="105" height="33" >
+                    </td>
+                    </tr>
+
+                    </table>
+                    </form>
+                    <a href="/"><img alt="Return to Menu" border=0 src="images/main_menu.gif" width="105" height="33" ></a>
+
+                    </center>
+
+
+              </td>
+            </tr>
+
+
+          </table>
+          </center>
+        </div>
+        </td>
+        <td width="23" background="images/right.gif" height="29"> &nbsp;</td>
+      </tr>
+
+      <tr>
+        <td width="24" height="26">
+        <img border="0" src="images/dwnleft.gif" width="41" height="45"></td>
+        <td width="437" background="images/dwnmid.gif" height="26"> &nbsp;</td>
+        <td width="23" height="26"><img border="0" src="images/dwnrht.gif" width="43" height="45"></td>
+      </tr>
+      </table>
+
+
+</center>
+<!-- END mainBlock -->
+
+</body>
+
+</html>

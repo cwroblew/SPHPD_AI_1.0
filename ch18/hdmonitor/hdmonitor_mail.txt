@@ -1,0 +1,46 @@
+To: kabir@evoknow.com
+From: THE REDEYE GROUP <admin@evoknow.com>
+Subject: Disk(s) on <%HOST%> need your attention
+Content-Type: text/html
+
+<html>
+<body>
+The following disk(s) have exceeded set limit in hdmonitor.conf:
+<br> <br>
+
+<table border=0 cellpadding=1 cellspacing=0 width="400" bgcolor="#000000">
+<tr>
+<td>
+<table border=0 cellpadding=3 cellspacing=0 width="400" bgcolor="red">
+<tr> <td> <font color="black">&nbsp;<strong> Disk Information </strong> </font> </td> </tr>
+<tr> <td> <font color="black"><%DISK_STATUS%> </font> </td> </tr>
+</table>
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellpadding=1 cellspacing=0 width="400" bgcolor="#000000">
+<tr>
+<td>
+<table border=0 cellpadding=3 cellspacing=0 width="400" bgcolor="#cccccc">
+<tr> <td colspan=2> System Information </td></tr>
+<tr> <td>Hostname </td><td> <%HOST%></td></tr>
+<tr> <td>IP Addr  </td><td> <%IP_ADDR%></td></tr>
+<tr> <td>Kernel   </td><td> <%KERNEL%></td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+<br>
+
+Thanks,
+<br>
+
+The Wheel Group
+<br>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?php
+
+ $MESSAGES['US']['MESSAGE_ADDED']         = "The message has been added";
+ $MESSAGES['US']['MESSAGE_NOT_ADDED']     = "The message could not be added";
+ $MESSAGES['US']['MESSAGE_NOT_DELETED']   = "The message could not be deleted";
+ $MESSAGES['US']['MESSAGE_DELETED']       = "The message has been deleted";
+ $MESSAGES['US']['MESSAGE_MODIFIED']      = "The message has been modified";
+ $MESSAGES['US']['MESSAGE_NOT_MODIFIED']  = "The message could not be modified";
+ 
+ $MESSAGES['US']['PREFERENCES_UPDATED']  = "Preferences have been updated";
+ 
+                                                    
+ 
+
+ ?>
