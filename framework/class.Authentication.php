@@ -9,12 +9,11 @@
 * CVS ID: $Id$
 */
 
-global $DEBUGGER_CLASS;
-include_once $DEBUGGER_CLASS;
+  include_once $DEBUGGER_CLASS;
 
   class Authentication {
 
-     function __construct($username = null, $email = null, $password = null, $db_url = null)
+     function Authentication($username = null, $email = null, $password = null, $db_url = null)
      {
 
         global $AUTH_DB_TBL;
